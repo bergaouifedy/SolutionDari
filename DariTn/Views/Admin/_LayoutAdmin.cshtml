@@ -1,0 +1,466 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/AdminContent/contactform/contactform.php" />
+    <link href="~/AdminContent/contactform/Readme.txt" />
+    <link href="~/AdminContent/css/style-responsive.css" rel="stylesheet" />
+    <link href="~/AdminContent/css/style.css" rel="stylesheet" />
+    <link href="~/AdminContent/css/table-responsive.css" rel="stylesheet" />
+    <link href="~/AdminContent/css/to-do.css" rel="stylesheet" />
+    <link href="~/AdminContent/css/zabuto_calendar.css" rel="stylesheet" />
+    <link href="~/AdminContent/lib/advanced-datatable/css/demo_page.css" rel="stylesheet" />
+    <link href="~/AdminContent/lib/advanced-datatable/css/demo_table.css" rel="stylesheet" />
+    <link href="~/AdminContent/lib/advanced-datatable/css/demo_table_jui.css" rel="stylesheet" />
+    <link href="~/AdminContent/lib/advanced-datatable/css/DT_bootstrap.css" rel="stylesheet" />
+    <link href="~/AdminContent/lib/advanced-datatable/css/jquery.dataTables.css" rel="stylesheet" />
+    <link href="~/AdminContent/lib/advanced-datatable/css/jquery.dataTables_themeroller.css" rel="stylesheet" />
+    <script src="~/AdminContent/lib/advanced-datatable/js/DT_bootstrap.js"></script>
+    <script src="~/AdminContent/lib/advanced-datatable/js/jquery.dataTables.js"></script>
+    <script src="~/AdminContent/lib/advanced-datatable/js/jquery.dataTables.min.js"></script>
+    <script src="~/AdminContent/lib/advanced-datatable/js/jquery.js"></script>
+    <link href="~/AdminContent/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/AdminContent/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/AdminContent/lib/bootstrap/fonts/glyphicons-halflings-regular.eot" />
+    <link href="~/AdminContent/lib/bootstrap/fonts/glyphicons-halflings-regular.ttf" />
+    <link href="~/AdminContent/lib/bootstrap/fonts/glyphicons-halflings-regular.woff" />
+    <link href="~/AdminContent/lib/bootstrap/fonts/glyphicons-halflings-regular.woff2" />
+    <script src="~/AdminContent/lib/bootstrap/js/bootstrap.js"></script>
+    <script src="~/AdminContent/lib/bootstrap/js/bootstrap.min.js"></script>
+    <link href="~/AdminContent/lib/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
+    <script src="~/AdminContent/lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="~/AdminContent/lib/bootstrap-daterangepicker/date.js"></script>
+    <script src="~/AdminContent/lib/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="~/AdminContent/lib/bootstrap-daterangepicker/moment.min.js"></script>
+    <link href="~/AdminContent/lib/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" />
+    <link href="~/AdminContent/lib/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+    <link href="~/AdminContent/lib/bootstrap-datetimepicker/css/datetimepicker.css" rel="stylesheet" />
+    <script src="~/AdminContent/lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <link href="~/AdminContent/lib/bootstrap-fileupload/bootstrap-fileupload.css" rel="stylesheet" />
+    <script src="~/AdminContent/lib/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+    <script src="~/AdminContent/lib/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
+    <link href="~/AdminContent/lib/bootstrap-timepicker/compiled/timepicker.css" rel="stylesheet" />
+    <script src="~/AdminContent/lib/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+    <link href="~/AdminContent/lib/bootstrap-wysihtml5/bootstrap-wysihtml5.css" rel="stylesheet" />
+    <script src="~/AdminContent/lib/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+    <script src="~/AdminContent/lib/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
+    <script src="~/AdminContent/lib/chart-master/Chart.js"></script>
+    <link href="~/AdminContent/lib/dropzone/css/dropzone.css" rel="stylesheet" />
+    <script src="~/AdminContent/lib/ckeditor/ckeditor.js"></script>
+    <script src="~/AdminContent/lib/dropzone/dropzone.js"></script>
+    <link href="~/AdminContent/lib/fancybox/jquery.fancybox.css" rel="stylesheet" />
+    <script src="~/AdminContent/lib/fancybox/jquery.fancybox.js"></script>
+    <link href="~/AdminContent/lib/file-uploader/css/jquery.fileupload-noscript.css" rel="stylesheet" />
+    <link href="~/AdminContent/lib/file-uploader/css/jquery.fileupload-ui-noscript.css" rel="stylesheet" />
+    <link href="~/AdminContent/lib/file-uploader/css/jquery.fileupload-ui.css" rel="stylesheet" />
+    <link href="~/AdminContent/lib/file-uploader/css/jquery.fileupload.css" rel="stylesheet" />
+    <script src="~/AdminContent/lib/file-uploader/js/cors/jquery.xdr-transport.js"></script>
+    <script src="~/AdminContent/lib/file-uploader/js/vendor/jquery.ui.widget.js"></script>
+    <script src="~/AdminContent/lib/file-uploader/js/jquery.fileupload-audio.js"></script>
+    <script src="~/AdminContent/lib/file-uploader/js/jquery.fileupload-image.js"></script>
+    <script src="~/AdminContent/lib/file-uploader/js/jquery.fileupload-process.js"></script>
+    <script src="~/AdminContent/lib/file-uploader/js/jquery.fileupload-ui.js"></script>
+    <script src="~/AdminContent/lib/file-uploader/js/jquery.fileupload-validate.js"></script>
+    <script src="~/AdminContent/lib/file-uploader/js/jquery.fileupload-video.js"></script>
+    <script src="~/AdminContent/lib/file-uploader/js/jquery.fileupload.js"></script>
+    <script src="~/AdminContent/lib/file-uploader/js/jquery.iframe-transport.js"></script>
+    <script src="~/AdminContent/lib/file-uploader/js/main.js"></script>
+    <script src="~/AdminContent/lib/flot/jquery.flot.crosshair.js"></script>
+    <script src="~/AdminContent/lib/flot/jquery.flot.js"></script>
+    <script src="~/AdminContent/lib/flot/jquery.flot.pie.js"></script>
+    <script src="~/AdminContent/lib/flot/jquery.flot.resize.js"></script>
+    <script src="~/AdminContent/lib/flot/jquery.flot.stack.js"></script>
+    <link href="~/AdminContent/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/AdminContent/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/AdminContent/lib/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
+    <link href="~/AdminContent/lib/font-awesome/fonts/fontawesome-webfont.eot" />
+    <link href="~/AdminContent/lib/font-awesome/fonts/fontawesome-webfont.ttf" />
+    <link href="~/AdminContent/lib/font-awesome/fonts/fontawesome-webfont.woff" />
+    <link href="~/AdminContent/lib/font-awesome/fonts/fontawesome-webfont.woff2" />
+    <link href="~/AdminContent/lib/font-awesome/fonts/FontAwesome.otf" />
+    <script src="~/AdminContent/lib/fullcalendar/fullcalendar.min.js"></script>
+    <script src="~/AdminContent/lib/google-maps/data/points.js"></script>
+    <script src="~/AdminContent/lib/google-maps/maplace.js"></script>
+    <script src="~/AdminContent/lib/xchart/xcharts.min.js"></script>
+    <script src="~/AdminContent/lib/xchart/d3.v3.min.js"></script>
+    <script src="~/AdminContent/lib/raphael/raphael.min.js"></script>
+    <script src="~/AdminContent/lib/php-mail-form/validate.js"></script>
+    <script src="~/AdminContent/lib/morris/morris.min.js"></script>
+    <script src="~/AdminContent/lib/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
+    <script src="~/AdminContent/lib/jquery/jquery.min.js"></script>
+    <script src="~/AdminContent/lib/jquery/jquery.js"></script>
+    <script src="~/AdminContent/lib/gritter/js/jquery.gritter.js"></script>
+    <link href="~/AdminContent/lib/xchart/xcharts.css" rel="stylesheet" />
+    <link href="~/AdminContent/lib/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" />
+    <link href="~/AdminContent/lib/gritter/css/jquery.gritter0.css" rel="stylesheet" />
+    <link href="~/AdminContent/lib/gritter/css/jquery.gritter.css" rel="stylesheet" />
+    <script src="~/AdminContent/lib/advanced-form-components.js"></script>
+    <script src="~/AdminContent/lib/bootstrap-switch.js"></script>
+    <script src="~/AdminContent/lib/calendar-conf-events.js"></script>
+    <script src="~/AdminContent/lib/chartjs-conf.js"></script>
+    <script src="~/AdminContent/lib/common-scripts.js"></script>
+    <script src="~/AdminContent/lib/easy-pie-chart.js"></script>
+    <script src="~/AdminContent/lib/flotchart-conf.js"></script>
+    <script src="~/AdminContent/lib/form-component.js"></script>
+    <script src="~/AdminContent/lib/form-validation-script.js"></script>
+    <script src="~/AdminContent/lib/gritter-conf.js"></script>
+    <script src="~/AdminContent/lib/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="~/AdminContent/lib/jquery.backstretch.min.js"></script>
+    <script src="~/AdminContent/lib/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="~/AdminContent/lib/jquery.nicescroll.js"></script>
+    <script src="~/AdminContent/lib/jquery.scrollTo.min.js"></script>
+    <script src="~/AdminContent/lib/jquery.sparkline.js"></script>
+    <script src="~/AdminContent/lib/jquery.tagsinput.js"></script>
+    <script src="~/AdminContent/lib/jquery.ui.touch-punch.min.js"></script>
+    <script src="~/AdminContent/lib/morris-conf.js"></script>
+    <script src="~/AdminContent/lib/sparkline-chart.js"></script>
+    <script src="~/AdminContent/lib/tasks.js"></script>
+    <script src="~/AdminContent/lib/zabuto_calendar.js"></script>
+
+</head>
+<body>
+    <section id="container">
+        <!-- **********************************************************************************************************************************************************
+    TOP BAR CONTENT & NOTIFICATIONS
+    *********************************************************************************************************************************************************** -->
+        <!--header start-->
+        <header class="header black-bg">
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+            </div>
+            <!--logo start-->
+            <a href="#" class="logo"><img src="~/img/fedy-1.png" style="width:150px;color:white;" /></a>
+            <!--logo end-->
+            <div class="nav notify-row" id="top_menu">
+                <!--  notification start -->
+                <ul class="nav top-menu">
+                    <!-- settings start -->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="fa fa-tasks"></i>
+                            <span class="badge bg-theme">4</span>
+                        </a>
+                        <ul class="dropdown-menu extended tasks-bar">
+                            <div class="notify-arrow notify-arrow-green"></div>
+                            <li>
+                                <p class="green">You have 4 pending tasks</p>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="task-info">
+                                        <div class="desc">Dashio Admin Panel</div>
+                                        <div class="percent">40%</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="task-info">
+                                        <div class="desc">Database Update</div>
+                                        <div class="percent">60%</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                            <span class="sr-only">60% Complete (warning)</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="task-info">
+                                        <div class="desc">Product Development</div>
+                                        <div class="percent">80%</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                            <span class="sr-only">80% Complete</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="task-info">
+                                        <div class="desc">Payments Sent</div>
+                                        <div class="percent">70%</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+                                            <span class="sr-only">70% Complete (Important)</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="external">
+                                <a href="#">See All Tasks</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- settings end -->
+                    <!-- inbox dropdown start-->
+                    <li id="header_inbox_bar" class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="fa fa-envelope-o"></i>
+                            <span class="badge bg-theme">5</span>
+                        </a>
+                        <ul class="dropdown-menu extended inbox">
+                            <div class="notify-arrow notify-arrow-green"></div>
+                            <li>
+                                <p class="green">You have 5 new messages</p>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="photo"><img alt="avatar" src="~/AdminContent/img/ui-zac.jpg"></span>
+                                    <span class="subject">
+                                        <span class="from">Zac Snider</span>
+                                        <span class="time">Just now</span>
+                                    </span>
+                                    <span class="message">
+                                        Hi mate, how is everything?
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="photo"><img alt="avatar" src="~/AdminContent/img/ui-divya.jpg"></span>
+                                    <span class="subject">
+                                        <span class="from">Divya Manian</span>
+                                        <span class="time">40 mins.</span>
+                                    </span>
+                                    <span class="message">
+                                        Hi, I need your help with this.
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="photo"><img alt="avatar" src="~/AdminContent/img/ui-danro.jpg"></span>
+                                    <span class="subject">
+                                        <span class="from">Dan Rogers</span>
+                                        <span class="time">2 hrs.</span>
+                                    </span>
+                                    <span class="message">
+                                        Love your new Dashboard.
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="photo"><img alt="avatar" src="~/AdminContent/img/ui-sherman.jpg"></span>
+                                    <span class="subject">
+                                        <span class="from">Dj Sherman</span>
+                                        <span class="time">4 hrs.</span>
+                                    </span>
+                                    <span class="message">
+                                        Please, answer asap.
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">See all messages</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- inbox dropdown end -->
+                    <!-- notification dropdown start-->
+                    <li id="header_notification_bar" class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="fa fa-bell-o"></i>
+                            <span class="badge bg-warning">7</span>
+                        </a>
+                        <ul class="dropdown-menu extended notification">
+                            <div class="notify-arrow notify-arrow-yellow"></div>
+                            <li>
+                                <p class="yellow">You have 7 new notifications</p>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="label label-danger"><i class="fa fa-bolt"></i></span>
+                                    Server Overloaded.
+                                    <span class="small italic">4 mins.</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="label label-warning"><i class="fa fa-bell"></i></span>
+                                    Memory #2 Not Responding.
+                                    <span class="small italic">30 mins.</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="label label-danger"><i class="fa fa-bolt"></i></span>
+                                    Disk Space Reached 85%.
+                                    <span class="small italic">2 hrs.</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="label label-success"><i class="fa fa-plus"></i></span>
+                                    New User Registered.
+                                    <span class="small italic">3 hrs.</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">See all notifications</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- notification dropdown end -->
+                </ul>
+                <!--  notification end -->
+            </div>
+            <div class="top-menu">
+                <ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="login.html">Logout</a></li>
+                </ul>
+            </div>
+        </header>
+        <!--header end-->
+        <!-- **********************************************************************************************************************************************************
+    MAIN SIDEBAR MENU
+    *********************************************************************************************************************************************************** -->
+        <!--sidebar start-->
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion">
+                    <p class="centered"><a href="profile.html"><img src="~/AdminContent/img/ui-sam.jpg" class="img-circle" width="80"></a></p>
+                    <h5 class="centered">Sam Soffes</h5>
+                        <li class="mt">
+                        <a class="active" href="#">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-desktop"></i>
+                            <span>Assets</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-cogs"></i>
+                            <span>Appointments</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Fournitures</span>
+                        </a>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-tasks"></i>
+                            <span>Banks</span>
+                        </a
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-th"></i>
+                            <span>Insurance</span>
+                        </a>
+                       
+                    </li>
+                  
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <!--sidebar end-->
+
+
+        <div class="container body-content">
+            @RenderBody()
+            @RenderSection("scripts", required: false)
+
+
+        </div>
+
+
+
+        <footer class="site-footer">
+            <div class="text-center">
+                <p class="credits">
+                    &copy; Copyrights <strong>5DEV</strong>. All Rights Reserved
+                </p>
+
+                <a href="#" class="go-top">
+                    <i class="fa fa-angle-up"></i>
+                </a>
+            </div>
+        </footer>
+        <!--footer end-->
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var unique_id = $.gritter.add({
+                    // (string | mandatory) the heading of the notification
+                    title: 'Welcome to Dashio!',
+                    // (string | mandatory) the text inside the notification
+                    text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo.',
+                    // (string | optional) the image to display on the left
+                    image: 'img/ui-sam.jpg',
+                    // (bool | optional) if you want it to fade out on its own or just sit there
+                    sticky: false,
+                    // (int | optional) the time you want it to be alive for before fading out
+                    time: 8000,
+                    // (string | optional) the class name you want to apply to that specific message
+                    class_name: 'my-sticky-class'
+                });
+
+                return false;
+            });
+        </script>
+        <script type="application/javascript">
+            $(document).ready(function() {
+              $("#date-popover").popover({
+                html: true,
+                trigger: "manual"
+              });
+              $("#date-popover").hide();
+              $("#date-popover").click(function(e) {
+                $(this).hide();
+              });
+
+              $("#my-calendar").zabuto_calendar({
+                action: function() {
+                  return myDateFunction(this.id, false);
+                },
+                action_nav: function() {
+                  return myNavFunction(this.id);
+                },
+                ajax: {
+                  url: "show_data.php?action=1",
+                  modal: true
+                },
+                legend: [{
+                    type: "text",
+                    label: "Special event",
+                    badge: "00"
+                  },
+                  {
+                    type: "block",
+                    label: "Regular event",
+                  }
+                ]
+              });
+            });
+
+            function myNavFunction(id) {
+              $("#date-popover").hide();
+              var nav = $("#" + id).data("navigation");
+              var to = $("#" + id).data("to");
+              console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+            }
+        </script>
+
+
+</body>
+</html>
