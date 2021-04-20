@@ -29,5 +29,7 @@ namespace DariTn.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<DariTn.Models.Entities.AssetAdv> AssetAdvs { get; set; }
     }
 }

@@ -183,14 +183,12 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RestControllers\AssetAdvsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-
-    <Compile Include="Models\Credit.cs" />
     <Compile Include="Models\Entities\AssetAdv.cs" />
-    <Compile Include="Models\Entities\Credit.cs" />
     <Compile Include="Models\Entities\Complaint.cs" />
     <Compile Include="Models\Entities\Media.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -543,10 +541,14 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Admin\_LayoutAdmin.cshtml" />
+    <Content Include="Views\AssetAdvs\Create.cshtml" />
+    <Content Include="Views\AssetAdvs\Delete.cshtml" />
+    <Content Include="Views\AssetAdvs\Details.cshtml" />
+    <Content Include="Views\AssetAdvs\Edit.cshtml" />
+    <Content Include="Views\AssetAdvs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\RestControllers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
