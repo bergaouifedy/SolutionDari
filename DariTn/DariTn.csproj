@@ -191,6 +191,7 @@
     <Compile Include="Models\Entities\AssetAdv.cs" />
     <Compile Include="Models\Entities\Complaint.cs" />
     <Compile Include="Models\Entities\Media.cs" />
+    <Compile Include="Models\Entities\User.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
