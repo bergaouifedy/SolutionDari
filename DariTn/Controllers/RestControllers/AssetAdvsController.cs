@@ -66,16 +66,17 @@ namespace DariTn.Controllers.RestControllers
         // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,ref,description,type,addedDate,price,surface,street,city,state,postalCode,nbrRooms,nbrComplaints,nbrFloor,floor,nbrBathrooms,furnished,garage,parking,pool,category,availability,status,capacity")] AssetAdv assetAdv)
+        public ActionResult Create(AssetAdv asset)
         {
             if (ModelState.IsValid)
             {
-                db.AssetAdvs.Add(assetAdv);
-                db.SaveChanges();
+                HttpClient client = new HttpClient();
+                String baseAddress = "http://localhost:44315/";
+                client.PostAsJsonAsync<AssetAdv>("http://localhost:8081/Dari/servlet/addAssetAdv/1", asset).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
                 return RedirectToAction("Index");
             }
 
-            return View(assetAdv);
+            return View(asset);
         }
 
         // GET: AssetAdvs/Edit/5
