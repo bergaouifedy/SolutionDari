@@ -187,6 +187,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+
+    <Compile Include="Models\Credit.cs" />
+    <Compile Include="Models\Entities\AssetAdv.cs" />
     <Compile Include="Models\Entities\Credit.cs" />
     <Compile Include="Models\Entities\Complaint.cs" />
     <Compile Include="Models\Entities\Media.cs" />
