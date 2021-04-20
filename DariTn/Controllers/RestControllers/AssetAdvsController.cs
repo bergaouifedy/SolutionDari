@@ -71,7 +71,7 @@ namespace DariTn.Controllers.RestControllers
             if (ModelState.IsValid)
             {
                 HttpClient client = new HttpClient();
-                String baseAddress = "http://localhost:44315/";
+                String baseAddress = "http://localhost:44362/";
                 client.PostAsJsonAsync<AssetAdv>("http://localhost:8081/Dari/servlet/addAssetAdv/1", asset).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
                 return RedirectToAction("Index");
             }
@@ -117,7 +117,12 @@ namespace DariTn.Controllers.RestControllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AssetAdv assetAdv = db.AssetAdvs.Find(id);
+            //AssetAdv assetAdv = db.AssetAdvs.Find(id);
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage tokenResponse = httpClient.GetAsync("http://localhost:8081/Dari/servlet/getAssetAdv/" + id).Result;
+            var assetAdv = tokenResponse.Content.ReadAsAsync<AssetAdv>().Result;
             if (assetAdv == null)
             {
                 return HttpNotFound();
@@ -125,14 +130,17 @@ namespace DariTn.Controllers.RestControllers
             return View(assetAdv);
         }
 
+
         // POST: AssetAdvs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            AssetAdv assetAdv = db.AssetAdvs.Find(id);
-            db.AssetAdvs.Remove(assetAdv);
-            db.SaveChanges();
+
+
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362/");
+            HttpResponseMessage tokenResponse = httpClient.DeleteAsync("http://localhost:8081/Dari/servlet/AssetAdv/delete/" + id).Result;
             return RedirectToAction("Index");
         }
 
