@@ -31,5 +31,7 @@ namespace DariTn.Models
         }
 
         public System.Data.Entity.DbSet<DariTn.Models.Entities.AssetAdv> AssetAdvs { get; set; }
+
+        public System.Data.Entity.DbSet<DariTN.Models.Entities.Complaint> Complaints { get; set; }
     }
 }

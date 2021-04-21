@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DariTn.Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -14,9 +15,11 @@ namespace DariTN.Models.Entities
         public string description { get; set; }
         public bool status { get; set; }
         public DateTime creationDate { get; set; }
-       // [ForeignKey("AssetAdv")]
-      //  public List<AssetAdv> asset { get; set; }
-      //  [ForeignKey("User")]
-       // public List<User> user { get; set; }
+        [ForeignKey("AssetAdv")]
+        public int assetid { get; set; }
+        public AssetAdv asset { get; set; }
+        [ForeignKey("User")]
+        public int userid { get; set; }
+        public virtual User User { get; set; }
     }
 }
