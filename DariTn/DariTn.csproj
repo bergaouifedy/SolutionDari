@@ -184,14 +184,24 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RestControllers\AssetAdvsController.cs" />
+    <Compile Include="Controllers\RestControllers\BanksController.cs" />
     <Compile Include="Controllers\RestControllers\ComplaintsController.cs" />
+    <Compile Include="Controllers\RestControllers\CreditFormulasController.cs" />
+    <Compile Include="Controllers\RestControllers\InsuranceAgenciesController.cs" />
+    <Compile Include="Controllers\RestControllers\PacksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\AssetAdv.cs" />
+    <Compile Include="Models\Entities\Bank.cs" />
+    <Compile Include="Models\Entities\Client.cs" />
     <Compile Include="Models\Entities\Complaint.cs" />
+    <Compile Include="Models\Entities\Credit.cs" />
+    <Compile Include="Models\Entities\CreditFormula.cs" />
+    <Compile Include="Models\Entities\InsuranceAgency.cs" />
     <Compile Include="Models\Entities\Media.cs" />
+    <Compile Include="Models\Entities\Pack.cs" />
     <Compile Include="Models\Entities\User.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -554,6 +564,26 @@
     <Content Include="Views\Complaints\Edit.cshtml" />
     <Content Include="Views\Complaints\Index.cshtml" />
     <Content Include="Views\Complaints\ComplaintRequests.cshtml" />
+    <Content Include="Views\Banks\Create.cshtml" />
+    <Content Include="Views\Banks\Delete.cshtml" />
+    <Content Include="Views\Banks\Details.cshtml" />
+    <Content Include="Views\Banks\Edit.cshtml" />
+    <Content Include="Views\Banks\Index.cshtml" />
+    <Content Include="Views\CreditFormulas\Create.cshtml" />
+    <Content Include="Views\CreditFormulas\Delete.cshtml" />
+    <Content Include="Views\CreditFormulas\Details.cshtml" />
+    <Content Include="Views\CreditFormulas\Edit.cshtml" />
+    <Content Include="Views\CreditFormulas\Index.cshtml" />
+    <Content Include="Views\InsuranceAgencies\Create.cshtml" />
+    <Content Include="Views\InsuranceAgencies\Delete.cshtml" />
+    <Content Include="Views\InsuranceAgencies\Details.cshtml" />
+    <Content Include="Views\InsuranceAgencies\Edit.cshtml" />
+    <Content Include="Views\InsuranceAgencies\Index.cshtml" />
+    <Content Include="Views\Packs\Create.cshtml" />
+    <Content Include="Views\Packs\Delete.cshtml" />
+    <Content Include="Views\Packs\Details.cshtml" />
+    <Content Include="Views\Packs\Edit.cshtml" />
+    <Content Include="Views\Packs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

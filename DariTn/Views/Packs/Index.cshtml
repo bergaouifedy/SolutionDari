@@ -1,0 +1,87 @@
+﻿@model IEnumerable<DariTn.Models.Entities.Pack>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.garagePrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.poolPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.appartementPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.housePrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.roomPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.squaremeterPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.belongingRatio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.garagePrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.poolPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.appartementPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.housePrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.roomPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.squaremeterPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.belongingRatio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

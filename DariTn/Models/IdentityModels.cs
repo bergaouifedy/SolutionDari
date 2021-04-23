@@ -33,5 +33,13 @@ namespace DariTn.Models
         public System.Data.Entity.DbSet<DariTn.Models.Entities.AssetAdv> AssetAdvs { get; set; }
 
         public System.Data.Entity.DbSet<DariTN.Models.Entities.Complaint> Complaints { get; set; }
+
+        public System.Data.Entity.DbSet<DariTn.Models.Entities.Bank> Banks { get; set; }
+
+        public System.Data.Entity.DbSet<DariTn.Models.Entities.CreditFormula> CreditFormulas { get; set; }
+
+        public System.Data.Entity.DbSet<DariTn.Models.Entities.InsuranceAgency> InsuranceAgencies { get; set; }
+
+        public System.Data.Entity.DbSet<DariTn.Models.Entities.Pack> Packs { get; set; }
     }
 }
