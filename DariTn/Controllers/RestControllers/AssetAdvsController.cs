@@ -117,8 +117,17 @@ namespace DariTn.Controllers.RestControllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            //AssetAdv assetAdv = db.AssetAdvs.Find(id);
+            // SELIM HOUNI TANSECH TZID USER CONNECTE MAYNAJEM YFASAKH KEN LES ANNONCES MTE3OU
+
             HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362/");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            httpClient.DeleteAsync("http://localhost:8081/Dari/servlet/AssetAdv/delete/" + id).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+            return RedirectToAction("Index");
+
+
+            //AssetAdv assetAdv = db.AssetAdvs.Find(id);
+           /* HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("https://localhost:44362");
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             HttpResponseMessage tokenResponse = httpClient.GetAsync("http://localhost:8081/Dari/servlet/getAssetAdv/" + id).Result;
@@ -127,12 +136,12 @@ namespace DariTn.Controllers.RestControllers
             {
                 return HttpNotFound();
             }
-            return View(assetAdv);
+            return View(assetAdv);*/
         }
 
 
         // POST: AssetAdvs/Delete/5
-        [HttpPost, ActionName("Delete")]
+   /*     [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
@@ -142,7 +151,7 @@ namespace DariTn.Controllers.RestControllers
             httpClient.BaseAddress = new Uri("https://localhost:44362/");
             HttpResponseMessage tokenResponse = httpClient.DeleteAsync("http://localhost:8081/Dari/servlet/AssetAdv/delete/" + id).Result;
             return RedirectToAction("Index");
-        }
+        } */
 
         protected override void Dispose(bool disposing)
         {
