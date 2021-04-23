@@ -1,0 +1,78 @@
+﻿@model IEnumerable<DariTn.Models.Entities.InsuranceAgency>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>Packs</th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                <table class="table">
+                    <tr>
+                        <th>name</th>
+                        <th>type</th>
+                        <th>garagePrice</th>
+                        <th>poolPrice</th>
+                        <th>appartementPrice</th>
+                        <th>housePrice</th>
+                        <th>roomPrice</th>
+                        <th>squaremeterPrice</th>
+                        <th>belongingRatio</th>
+                        <th>description</th>
+                        <th>Actions</th>
+                    </tr>
+                    @for (int i = 0; i < item.packs.Count; i++)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.packs.ElementAt(i).name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.packs.ElementAt(i).type)</td>
+
+                            <td>@Html.DisplayFor(modelItem => item.packs.ElementAt(i).garagePrice)</td>
+                            <td>@Html.DisplayFor(modelItem => item.packs.ElementAt(i).poolPrice)</td>
+
+                            <td>@Html.DisplayFor(modelItem => item.packs.ElementAt(i).appartementPrice)</td>
+                            <td>@Html.DisplayFor(modelItem => item.packs.ElementAt(i).housePrice)</td>
+
+                            <td>@Html.DisplayFor(modelItem => item.packs.ElementAt(i).roomPrice)</td>
+                            <td>@Html.DisplayFor(modelItem => item.packs.ElementAt(i).squaremeterPrice)</td>
+
+                            <td>@Html.DisplayFor(modelItem => item.packs.ElementAt(i).belongingRatio)</td>
+                            <td>@Html.DisplayFor(modelItem => item.packs.ElementAt(i).description)</td>
+
+                            <td>
+                                @Html.ActionLink("Edit", "EditPack", new { id = item.packs.ElementAt(i).id }) |
+                                @Html.ActionLink("Delete", "DeletePack", new { id = item.packs.ElementAt(i).id })
+                            </td>
+                        </tr>
+
+                    }
+                </table>
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                @Html.ActionLink("New Pack", "AddPack", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>
