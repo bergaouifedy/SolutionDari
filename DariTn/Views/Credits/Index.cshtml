@@ -1,0 +1,61 @@
+﻿@model IEnumerable<DariTn.Models.Entities.Credit>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Formulas
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.initialamount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.finalamount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.monthly)
+        </th>
+        <th>Interest %</th>
+        <th>Duration</th>
+        <th>Actions</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.creditformula.id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.initialamount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.finalamount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.monthly)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.creditformula.interestRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.creditformula.duration)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.id }) |
+            @Html.ActionLink("Compare", "Compare", new { id = item.id }) |
+            @Html.ActionLink("Email", "Email", new { id = item.id }) |
+            @Html.ActionLink("SMS", "SMS", new { id = item.id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,41 @@
+﻿@model DariTn.Models.Entities.Credit
+
+@{
+    ViewBag.Title = "Compare";
+}
+
+<h2>Most advantageous Credit:</h2>
+
+<div>
+    <h4>Most advantageous Credit by initial amount and duration/monthly payment ratio:</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.initialamount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.initialamount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.finalamount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.finalamount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.monthly)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.monthly)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
