@@ -27,6 +27,14 @@
                         <p class="infos" data-toggle="modal" data-target="#description">More Information</p>
                         @Html.ActionLink("Delete", "Delete", new { id = item.id })
                         @Html.ActionLink("Réclamer", "AddComplaint", new { id = 1 })
+                        @if (item.localisation == null)
+                        {
+                            @Html.ActionLink(linkText: "Create Localisation", actionName: "Create", controllerName: "Localisations", routeValues: new { id = item.id }, htmlAttributes: null)
+                        }
+                        else
+                        {
+                            @Html.ActionLink(linkText: "Localisation", actionName: "Index", controllerName: "Localisations", routeValues: new { id = item.id }, htmlAttributes: null)
+                        }
                     </div>
                 </div>
             </div>

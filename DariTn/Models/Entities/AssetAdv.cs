@@ -33,7 +33,7 @@ namespace DariTn.Models.Entities
         public bool status { get; set; }
         public int capacity { get; set; }
         //  public List<object> rv { get; set; }
-        // public object localisation { get; set; }
+        public virtual Localisation localisation { get; set; }
         // public List<object> creneaux { get; set; }
         // public List<object> media { get; set; }
         // public List<object> guarantees { get; set; }
