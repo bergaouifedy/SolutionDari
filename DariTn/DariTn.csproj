@@ -190,7 +190,6 @@
     <Compile Include="Controllers\RestControllers\FurnitureAdvsController.cs" />
     <Compile Include="Controllers\RestControllers\InsuranceAgenciesController.cs" />
     <Compile Include="Controllers\RestControllers\OrdersController.cs" />
-
     <Compile Include="Controllers\RestControllers\LocalisationsController.cs" />
     <Compile Include="Controllers\RestControllers\PacksController.cs" />
     <Compile Include="Controllers\RestControllers\ShoppingCartsController.cs" />
@@ -595,7 +594,6 @@
     <Content Include="Views\Packs\Details.cshtml" />
     <Content Include="Views\Packs\Edit.cshtml" />
     <Content Include="Views\Packs\Index.cshtml" />
-
     <Content Include="Views\FurnitureAdvs\Create.cshtml" />
     <Content Include="Views\FurnitureAdvs\Delete.cshtml" />
     <Content Include="Views\FurnitureAdvs\Details.cshtml" />
@@ -619,12 +617,16 @@
     <Content Include="Views\ShoppingCarts\Delete.cshtml" />
     <Content Include="Views\ShoppingCarts\Edit.cshtml" />
     <Content Include="Views\ShoppingCarts\Index.cshtml" />
-
     <Content Include="Views\Localisations\Create.cshtml" />
     <Content Include="Views\Localisations\Delete.cshtml" />
     <Content Include="Views\Localisations\Details.cshtml" />
     <Content Include="Views\Localisations\Edit.cshtml" />
     <Content Include="Views\Localisations\Index.cshtml" />
+    <Content Include="Views\FurnitureAdvs\IndexAdmin.cshtml" />
+    <Content Include="Views\FurnitureAdvs\IndexAdmin2.cshtml" />
+    <Content Include="Views\FurnitureAdvs\IndexAdmin3.cshtml" />
+    <Content Include="Views\FurnitureAdvs\Accept.cshtml" />
+    <Content Include="Views\FurnitureAdvs\DetailsAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
