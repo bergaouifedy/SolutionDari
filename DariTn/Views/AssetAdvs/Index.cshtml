@@ -9,6 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@{ int idlogged = 1;} 
 <div id="selling" class="second-theme-selling">
     <div class="tab-content container-fluid">
         <div id="tab-villa" class="tab-pane active container">
@@ -28,7 +29,10 @@
                                 @Html.ActionLink("More Information", "Details", null, new { @class = "infos", data_toggle = "modal", data_target = "#description" })
 
                                 @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "infos" })
-                                @Html.ActionLink("Réclamer", "AddComplaint", new { id = 1 }, new { @class = "infos" })
+                                @Html.ActionLink("Complain", "AddComplaint")
+                                @{
+                                    //Html.ActionLink(linkText: "Complainn", actionName: "AddComplaint", controllerName: "Complaints", routeValues: new { id = idlogged }, htmlAttributes: null)
+                                }
                                 @if (item.localisation == null)
                                 {
                                     @Html.ActionLink(linkText: "Create Localisation", actionName: "Create", controllerName: "Localisations", routeValues: new { id = item.id }, htmlAttributes: null)
