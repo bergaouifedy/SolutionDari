@@ -59,6 +59,63 @@ namespace DariTn.Controllers.RestControllers
                 return View(new List<FurnitureAdv>());
             }
         }
+        public ActionResult IndexAdmin()
+        {
+            HttpClient httpClient;
+            httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage tokenResponse = httpClient.GetAsync("http://localhost:8081/Dari/servlet/getFurnitureAdvDispo").Result;
+
+            if (tokenResponse.IsSuccessStatusCode)
+            {
+                var f = tokenResponse.Content.ReadAsAsync<IEnumerable<FurnitureAdv>>().Result;
+
+                return View(f);
+            }
+            else
+            {
+                return View(new List<FurnitureAdv>());
+            }
+        }
+        public ActionResult IndexAdmin2()
+        {
+            HttpClient httpClient;
+            httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage tokenResponse = httpClient.GetAsync("http://localhost:8081/Dari/servlet/getFurnitureAdvNoaccept").Result;
+
+            if (tokenResponse.IsSuccessStatusCode)
+            {
+                var f = tokenResponse.Content.ReadAsAsync<IEnumerable<FurnitureAdv>>().Result;
+
+                return View(f);
+            }
+            else
+            {
+                return View(new List<FurnitureAdv>());
+            }
+        }
+        public ActionResult IndexAdmin3()
+        {
+            HttpClient httpClient;
+            httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage tokenResponse = httpClient.GetAsync("http://localhost:8081/Dari/servlet/getFurnitureAdvByIdUser/3").Result;
+
+
+            if (tokenResponse.IsSuccessStatusCode)
+            {
+                var f = tokenResponse.Content.ReadAsAsync<IEnumerable<FurnitureAdv>>().Result;
+                return View(f);
+            }
+            else
+            {
+                return View(new List<FurnitureAdv>());
+            }
+        }
 
         // GET: FurnitureAdvs/Details/5
         public ActionResult Details(int? id)
@@ -78,6 +135,24 @@ namespace DariTn.Controllers.RestControllers
                 return View(furnitureAdv);
 
             
+        }
+        public ActionResult DetailsAdmin(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+
+            HttpClient httpClient;
+            httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage tokenResponse = httpClient.GetAsync("http://localhost:8081/Dari/servlet/Findf/" + id).Result;
+            var furnitureAdv = tokenResponse.Content.ReadAsAsync<FurnitureAdv>().Result;
+            return View(furnitureAdv);
+
+
         }
         // GET: FurnitureAdvs/Details2/5
         public ActionResult Details2(int? id)
@@ -280,9 +355,31 @@ namespace DariTn.Controllers.RestControllers
             return RedirectToAction("Index");
     }
 
+        public ActionResult Accept(int id, FurnitureAdv f)
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
+            var APIResponse = httpClient.PutAsJsonAsync("http://localhost:8081/Dari/servlet/acceptFurnitureAdv/" + id,f).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+            return RedirectToAction("IndexAdmin2");
+        }
+        
 
+        public ActionResult DeleteAdmin2(int id)
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
+            HttpResponseMessage tokenResponse = httpClient.DeleteAsync("http://localhost:8081/Dari/servlet/deleteFurnitureAdv/" + id).Result;
+            return RedirectToAction("IndexAdmin2");
+        }
+        public ActionResult DeleteAdmin(int id)
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
+            HttpResponseMessage tokenResponse = httpClient.DeleteAsync("http://localhost:8081/Dari/servlet/deleteFurnitureAdv/" + id).Result;
+            return RedirectToAction("IndexAdmin");
+        }
 
-    protected override void Dispose(bool disposing)
+        protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
