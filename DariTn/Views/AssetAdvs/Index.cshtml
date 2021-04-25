@@ -32,18 +32,14 @@
                                     @Html.DisplayFor(modelItem => item.category)
                                 </p>
                                 @Html.ActionLink("More Information", "Details", null, new { @class = "infos", data_toggle = "modal", data_target = "#description" })
-                                
+
 
 
                                 <!-- @Html.ActionLink("Complain", "AddComplaint")-->
                                 @{
                                     //Html.ActionLink(linkText: "Complainn", actionName: "AddComplaint", controllerName: "Complaints", routeValues: new { id = idlogged }, htmlAttributes: null)
                                 }
-                                @if (item.localisation == null)
-                                {
-                                    @Html.ActionLink(linkText: "Set Address", actionName: "Create", controllerName: "Localisations", routeValues: new { id = item.id }, htmlAttributes: null)
-                                }
-                                else
+                                @if (item.localisation != null)
                                 {
                                     @Html.ActionLink(linkText: "Location", actionName: "Index", controllerName: "Localisations", routeValues: new { id = item.id }, htmlAttributes: null)
                                 }
