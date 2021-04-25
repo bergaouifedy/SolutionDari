@@ -59,6 +59,14 @@ namespace DariTn.Controllers.RestControllers
             }
         }
 
+     /*   public ActionResult AddComplaint(int iduser, Complaint comp)
+        {
+            HttpClient client = new HttpClient();
+            String baseAddress = "http://localhost:44362/";
+            client.PostAsJsonAsync<Complaint>("http://localhost:8081/Dari/servlet/addComplaint/" + iduser, comp).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+            return RedirectToAction("Create");
+        }*/
+
         // GET: Complaints/Details/5
         public ActionResult Details(int? id)
         {

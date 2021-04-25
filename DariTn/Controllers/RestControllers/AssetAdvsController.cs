@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 using DariTn.Models;
 using DariTn.Models.Entities;
+using DariTN.Models.Entities;
 
 namespace DariTn.Controllers.RestControllers
 {
@@ -85,6 +86,22 @@ namespace DariTn.Controllers.RestControllers
         public ActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddComplaint()
+        {
+            Complaint comp = new Complaint();
+            if (ModelState.IsValid)
+            {
+                HttpClient client = new HttpClient();
+            String baseAddress = "http://localhost:44362/";
+            client.PostAsJsonAsync<Complaint>("http://localhost:8081/Dari/servlet/addComplaint/" + iduser, comp).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+            return RedirectToAction("AddComplaint");
+            }
+
+            return View("AddComplaint");
         }
 
         // POST: AssetAdvs/Create
