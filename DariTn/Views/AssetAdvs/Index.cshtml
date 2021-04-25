@@ -9,6 +9,8 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@{ int idlogged = 1;}
 <div id="selling" class="second-theme-selling">
     <div class="tab-content container-fluid">
         <div id="tab-villa" class="tab-pane active container">
@@ -39,6 +41,47 @@
                                 }
                             </div>
                         </div>
+
+@{ int idlogged = 1;}
+<div id="selling" class="second-theme-selling">
+    <div class="tab-content container-fluid">
+<div id="tab-villa" class="tab-pane active container">
+    <select name="pets" id="pet-select">
+        <option value="">-- Sort by --</option>
+        <option value="PriceAsc">Lowest Price</option>
+        <option value="PriceDesc">Highest Price</option>
+        <option value="SurfAsc">Lowest Surface</option>
+        <option value="SurfDesc">Highest Surface</option>
+    </select>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="sub-box">
+                    <img class="img-responsive" src="img/selling-img/sel-img1.jpg">
+                    <div class="sub-box-content">
+                        <h5>@Html.DisplayFor(modelItem => item.category)</h5>
+                        <p class="description text-muted">
+                            @Html.DisplayFor(modelItem => item.description)
+                        </p>
+                        @Html.ActionLink("More Information", "Details", new { item.id}, new { @class = "infos", data_toggle = "modal", data_target = "#description" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "infos" })
+                        @Html.ActionLink("Réclamer", "AddComplaint", new { id = idlogged }, new { @class = "infos" })
+                        @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "infos" })
+                        @if (item.userid.Equals(idlogged))
+                        {
+                            @Html.ActionLink("Edit", "Edit", new { id = item.id })
+                        }
+                        @if (item.localisation == null)
+                                {
+                                    @Html.ActionLink(linkText: "Create Localisation", actionName: "Create", controllerName: "Localisations", routeValues: new { id = item.id }, htmlAttributes: null)
+                                }
+                                else
+                                {
+                                    @Html.ActionLink(linkText: "Localisation", actionName: "Index", controllerName: "Localisations", routeValues: new { id = item.id }, htmlAttributes: null)
+                                }
+
                     </div>
 
 
