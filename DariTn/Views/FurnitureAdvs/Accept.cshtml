@@ -1,6 +1,7 @@
 ﻿@model DariTn.Models.Entities.FurnitureAdv
 
 @{
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
     ViewBag.Title = "Details2";
 }
 
@@ -25,7 +26,7 @@
                     <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">  Accepted By Admin: </a>  @Html.DisplayFor(model => model.status)</h4>
                     <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">  Available: </a>  @Html.DisplayFor(model => model.availability)</h4>
 
-                    <button class="button button4"> @Html.ActionLink("  Back  ", "Index2")</button>
+                    <button class="button button4"> @Html.ActionLink("  Back  ", "IndexAdmin")</button>
 
 
                 </div>

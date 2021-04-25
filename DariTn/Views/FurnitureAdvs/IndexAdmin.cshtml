@@ -1,7 +1,8 @@
 ﻿@model IEnumerable<DariTn.Models.Entities.FurnitureAdv>
 
 @{
-    ViewBag.Title = "Index";
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+    ViewBag.Title = "IndexS";
 }
 
  
@@ -10,26 +11,7 @@
     <br>
     <br>
 
-    
-        <!-- Search by Name- start -->
-        <div class="search-field">
-            <br><br><br><br>
-            <button class="button button2"> @Html.ActionLink("Sort By Price ASC", "Index3")</button><br><br>
-            <button class="button button2"> @Html.ActionLink("Sort By Price DESC", "Index4")</button><br><br>
-            <form class="search-field-form">
-                <input type="text" placeholder="Search By Name">
-                <button type="submit"><i class="fa fa-search"></i> </button>
-            </form><br><br>
-            <form class="search-field-form">
-                <input type="text" placeholder="Search By Type">
-                <button type="submit"><i class="fa fa-search"></i></button>
-            </form><br><br>
-            <form class="search-field-form">
-                <input type="text" placeholder="Search By Price">
-                <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
 
-        </div>
     
     <h3 class="color0" , style="color:crimson">Furniture for sale: </h3>
     <br>
@@ -52,9 +34,11 @@
 
 
 
-                    <button class="button button2"> @Html.ActionLink("Details", "Details", new { id = item.id })</button>
+                    <button class="button button2"> @Html.ActionLink("Details", "DetailsAdmin", new { id = item.id })</button>
+                    <button class="button button3"> @Html.ActionLink("Delete", "DeleteAdmin", new { id = item.id })</button>
+
                     <br><br>
-                    <button class="button button1">@Html.ActionLink("Add To My ShoppingCart", "AddFurnitureToShoppingCart", new { id = item.id })</button>
+
 
                     <br><br><br>
                 </div>

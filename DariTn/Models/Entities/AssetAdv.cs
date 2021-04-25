@@ -1,5 +1,7 @@
-﻿using System;
+﻿using DariTN.Models.Entities;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -34,8 +36,11 @@ namespace DariTn.Models.Entities
         public int capacity { get; set; }
         //  public List<object> rv { get; set; }
         public virtual Localisation localisation { get; set; }
+        [ForeignKey("User")]
+        public int userid { get; set; }
+        public virtual User User { get; set; }
         // public List<object> creneaux { get; set; }
-        // public List<object> media { get; set; }
+        public virtual List<Media> media { get; set; }
         // public List<object> guarantees { get; set; }
     }
 }

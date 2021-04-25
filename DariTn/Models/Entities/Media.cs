@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DariTn.Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -13,5 +14,8 @@ namespace DariTN.Models.Entities
         public string title { get; set; }
         public string type { get; set; }
         public byte[] file { get; set; }
-}
+        [ForeignKey("AssetAdv")]
+        public int assetid { get; set; }
+        public AssetAdv asset { get; set; }
+    }
 }
