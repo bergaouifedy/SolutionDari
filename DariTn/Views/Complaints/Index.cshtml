@@ -7,23 +7,25 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <h3 class="color0" , style="color:crimson">My complaints: </h3>
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.@ref)
+            Reference
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.description)
+            Description
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.status)
+            Status
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.creationDate)
+            Creation Date
         </th>
-        <th></th>
+        <th>
+            Actions
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -35,15 +37,26 @@
             @Html.DisplayFor(modelItem => item.description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.status)
-        </td>
+            @if (item.status.Equals(true))
+            {
+            <p style="color:green">Done</p>
+            }
+            else
+            {
+        <p style="color:red;">On Hold</p>
+            }
+
+         </td>
         <td>
             @Html.DisplayFor(modelItem => item.creationDate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @if (item.status.Equals(false))
+            {
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) 
+            }
+
+            @Html.ActionLink("Delete", "Delete", new { id = item.id })
         </td>
     </tr>
 }

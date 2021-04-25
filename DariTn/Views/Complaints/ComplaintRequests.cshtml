@@ -10,18 +10,17 @@
 <table class="table">
     <tr>
         <th>
-            Référence
+            Reference
         </th>
         <th>
             Description
         </th>
         <th>
-            Status
-        </th>
-        <th>
             Creation Date
         </th>
-        <th></th>
+        <th>
+            Actions
+        </th>
     </tr>
 
     @foreach (var item in Model)
@@ -32,9 +31,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.status)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.creationDate)

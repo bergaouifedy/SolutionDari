@@ -104,7 +104,12 @@ namespace DariTn.Controllers.RestControllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Complaint complaint = db.Complaints.Find(id);
+            HttpClient httpClient;
+            httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362/");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage tokenResponse = httpClient.GetAsync("http://localhost:8081/Dari/servlet/getComplaint/" + id).Result;
+            var complaint = tokenResponse.Content.ReadAsAsync<Complaint>().Result;
             if (complaint == null)
             {
                 return HttpNotFound();
@@ -113,19 +118,14 @@ namespace DariTn.Controllers.RestControllers
         }
 
         // POST: Complaints/Edit/5
-        // Afin de déjouer les attaques par survalidation, activez les propriétés spécifiques auxquelles vous voulez établir une liaison. Pour 
-        // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,ref,description,status,creationDate")] Complaint complaint)
+        public ActionResult Edit(int id, Complaint comp)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(complaint).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(complaint);
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362/");
+            HttpResponseMessage tokenResponse = httpClient.PutAsJsonAsync<Complaint>("http://localhost:8081/Dari/servlet/updateComplaint/" + id+"/"+ comp.description,comp).Result;
+            return RedirectToAction("Index");
         }
 
         // GET: Complaints/Delete/5
@@ -136,27 +136,13 @@ namespace DariTn.Controllers.RestControllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             HttpClient httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri("https://localhost:44362");
+            httpClient.BaseAddress = new Uri("https://localhost:44362/");
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage tokenResponse = httpClient.GetAsync("http://localhost:8081/Dari/servlet/getAssetAdv/" + id).Result;
-            var complaint = tokenResponse.Content.ReadAsAsync<Complaint>().Result;
-            if (complaint == null)
-            {
-                return HttpNotFound();
-            }
-            return View(complaint);
+            httpClient.DeleteAsync("http://localhost:8081/Dari/servlet/Complaint/delete/" + id).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+            return RedirectToAction("Index");
         }
 
-        // POST: Complaints/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            HttpClient httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri("https://localhost:44362/");
-            HttpResponseMessage tokenResponse = httpClient.DeleteAsync("http://localhost:8081/Dari/servlet/Complaint/delete/" + id).Result;
-            return RedirectToAction("ComplaintRequest");
-        }
+     
 
      /*   // POST: Complaints/Accept/5
         [HttpPost, ActionName("Accept")]

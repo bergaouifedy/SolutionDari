@@ -15,6 +15,7 @@ namespace DariTn.Controllers.RestControllers
 {
     public class AssetAdvsController : Controller
     {
+        private int iduser = 1; // a remplacer avec id user connecté
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: AssetAdvs
@@ -25,6 +26,28 @@ namespace DariTn.Controllers.RestControllers
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/AvailableTrue").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                //ViewBag.result = response.Content.ReadAsAsync<IEnumerable<Complaint>>().Result;
+                var aa = response.Content.ReadAsAsync<IEnumerable<AssetAdv>>().Result;
+                return View(aa);
+            }
+            else
+            {
+                ViewBag.result = "error";
+                return View(new List<AssetAdv>());
+            }
+
+
+        }
+
+        public ActionResult TargetedAdv()
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/getTargetAsset/"+iduser).Result;
             if (response.IsSuccessStatusCode)
             {
                 //ViewBag.result = response.Content.ReadAsAsync<IEnumerable<Complaint>>().Result;
@@ -70,7 +93,7 @@ namespace DariTn.Controllers.RestControllers
             {
                 HttpClient client = new HttpClient();
                 String baseAddress = "http://localhost:44362/";
-                client.PostAsJsonAsync<AssetAdv>("http://localhost:8081/Dari/servlet/addAssetAdv/1", asset).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+                client.PostAsJsonAsync<AssetAdv>("http://localhost:8081/Dari/servlet/addAssetAdv/"+iduser, asset).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
                 return RedirectToAction("Index");
             }
 
@@ -84,7 +107,15 @@ namespace DariTn.Controllers.RestControllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AssetAdv assetAdv = db.AssetAdvs.Find(id);
+
+
+            HttpClient httpClient;
+            httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362/");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage tokenResponse = httpClient.GetAsync("http://localhost:8081/Dari/servlet/getAssetAdv/" + id).Result;
+            var assetAdv = tokenResponse.Content.ReadAsAsync<AssetAdv>().Result;
+
             if (assetAdv == null)
             {
                 return HttpNotFound();
@@ -93,19 +124,14 @@ namespace DariTn.Controllers.RestControllers
         }
 
         // POST: AssetAdvs/Edit/5
-        // Afin de déjouer les attaques par survalidation, activez les propriétés spécifiques auxquelles vous voulez établir une liaison. Pour 
-        // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,ref,description,type,addedDate,price,surface,street,city,state,postalCode,nbrRooms,nbrComplaints,nbrFloor,floor,nbrBathrooms,furnished,garage,parking,pool,category,availability,status,capacity")] AssetAdv assetAdv)
+        public ActionResult Edit(int id, AssetAdv assetAdv)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(assetAdv).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(assetAdv);
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362/");
+            HttpResponseMessage tokenResponse = httpClient.PutAsJsonAsync<AssetAdv>("http://localhost:8081/Dari/servlet/updateAssetAdv/" + id, assetAdv).Result;
+            return RedirectToAction("Index");
         }
 
         // GET: AssetAdvs/Delete/5
@@ -123,33 +149,8 @@ namespace DariTn.Controllers.RestControllers
             httpClient.DeleteAsync("http://localhost:8081/Dari/servlet/AssetAdv/delete/" + id).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
             return RedirectToAction("Index");
 
-
-            //AssetAdv assetAdv = db.AssetAdvs.Find(id);
-           /* HttpClient httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri("https://localhost:44362");
-            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage tokenResponse = httpClient.GetAsync("http://localhost:8081/Dari/servlet/getAssetAdv/" + id).Result;
-            var assetAdv = tokenResponse.Content.ReadAsAsync<AssetAdv>().Result;
-            if (assetAdv == null)
-            {
-                return HttpNotFound();
-            }
-            return View(assetAdv);*/
         }
 
-
-        // POST: AssetAdvs/Delete/5
-   /*     [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-
-
-            HttpClient httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri("https://localhost:44362/");
-            HttpResponseMessage tokenResponse = httpClient.DeleteAsync("http://localhost:8081/Dari/servlet/AssetAdv/delete/" + id).Result;
-            return RedirectToAction("Index");
-        } */
 
         protected override void Dispose(bool disposing)
         {

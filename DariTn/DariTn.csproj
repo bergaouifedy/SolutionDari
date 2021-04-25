@@ -187,23 +187,32 @@
     <Compile Include="Controllers\RestControllers\BanksController.cs" />
     <Compile Include="Controllers\RestControllers\ComplaintsController.cs" />
     <Compile Include="Controllers\RestControllers\CreditFormulasController.cs" />
+    <Compile Include="Controllers\RestControllers\FurnitureAdvsController.cs" />
     <Compile Include="Controllers\RestControllers\InsuranceAgenciesController.cs" />
+    <Compile Include="Controllers\RestControllers\OrdersController.cs" />
+
     <Compile Include="Controllers\RestControllers\LocalisationsController.cs" />
     <Compile Include="Controllers\RestControllers\PacksController.cs" />
+    <Compile Include="Controllers\RestControllers\ShoppingCartsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\AssetAdv.cs" />
     <Compile Include="Models\Entities\Bank.cs" />
+    <Compile Include="Models\Entities\CartSold.cs" />
     <Compile Include="Models\Entities\Client.cs" />
     <Compile Include="Models\Entities\Complaint.cs" />
     <Compile Include="Models\Entities\Credit.cs" />
     <Compile Include="Models\Entities\CreditFormula.cs" />
+    <Compile Include="Models\Entities\Delivery.cs" />
+    <Compile Include="Models\Entities\FurnitureAdv.cs" />
     <Compile Include="Models\Entities\InsuranceAgency.cs" />
     <Compile Include="Models\Entities\Localisation.cs" />
     <Compile Include="Models\Entities\Media.cs" />
+    <Compile Include="Models\Entities\Orders.cs" />
     <Compile Include="Models\Entities\Pack.cs" />
+    <Compile Include="Models\Entities\ShoppingCart.cs" />
     <Compile Include="Models\Entities\User.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -586,6 +595,31 @@
     <Content Include="Views\Packs\Details.cshtml" />
     <Content Include="Views\Packs\Edit.cshtml" />
     <Content Include="Views\Packs\Index.cshtml" />
+
+    <Content Include="Views\FurnitureAdvs\Create.cshtml" />
+    <Content Include="Views\FurnitureAdvs\Delete.cshtml" />
+    <Content Include="Views\FurnitureAdvs\Details.cshtml" />
+    <Content Include="Views\FurnitureAdvs\Details2.cshtml" />
+    <Content Include="Views\FurnitureAdvs\Edit.cshtml" />
+    <Content Include="Views\FurnitureAdvs\Index.cshtml" />
+    <Content Include="Views\FurnitureAdvs\Index2.cshtml" />
+    <Content Include="Views\FurnitureAdvs\Index3.cshtml" />
+    <Content Include="Views\FurnitureAdvs\Index4.cshtml" />
+    <Content Include="Views\FurnitureAdvs\Index5.cshtml" />
+    <Content Include="Views\Deliveries\Delete.cshtml" />
+    <Content Include="Views\Deliveries\Details.cshtml" />
+    <Content Include="Views\Deliveries\Edit.cshtml" />
+    <Content Include="Views\Deliveries\Index.cshtml" />
+    <Content Include="Views\Orders\Create.cshtml" />
+    <Content Include="Views\Orders\Delete.cshtml" />
+    <Content Include="Views\Orders\Details.cshtml" />
+    <Content Include="Views\Orders\Edit.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\ShoppingCarts\Create.cshtml" />
+    <Content Include="Views\ShoppingCarts\Delete.cshtml" />
+    <Content Include="Views\ShoppingCarts\Edit.cshtml" />
+    <Content Include="Views\ShoppingCarts\Index.cshtml" />
+
     <Content Include="Views\Localisations\Create.cshtml" />
     <Content Include="Views\Localisations\Delete.cshtml" />
     <Content Include="Views\Localisations\Details.cshtml" />
