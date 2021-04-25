@@ -25,7 +25,7 @@
 
                                     @Html.DisplayFor(modelItem => item.description)
                                 </p>
-                                @Html.ActionLink("More Information", "Details", new { item.id}, new { @class = "infos", data_toggle = "modal", data_target = "#description" })
+                                @Html.ActionLink("More Information", "Details", null, new { @class = "infos", data_toggle = "modal", data_target = "#description" })
 
                                 @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "infos" })
                                 @Html.ActionLink("Réclamer", "AddComplaint", new { id = 1 }, new { @class = "infos" })
@@ -51,20 +51,19 @@
                                 </div>
                                 <div class="modal-content-body">
                                     <div class="description">
-                                        <h4>Main News</h4>
+                                        <h4>Asset Details</h4>
                                         <div class="box">
                                             <p>
-                                                Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus musulla duis. Fuscecer feugiat malesuada odio.
+                                                @Html.DisplayFor(modelItem => item.description)
                                             </p>
                                             <ul>
-                                                <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;@Html.DisplayFor(modelItem => item.capacity)</li>
-                                                <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;@Html.DisplayFor(modelItem => item.capacity)</li>
-                                                <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;@Html.DisplayFor(modelItem => item.capacity)</li>
-                                                <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;@Html.DisplayFor(modelItem => item.capacity)</li>
-                                                <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;@Html.DisplayFor(modelItem => item.capacity)</li>
+                                                <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;@Html.DisplayFor(modelItem => item.availability)</li>
+                                                <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;@Html.DisplayFor(modelItem => item.category)</li>
+                                                <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;@Html.DisplayFor(modelItem => item.surface) m²</li>
+                                                <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;This asset is for @Html.DisplayFor(modelItem => item.type)</li>
                                             </ul>
                                             <p class="footer">
-                                                <span class="title">Price</span><span class="label label-danger text-left">@Html.DisplayFor(modelItem => item.capacity)</span>
+                                                <span class="title">Price</span><span class="label label-danger text-left">@Html.DisplayFor(modelItem => item.price)</span>
                                             </p>
                                         </div>
                                     </div>
@@ -126,3 +125,16 @@
         </div>
     </div>
 </div>
+
+<!-- End of Social Icons -->
+<!-- jQuery-->
+<script src="~/js/jquery.min.js"></script>
+<!-- Bootstrap Core Javascript-->
+<script src="~/bootstrap/js/bootstrap.min.js"></script>
+<!-- Plugins -->
+<script src="~/js/jquery.easing.min.js"></script>
+<script src="~/js/fancybox.js"></script>
+<script src="~/js/jquery.waypoints.min.js"></script>
+<script src="~/js/progressbar.min.js"></script>
+<script src="~/js/plugins.js"></script>
+<script src="~/js/script.js"></script>
