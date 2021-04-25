@@ -12,6 +12,13 @@
 @{ int idlogged = 1;}
 
 <div id="tab-villa" class="tab-pane active container">
+    <select name="pets" id="pet-select">
+        <option value="">-- Sort by --</option>
+        <option value="PriceAsc">Lowest Price</option>
+        <option value="PriceDesc">Highest Price</option>
+        <option value="SurfAsc">Lowest Surface</option>
+        <option value="SurfDesc">Highest Surface</option>
+    </select>
     <div class="row">
         @foreach (var item in Model)
         {
