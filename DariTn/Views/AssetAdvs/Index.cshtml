@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-
+@{ int idlogged = 1;}
 
 <div id="tab-villa" class="tab-pane active container">
     <div class="row">
@@ -26,7 +26,12 @@
                         </p>
                         <p class="infos" data-toggle="modal" data-target="#description">More Information</p>
                         @Html.ActionLink("Delete", "Delete", new { id = item.id })
-                        @Html.ActionLink("Réclamer", "AddComplaint", new { id = 1 })
+                        @Html.ActionLink("Réclamer", "AddComplaint", new { id = idlogged })
+                        @Html.ActionLink("Edit", "Edit", new { id = item.id })
+                        @if (item.userid.Equals(idlogged))
+                        {
+                            @Html.ActionLink("Edit", "Edit", new { id = item.id })
+                        }
                         @if (item.localisation == null)
                         {
                             @Html.ActionLink(linkText: "Create Localisation", actionName: "Create", controllerName: "Localisations", routeValues: new { id = item.id }, htmlAttributes: null)
