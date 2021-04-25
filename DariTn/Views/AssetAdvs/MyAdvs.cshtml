@@ -1,0 +1,69 @@
+﻿@model IEnumerable<DariTn.Models.Entities.AssetAdv>
+@{
+    ViewBag.Title = "My Advertisements";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>My Advertisements</title>
+</head>
+<body>
+    @{ int idlogged = 1;}
+    <div id="selling" class="second-theme-selling">
+        <div class="tab-content container-fluid">
+            <div id="tab-villa" class="tab-pane active container">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-xs-12 col-sm-6 col-md-3">
+                            <div class="sub-box">
+                                <img class="img-responsive" src="img/selling-img/sel-img1.jpg">
+                                <div class="sub-box-content">
+                                    <h5>@Html.DisplayFor(modelItem => item.category)</h5>
+                                    <p class="description text-muted">
+
+                                        @Html.DisplayFor(modelItem => item.description)
+                                        @if (item.status.Equals(true))
+                                        {
+                                        <p style="color:green">Confirmed</p>
+                                    }
+                                    else
+                                    {
+                                        <p style="color:red;">Waiting for confirmation</p>
+                                    }
+                                        </p>
+
+                                        @Html.ActionLink("More Information", "Details", null, new { @class = "infos", data_toggle = "modal", data_target = "#description" })
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "infos" })
+                                        @if (item.localisation == null)
+                                        {
+                                            @Html.ActionLink(linkText: "Create Localisation", actionName: "Create", controllerName: "Localisations", routeValues: new { id = item.id }, htmlAttributes: null)
+                                        }
+                                        else
+                                        {
+                                            @Html.ActionLink(linkText: "Localisation", actionName: "Index", controllerName: "Localisations", routeValues: new { id = item.id }, htmlAttributes: null)
+                                        }
+                                    </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<!-- jQuery-->
+<script src="~/js/jquery.min.js"></script>
+<!-- Bootstrap Core Javascript-->
+<script src="~/bootstrap/js/bootstrap.min.js"></script>
+<!-- Plugins -->
+<script src="~/js/jquery.easing.min.js"></script>
+<script src="~/js/fancybox.js"></script>
+<script src="~/js/jquery.waypoints.min.js"></script>
+<script src="~/js/progressbar.min.js"></script>
+<script src="~/js/plugins.js"></script>
+<script src="~/js/script.js"></script>

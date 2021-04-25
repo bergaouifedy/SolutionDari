@@ -1,8 +1,8 @@
-﻿@model IEnumerable<DariTN.Models.Entities.Complaint>
+﻿@model IEnumerable<DariTn.Models.Entities.AssetAdv>
 
 @{
     Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
-    ViewBag.Title = "ComplaintRequests";
+    ViewBag.Title = "Asset Advertisement Requests";
 }
 
 <h2>Index</h2>
@@ -16,10 +16,19 @@
             Description
         </th>
         <th>
+            Category
+        </th>
+        <th>
+            State
+        </th>
+        <th>
+            City
+        </th>
+        <th>
             Status
         </th>
         <th>
-            Creation Date
+            Date
         </th>
         <th>
             Actions
@@ -36,12 +45,21 @@
         @Html.DisplayFor(modelItem => item.description)
     </td>
     <td>
-        
-            <p style="color:red;">On Hold</p>
-        
+        @Html.DisplayFor(modelItem => item.category)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.creationDate)
+        @Html.DisplayFor(modelItem => item.state)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.city)
+    </td>
+    <td>
+
+        <p style="color:red;">On Hold</p>
+
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.addedDate)
     </td>
     <td>
         @Html.ActionLink("Delete", "DeleteAdmin", new { id = item.id })

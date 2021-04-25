@@ -628,6 +628,10 @@
     <Content Include="Views\FurnitureAdvs\Accept.cshtml" />
     <Content Include="Views\FurnitureAdvs\DetailsAdmin.cshtml" />
     <Content Include="Views\AssetAdvs\AddComplaint.cshtml" />
+    <Content Include="Views\AssetAdvs\AARequests.cshtml" />
+    <Content Include="Views\AssetAdvs\Sale.cshtml" />
+    <Content Include="Views\AssetAdvs\Rent.cshtml" />
+    <Content Include="Views\AssetAdvs\MyAdvs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

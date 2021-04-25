@@ -29,7 +29,6 @@ namespace DariTn.Controllers.RestControllers
             HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/AvailableTrue").Result;
             if (response.IsSuccessStatusCode)
             {
-                //ViewBag.result = response.Content.ReadAsAsync<IEnumerable<Complaint>>().Result;
                 var aa = response.Content.ReadAsAsync<IEnumerable<AssetAdv>>().Result;
                 return View(aa);
             }
@@ -42,6 +41,63 @@ namespace DariTn.Controllers.RestControllers
 
         }
 
+        public ActionResult MyAdvs()
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/getAdvByUser/"+iduser).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var aa = response.Content.ReadAsAsync<IEnumerable<AssetAdv>>().Result;
+                return View(aa);
+            }
+            else
+            {
+                ViewBag.result = "error";
+                return View(new List<AssetAdv>());
+            }
+        }
+        public ActionResult Sale()
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/AdvTypeAvail/Sale").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var aa = response.Content.ReadAsAsync<IEnumerable<AssetAdv>>().Result;
+                return View(aa);
+            }
+            else
+            {
+                ViewBag.result = "error";
+                return View(new List<AssetAdv>());
+            }
+        }
+
+        public ActionResult Rent()
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/AdvTypeAvail/Rent").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var aa = response.Content.ReadAsAsync<IEnumerable<AssetAdv>>().Result;
+                return View(aa);
+            }
+            else
+            {
+                ViewBag.result = "error";
+                return View(new List<AssetAdv>());
+            }
+        }
+
+
         public ActionResult TargetedAdv()
         {
             HttpClient httpClient = new HttpClient();
@@ -51,7 +107,6 @@ namespace DariTn.Controllers.RestControllers
             HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/getTargetAsset/"+iduser).Result;
             if (response.IsSuccessStatusCode)
             {
-                //ViewBag.result = response.Content.ReadAsAsync<IEnumerable<Complaint>>().Result;
                 var aa = response.Content.ReadAsAsync<IEnumerable<AssetAdv>>().Result;
                 return View(aa);
             }
@@ -171,6 +226,49 @@ namespace DariTn.Controllers.RestControllers
 
         }
 
+        public ActionResult DeleteAdmin(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            // SELIM HOUNI TANSECH TZID USER CONNECTE MAYNAJEM YFASAKH KEN LES ANNONCES MTE3OU
+
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362/");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            httpClient.DeleteAsync("http://localhost:8081/Dari/servlet/AssetAdv/delete/" + id).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+            return RedirectToAction("AARequests");
+
+        }
+
+        public ActionResult Accept(int id, AssetAdv aa)
+        {
+
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362/");
+            HttpResponseMessage tokenResponse = httpClient.PutAsJsonAsync<AssetAdv>("http://localhost:8081/Dari/servlet/acceptAA/" + id, aa).Result;
+            return RedirectToAction("AARequests");
+
+        }
+
+        public ActionResult AARequests()
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/StatusFalse").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var aa = response.Content.ReadAsAsync<IEnumerable<AssetAdv>>().Result;
+                return View(aa);
+            }
+            else
+            {
+                ViewBag.result = "error";
+                return View(new AssetAdv());
+            }
+        }
 
         protected override void Dispose(bool disposing)
         {
