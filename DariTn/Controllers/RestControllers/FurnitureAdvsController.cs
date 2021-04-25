@@ -363,20 +363,12 @@ namespace DariTn.Controllers.RestControllers
             return RedirectToAction("IndexAdmin2");
         }
         
-
-        public ActionResult DeleteAdmin2(int id)
-        {
-            HttpClient httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
-            HttpResponseMessage tokenResponse = httpClient.DeleteAsync("http://localhost:8081/Dari/servlet/deleteFurnitureAdv/" + id).Result;
-            return RedirectToAction("IndexAdmin2");
-        }
         public ActionResult DeleteAdmin(int id)
         {
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
             HttpResponseMessage tokenResponse = httpClient.DeleteAsync("http://localhost:8081/Dari/servlet/deleteFurnitureAdv/" + id).Result;
-            return RedirectToAction("IndexAdmin");
+            return RedirectToAction("");
         }
 
         protected override void Dispose(bool disposing)
