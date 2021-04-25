@@ -48,7 +48,6 @@ namespace DariTn.Controllers.RestControllers
             HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/Complaint/all").Result;
             if (response.IsSuccessStatusCode)
             {
-                //ViewBag.result = response.Content.ReadAsAsync<IEnumerable<Complaint>>().Result;
                 var comp = response.Content.ReadAsAsync<IEnumerable<Complaint>>().Result;
                 return View(comp);
             }
@@ -89,8 +88,6 @@ namespace DariTn.Controllers.RestControllers
         }
 
         // POST: Complaints/Create
-        // Afin de déjouer les attaques par survalidation, activez les propriétés spécifiques auxquelles vous voulez établir une liaison. Pour 
-        // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,ref,description,status,creationDate")] Complaint complaint)
@@ -150,19 +147,30 @@ namespace DariTn.Controllers.RestControllers
             return RedirectToAction("Index");
         }
 
-     
-
-     /*   // POST: Complaints/Accept/5
-        [HttpPost, ActionName("Accept")]
-        [ValidateAntiForgeryToken]
-        public ActionResult Accept(int id)
+        public ActionResult DeleteAdmin(int? id)
         {
-        /*
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("https://localhost:44362/");
-            httpClient.PutAsync("http://localhost:8081/Dari/servlet/acceptComplaint/" + id);
-            return RedirectToAction("Index");
-        }*/
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            httpClient.DeleteAsync("http://localhost:8081/Dari/servlet/Complaint/delete/" + id).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+            return RedirectToAction("ComplaintRequests");
+        }
+
+
+        // POST: Complaints/Accept/5
+        public ActionResult Accept(int id, Complaint comp)
+        {
+        
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362/");
+            HttpResponseMessage tokenResponse = httpClient.PutAsJsonAsync<Complaint>("http://localhost:8081/Dari/servlet/acceptComplaint/" + id,comp).Result; 
+            return RedirectToAction("ComplaintRequests");
+
+        }
 
         protected override void Dispose(bool disposing)
         {

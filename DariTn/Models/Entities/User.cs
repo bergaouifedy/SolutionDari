@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DariTN.Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -30,8 +31,7 @@ namespace DariTn.Models.Entities
 
         public string user_type { get; set; }
         public object searchHistory { get; set; }
-        public List<object> asset { get; set; }
-        public List<object> complaint { get; set; }
+        public List<Complaint> complaint { get; set; }
         public List<object> boughtassets { get; set; }
     }
 }
