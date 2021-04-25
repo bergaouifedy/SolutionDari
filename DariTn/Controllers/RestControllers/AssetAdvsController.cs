@@ -47,11 +47,14 @@ namespace DariTn.Controllers.RestControllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AssetAdv assetAdv = db.AssetAdvs.Find(id);
-            if (assetAdv == null)
-            {
-                return HttpNotFound();
-            }
+
+
+            HttpClient httpClient;
+            httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage tokenResponse = httpClient.GetAsync("http://localhost:8081/Dari/servlet/getAssetAdv/" + id).Result;
+            var assetAdv = tokenResponse.Content.ReadAsAsync<AssetAdv>().Result;
             return View(assetAdv);
         }
 
