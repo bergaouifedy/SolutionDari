@@ -7,67 +7,76 @@
 
 
 <table class="table">
-    <br><br><br>
-    <h3 class="color0" , style="color:crimson">Add New Furniture: </h3><br>
-    <button class="button button6">  @Html.ActionLink("To Add New Furniture Clic Here:", "Create")</button>
-    <br><br><br>
-    <h3 class="color0" , style="color:crimson">Furnitures For Sale: </h3>
     <br>
+    <br>
+    <br>
+    <h3 class="color0" , style="color:crimson">Add New Furniture: </h3>
+    
+    <button class="button button6">  @Html.ActionLink("To Add New Furniture Clic Here", "Create")</button>
+    
+    <h3 class="color0" , style="color:crimson">Furnitures For Sale: </h3>
+    <div id="selling" class="second-theme-selling">
+        <div class="tab-content container-fluid">
+            <div id="tab-villa" class="tab-pane active container">
+                <div class="row">
 
-    @foreach (var item in Model)
-    {
-        if (item.availability.Equals(true))
-        {
-            <div class="col-xs-12 col-sm-6 col-md-3">
-                <div class="sub-box">
-                    <img class="img-responsive" src="img/selling-img/sel-img1.jpg" />
-                    <div class="sub-box-content">
-                        <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">Ref: </a> @Html.DisplayFor(modelItem => item.@ref)</h4>
-                        <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px"> Name: </a> @Html.DisplayFor(modelItem => item.name)</h4>
-                        <h4 style="color:cornflowerblue"><a style="color:#000000; font-size:22px"> Price: </a>  @Html.DisplayFor(modelItem => item.price) DT</h4>
-                        <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">Description: </a> @Html.DisplayFor(modelItem => item.description)</h4>
-                        <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">Accepted By Admin: </a>  @Html.DisplayFor(modelItem => item.status)</h4>
+                    @foreach (var item in Model)
+                    {
+                        if (item.availability.Equals(true))
+                        {
+                            <div class="col-xs-12 col-sm-6 col-md-3">
+                                <div class="sub-box">
+                                    <img class="img-responsive" src="img/selling-img/sel-img1.jpg" />
+                                    <div class="sub-box-content">
+                                        <h5 style="color:#313030"> <a style="color:#000000; font-size:20px">Ref: </a> @Html.DisplayFor(modelItem => item.@ref)</h5>
+                                        <h5 style="color:#313030"><a style="color:#000000; font-size:20px"> @Html.DisplayFor(modelItem => item.name): </a> @Html.DisplayFor(modelItem => item.description) </h5>
+                                        <h5 style="color:crimson"><a style="color:#000000; font-size:20px"> Price: </a>  @Html.DisplayFor(modelItem => item.price) DT</h5>
+                                        <h5 style="color:#313030"> <a style="color:#000000; font-size:20px">Accepted By Admin: </a>  @Html.DisplayFor(modelItem => item.status)</h5>
 
-                        <button class="button button2"> @Html.ActionLink("Details", "Details2", new { id = item.id })</button>
-                        <button class="button button1"> @Html.ActionLink("Edit", "Edit", new { id = item.id })</button>
-                        <button class="button button3"> @Html.ActionLink("Delete", "Delete", new { id = item.id })</button>
-                        <br><br><br>
-                    </div>
+                                        <button class="button button2"> @Html.ActionLink("Details", "Details2", new { id = item.id })</button>
+                                        <button class="button button1"> @Html.ActionLink("Edit", "Edit", new { id = item.id })</button>
+                                        <button class="button button3"> @Html.ActionLink("Delete", "Delete", new { id = item.id })</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
                 </div>
             </div>
-        }
-    }
+        </div>
+    </div>
 </table>
-    <table class="table">
-        <br>
-        <br>
-        <br>
-        <h3 class="color0" , style="color:crimson">Furnitures Sold: </h3>
-        <br>
-        @foreach (var item in Model)
-        {
-            if (item.availability.Equals(false))
-            {
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                    <div class="sub-box">
-                        <img class="img-responsive" src="img/selling-img/sel-img1.jpg" />
-                        <div class="sub-box-content">
-                            <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">Ref: </a> @Html.DisplayFor(modelItem => item.@ref)</h4>
-                            <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px"> Name: </a> @Html.DisplayFor(modelItem => item.name)</h4>
-                            <h4 style="color:cornflowerblue"><a style="color:#000000; font-size:22px"> Price: </a>  @Html.DisplayFor(modelItem => item.price) DT</h4>
-                            <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">Description: </a> @Html.DisplayFor(modelItem => item.description)</h4>
-                            <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">Accepted By Admin: </a>  @Html.DisplayFor(modelItem => item.status)</h4>
+<table class="table">
+   
+    <h3 class="color0" , style="color:crimson">Furnitures Sold: </h3>
+    <div id="selling" class="second-theme-selling">
+        <div class="tab-content container-fluid">
+            <div id="tab-villa" class="tab-pane active container">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        if (item.availability.Equals(false))
+                        {
+                            <div class="col-xs-12 col-sm-6 col-md-3">
+                                <div class="sub-box">
+                                    <img class="img-responsive" src="img/selling-img/sel-img1.jpg" />
+                                    <div class="sub-box-content">
+                                        <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">Ref: </a> @Html.DisplayFor(modelItem => item.@ref)</h4>
+                                        <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px"> Name: </a> @Html.DisplayFor(modelItem => item.name)</h4>
+                                        <h4 style="color:cornflowerblue"><a style="color:#000000; font-size:22px"> Price: </a>  @Html.DisplayFor(modelItem => item.price) DT</h4>
+                                        <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">Description: </a> @Html.DisplayFor(modelItem => item.description)</h4>
+                                        <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">Accepted By Admin: </a>  @Html.DisplayFor(modelItem => item.status)</h4>
 
-                            <button class="button button2"> @Html.ActionLink("Details", "Details2", new { id = item.id })</button>
+                                        <button class="button button2"> @Html.ActionLink("Details", "Details2", new { id = item.id })</button>
 
-                            <br><br><br>
-                        </div>
-                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
                 </div>
-            }
-        }
-
-
-       
-
-    </table>
+            </div>
+        </div>
+    </div>
+</table>

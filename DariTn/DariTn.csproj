@@ -658,6 +658,12 @@
     <Content Include="Views\BoughtAssets\Details.cshtml" />
     <Content Include="Views\BoughtAssets\Edit.cshtml" />
     <Content Include="Views\BoughtAssets\Index.cshtml" />
+
+    <Content Include="Views\Orders\OrdersNoAccepted.cshtml" />
+    <Content Include="Views\Orders\OrdersInProg.cshtml" />
+    <Content Include="Views\Orders\OrdersW.cshtml" />
+    <Content Include="Views\Orders\OrdersF.cshtml" />
+    <Content Include="Views\Orders\DetailsAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Index4";
 }
+@{ int idlogged = 3;}
 
 <div class="search-field">
     <br><br><br>
@@ -31,12 +32,16 @@
                     <h4 style="color:cornflowerblue"><a style="color:#000000; font-size:22px"> Price: </a>  @Html.DisplayFor(modelItem => item.price) DT</h4>
                     <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">Description: </a> @Html.DisplayFor(modelItem => item.description)</h4>
 
-
-
                     <button class="button button2"> @Html.ActionLink("Details", "Details", new { id = item.id })</button>
-                    <br><br>
-                    <button class="button button1"> @Html.ActionLink("Add To My ShoppingCart", "AddFurnitureToShoppingCart", new { id = item.id })</button>
-
+                    @if (item.User.id.Equals(idlogged))
+                    {
+                        <button class="button button1"> @Html.ActionLink("Edit", "Edit", new { id = item.id })</button>
+                        <button class="button button3"> @Html.ActionLink("Delete", "Delete", new { id = item.id })</button>
+                    }
+                    else
+                    {
+                        <button class="button button1">@Html.ActionLink("Add to Basket.", "AddFurnitureToShoppingCart", new { id = item.id })</button>
+                    }
                     <br><br><br>
                 </div>
             </div>

@@ -27,13 +27,13 @@
 
 
         <div class="col-md-10">
-            Name:
+            Furniture Name:
             @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
         </div>
 
         <div class="col-md-10">
-            Type:
+            Furniture Type:
             @Html.EditorFor(model => model.type, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.type, "", new { @class = "text-danger" })
         </div>
@@ -53,9 +53,10 @@
         </div>
 
         <div class="col-md-10">
-                Image:
-                @Html.EditorFor(model => model.image, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger" })
+            Image:
+            @Html.EditorFor(model => model.image, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger" })
+            <br>
         </div>
 
        
