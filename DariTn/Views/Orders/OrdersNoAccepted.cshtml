@@ -1,0 +1,80 @@
+﻿@model IEnumerable<DariTn.Models.Entities.Orders>
+
+@{
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Index";
+}
+
+<br><br><br><br>
+<h3 class="color0" , style="color:crimson">List Of Requests To Add Orders: </h3>
+<br>
+<table class="table" style="width:1300px">
+
+    <tr>
+        <th>
+            Reference
+        </th>
+        <th>
+            Client Name
+        </th>
+ 
+        <th>
+            Phone Number
+        </th>
+        <th>
+            Total Price
+        </th>
+        <th>
+            Accepted
+        </th>
+        <th>
+            DeliveryStatus
+        </th>
+        <th>
+            Paid
+        </th>
+        <th>
+            Actions
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+  
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.@ref)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.delivery.firstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.delivery.phoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.totalPrice) DT
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.adminStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.deliveryStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.paymentStatus)
+                </td>
+                <td>
+                    <button class="button button2" style="padding: 3px 10px">@Html.ActionLink("Details", "DetailsAdmin", new { id = item.id }) </button>
+                    <button class="button button1" style="padding: 3px 10px"> @Html.ActionLink("Accept", "Accept", new { id = item.id }) </button>
+                    <button class="button button3" style="padding: 3px 10px"> @Html.ActionLink("Delete", "DeleteAdmin", new { id = item.id }) </button>
+                        
+                    
+
+                </td>
+            </tr>
+       
+
+    }
+
+</table>
+<br>
