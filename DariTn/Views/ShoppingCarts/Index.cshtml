@@ -3,10 +3,10 @@
 @{
     ViewBag.Title = "Index";
 }
-
+ @{float p = 0;}
 
 <table class="table">
-    
+
     <br>
     <br>
     <br>
@@ -63,13 +63,15 @@
         <tr>
             <td> Total Price: </td>
             <td>
-               
+
                 @foreach (var item in Model)
                 {
-                    float p = 0;
-                    p = p + (item.totalPrice);
+                   
+                        p = p + item.totalPrice;
+                        @Html.Display(p.ToString())
+
                 }
-            
+
             </td>
         </tr>
 

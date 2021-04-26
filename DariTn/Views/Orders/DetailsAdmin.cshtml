@@ -1,0 +1,63 @@
+﻿@model DariTn.Models.Entities.Orders
+
+@{
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Details";
+}
+
+div>
+<br>
+<br>
+<br>
+<h3 class="color0" , style="color:crimson"> Order Details: </h3>
+<hr />
+<dl class="dl-horizontal">
+
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="sub-box" style="width:1100px">
+            <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px"> Ref: </a> @Html.DisplayFor(model => model.@ref)</h4>
+            <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px"> First Name: </a> @Html.DisplayFor(model => model.delivery.firstName)</h4>
+            <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px"> Last Name: </a> @Html.DisplayFor(model => model.delivery.lastName)</h4>
+            <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px"> Email: </a> @Html.DisplayFor(model => model.delivery.email)</h4>
+            <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px"> Address: </a>  @Html.DisplayFor(model => model.delivery.address) </h4>
+            <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">  Postal Code: </a> @Html.DisplayFor(model => model.delivery.postalCode)</h4>
+            <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">  Phone Number: </a>  @Html.DisplayFor(model => model.delivery.phoneNumber)</h4>
+            <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">  Price: </a>  @Html.DisplayFor(model => model.totalPrice)DT</h4>
+            <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">  Accepted: </a>  @Html.DisplayFor(model => model.adminStatus)</h4>
+            <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">  DeliveryStatus: </a>  @Html.DisplayFor(model => model.deliveryStatus)</h4>
+            <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">  Paid: </a>  @Html.DisplayFor(model => model.paymentStatus)</h4>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                if (Model.adminStatus.Equals(false))
+                {
+                    <button class="button button4"> @Html.ActionLink("  Back  ", "OrdersNoAccepted")</button>
+                }
+                if ((Model.adminStatus.Equals(true)) && (Model.deliveryStatus.Equals("Waiting")))
+                {
+                    <button class="button button4"> @Html.ActionLink("  Back  ", "OrdersW")</button>
+                }
+                if ((Model.adminStatus.Equals(true)) && (Model.deliveryStatus.Equals("Inprogress")))
+                {
+                    <button class="button button4"> @Html.ActionLink("  Back  ", "OrdersInProg")</button>
+                }
+                if ((Model.adminStatus.Equals(true)) && (Model.deliveryStatus.Equals("Finished")))
+                {
+                    <button class="button button4"> @Html.ActionLink("  Back  ", "OrdersF")</button>
+                }
+                
+
+        <br><br /><br />
+}
+        </div>
+
+    </div>
+    <br>
+    <br>
+    <br>
+
+
+</dl>
+</div>
+

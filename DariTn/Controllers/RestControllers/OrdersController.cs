@@ -36,8 +36,95 @@ namespace DariTn.Controllers.RestControllers
             }
         }
 
+        public ActionResult OrdersNoAccepted()
+        {
+            HttpClient httpClient;
+            httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage tokenResponse = httpClient.GetAsync("http://localhost:8081/Dari/servlet/getOrdersNoTraitées").Result;
+            if (tokenResponse.IsSuccessStatusCode)
+            {
+                var f = tokenResponse.Content.ReadAsAsync<IEnumerable<Orders>>().Result;
+                return View(f);
+            }
+            else
+            {
+                return View(new List<Orders>());
+            }
+        }
+
+        public ActionResult OrdersW()
+        {
+            HttpClient httpClient;
+            httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage tokenResponse = httpClient.GetAsync("http://localhost:8081/Dari/servlet/getOrderWaiting").Result;
+            if (tokenResponse.IsSuccessStatusCode)
+            {
+                var f = tokenResponse.Content.ReadAsAsync<IEnumerable<Orders>>().Result;
+                return View(f);
+            }
+            else
+            {
+                return View(new List<Orders>());
+            }
+        }
+
+        public ActionResult OrdersInProg()
+        {
+            HttpClient httpClient;
+            httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage tokenResponse = httpClient.GetAsync("http://localhost:8081/Dari/servlet/getOrderInprogress").Result;
+            if (tokenResponse.IsSuccessStatusCode)
+            {
+                var f = tokenResponse.Content.ReadAsAsync<IEnumerable<Orders>>().Result;
+                return View(f);
+            }
+            else
+            {
+                return View(new List<Orders>());
+            }
+        }
+
+        public ActionResult OrdersF()
+        {
+            HttpClient httpClient;
+            httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage tokenResponse = httpClient.GetAsync("http://localhost:8081/Dari/servlet/getOrderFinished").Result;
+            if (tokenResponse.IsSuccessStatusCode)
+            {
+                var f = tokenResponse.Content.ReadAsAsync<IEnumerable<Orders>>().Result;
+                return View(f);
+            }
+            else
+            {
+                return View(new List<Orders>());
+            }
+        }
+
         // GET: Orders/Details/5
         public ActionResult Details(int? id)
+        {
+            HttpClient httpClient;
+            httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage tokenResponse = httpClient.GetAsync("http://localhost:8081/Dari/servlet/getOrdersById/" + id).Result;
+            var ord = tokenResponse.Content.ReadAsAsync<Orders>().Result;
+
+            if (ord == null)
+            {
+                return HttpNotFound();
+            }
+            return View(ord);
+        }
+        public ActionResult DetailsAdmin(int? id)
         {
             HttpClient httpClient;
             httpClient = new HttpClient();
@@ -145,6 +232,37 @@ namespace DariTn.Controllers.RestControllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult DeleteAdmin(int id)
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
+            HttpResponseMessage tokenResponse = httpClient.DeleteAsync("http://localhost:8081/Dari/servlet/deleteOrders/" + id).Result;
+            return RedirectToAction("OrdersNoAccepted");
+        }
+
+        public ActionResult Accept(int id, Orders f)
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
+            var APIResponse = httpClient.PutAsJsonAsync("http://localhost:8081/Dari/servlet/acceptOrders/" + id, f).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+            return RedirectToAction("OrdersNoAccepted");
+        }
+
+        public ActionResult UpdateInProg(int id, Orders f)
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
+            var APIResponse = httpClient.PutAsJsonAsync("http://localhost:8081/Dari/servlet/LivrerOrders/" + id, f).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+            return RedirectToAction("OrdersW");
+        }
+
+        public ActionResult UpdateFinished(int id, Orders f)
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
+            var APIResponse = httpClient.PutAsJsonAsync("http://localhost:8081/Dari/servlet/LivrerOrders/" + id, f).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+            return RedirectToAction("OrdersInProg");
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -627,14 +627,16 @@
     <Content Include="Views\FurnitureAdvs\Accept.cshtml" />
     <Content Include="Views\FurnitureAdvs\DetailsAdmin.cshtml" />
     <Content Include="Views\AssetAdvs\AddComplaint.cshtml" />
-
     <Content Include="Views\FurnitureAdvs\CreateAdmin.cshtml" />
-
     <Content Include="Views\AssetAdvs\AARequests.cshtml" />
     <Content Include="Views\AssetAdvs\Sale.cshtml" />
     <Content Include="Views\AssetAdvs\Rent.cshtml" />
     <Content Include="Views\AssetAdvs\MyAdvs.cshtml" />
-
+    <Content Include="Views\Orders\OrdersNoAccepted.cshtml" />
+    <Content Include="Views\Orders\OrdersInProg.cshtml" />
+    <Content Include="Views\Orders\OrdersW.cshtml" />
+    <Content Include="Views\Orders\OrdersF.cshtml" />
+    <Content Include="Views\Orders\DetailsAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

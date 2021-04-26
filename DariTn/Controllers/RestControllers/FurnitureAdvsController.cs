@@ -181,7 +181,6 @@ namespace DariTn.Controllers.RestControllers
             ViewBag.userid = new SelectList(db.Users, "id", "firstName");
             return View();
         }
-
         // POST: FurnitureAdvs/Create
         // Afin de déjouer les attaques par survalidation, activez les propriétés spécifiques auxquelles vous voulez établir une liaison. Pour 
         // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -193,6 +192,25 @@ namespace DariTn.Controllers.RestControllers
             httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
             var APIResponse = httpClient.PostAsJsonAsync<FurnitureAdv>("http://localhost:8081/Dari/servlet/addFurnitureAdv", furnitureAdv).Result;
             return RedirectToAction("Index2");
+        }
+        
+        public ActionResult CreateAdmin()
+        {
+            ViewBag.userid = new SelectList(db.Users, "id", "firstName");
+            return View();
+        }
+
+        // POST: FurnitureAdvs/CreateAdmin
+        // Afin de déjouer les attaques par survalidation, activez les propriétés spécifiques auxquelles vous voulez établir une liaison. Pour 
+        // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateAdmin([Bind(Include = "id,userid,ref,name,description,type,addedDate,price,availability,status,image")] FurnitureAdv furnitureAdv)
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
+            var APIResponse = httpClient.PostAsJsonAsync<FurnitureAdv>("http://localhost:8081/Dari/servlet/addFurnitureAdv", furnitureAdv).Result;
+            return RedirectToAction("IndexAdmin2");
         }
 
         // GET: FurnitureAdvs/Edit/5
@@ -216,6 +234,8 @@ namespace DariTn.Controllers.RestControllers
             }
             return View(furnitureAdv);
         }
+
+
 
         // POST: FurnitureAdvs/Edit/5
         // Afin de déjouer les attaques par survalidation, activez les propriétés spécifiques auxquelles vous voulez établir une liaison. Pour 
@@ -352,7 +372,7 @@ namespace DariTn.Controllers.RestControllers
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
             var APIResponse = httpClient.PostAsJsonAsync<ShoppingCart>("http://localhost:8081/Dari/servlet/addfurnitureaupanier/3/" + id, shoppingCart).Result;
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","ShoppingCarts");
     }
 
         public ActionResult Accept(int id, FurnitureAdv f)
@@ -368,9 +388,15 @@ namespace DariTn.Controllers.RestControllers
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
             HttpResponseMessage tokenResponse = httpClient.DeleteAsync("http://localhost:8081/Dari/servlet/deleteFurnitureAdv/" + id).Result;
-            return RedirectToAction("");
+            return RedirectToAction("IndexAdmin");
         }
-
+        public ActionResult DeleteAdmin2(int id)
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
+            HttpResponseMessage tokenResponse = httpClient.DeleteAsync("http://localhost:8081/Dari/servlet/deleteFurnitureAdv/" + id).Result;
+            return RedirectToAction("IndexAdmin2");
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
