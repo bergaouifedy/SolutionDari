@@ -15,7 +15,7 @@ namespace DariTN.Models.Entities
         public string description { get; set; }
         public bool status { get; set; }
         public DateTime creationDate { get; set; }
-        [ForeignKey("AssetAdv")]
+        [ForeignKey("asset")]
         public int assetid { get; set; }
         public AssetAdv asset { get; set; }
         [ForeignKey("User")]

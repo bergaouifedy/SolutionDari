@@ -196,6 +196,7 @@
     <Compile Include="Controllers\RestControllers\LocalisationsController.cs" />
     <Compile Include="Controllers\RestControllers\PacksController.cs" />
     <Compile Include="Controllers\RestControllers\ShoppingCartsController.cs" />
+    <Compile Include="Controllers\RestControllers\TimeSlotsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -220,6 +221,7 @@
     <Compile Include="Models\Entities\Orders.cs" />
     <Compile Include="Models\Entities\Pack.cs" />
     <Compile Include="Models\Entities\ShoppingCart.cs" />
+    <Compile Include="Models\Entities\TimeSlots.cs" />
     <Compile Include="Models\Entities\User.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\InsuranceEditViewModel.cs" />
@@ -672,6 +674,11 @@
     <Content Include="Views\Localisations\MyAdvs.cshtml" />
     <Content Include="Views\AssetAdvs\Search.cshtml" />
     <Content Include="Views\AssetAdvs\Search1.cshtml" />
+    <Content Include="Views\TimeSlots\Create.cshtml" />
+    <Content Include="Views\TimeSlots\Delete.cshtml" />
+    <Content Include="Views\TimeSlots\Details.cshtml" />
+    <Content Include="Views\TimeSlots\Edit.cshtml" />
+    <Content Include="Views\TimeSlots\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
