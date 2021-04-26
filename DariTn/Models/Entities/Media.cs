@@ -14,8 +14,8 @@ namespace DariTN.Models.Entities
         public string title { get; set; }
         public string type { get; set; }
         public byte[] file { get; set; }
-        [ForeignKey("AssetAdv")]
-        public int assetid { get; set; }
+        [ForeignKey("asset")]
+        public int assetadvid { get; set; }
         public AssetAdv asset { get; set; }
     }
 }

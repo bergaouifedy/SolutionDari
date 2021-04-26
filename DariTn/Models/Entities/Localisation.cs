@@ -9,13 +9,13 @@ namespace DariTn.Models.Entities
 {
     public class Localisation
     {
+        [Key, ForeignKey("asset")]
         public int id { get; set; }
         [DataType(DataType.Currency)]
         public double latitude { get; set; }
         [DataType(DataType.Currency)]
         [Range(-179.999999999999999999999999999, 180.000000000000000000000)]
         public double longtitude { get; set; }
-        [ForeignKey("asset")]
         public int? assetid { get; set; }
         public virtual AssetAdv asset { get; set; }
     }
