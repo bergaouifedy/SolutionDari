@@ -30,14 +30,13 @@
                                         @Html.DisplayFor(modelItem => item.description)
                                     </p>
 
-                                    @Html.ActionLink("More Information", "Details", null, new { @class = "infos", data_toggle = "modal", data_target = "#description" })
+                                    @Html.ActionLink("More Information", "Details", new { id = item.id }, new { @class = "infos" })
 
 
                                     <!-- @Html.ActionLink("Complain", "AddComplaint")-->
                                     @{
                                         //Html.ActionLink(linkText: "Complainn", actionName: "AddComplaint", controllerName: "Complaints", routeValues: new { id = idlogged }, htmlAttributes: null)
                                     }
-                                    @Html.ActionLink(linkText: "Localisation", actionName: "Index", controllerName: "Localisations", routeValues: new { id = item.id }, htmlAttributes: null)
 
                                 </div>
                             </div>

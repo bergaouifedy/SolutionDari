@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
@@ -9,8 +10,11 @@ namespace DariTn.Models.Entities
     public class Localisation
     {
         public int id { get; set; }
-        public float latitude { get; set; }
-        public float longtitude { get; set; }
+        [DataType(DataType.Currency)]
+        public double latitude { get; set; }
+        [DataType(DataType.Currency)]
+        [Range(-179.999999999999999999999999999, 180.000000000000000000000)]
+        public double longtitude { get; set; }
         [ForeignKey("asset")]
         public int? assetid { get; set; }
         public virtual AssetAdv asset { get; set; }
