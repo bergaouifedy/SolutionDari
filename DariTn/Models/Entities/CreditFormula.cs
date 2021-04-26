@@ -14,5 +14,12 @@ namespace DariTn.Models.Entities
 	    public double interestRate { get; set; }
 
 		public Bank bank { get; set; }
+
+        public string afficher()
+        {
+            return "{duration: " + duration + "\n interest rate: " + interestRate + "}";
+        }
+
+
     }
 }

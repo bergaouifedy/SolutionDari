@@ -41,5 +41,9 @@ namespace DariTn.Models
         public System.Data.Entity.DbSet<DariTn.Models.Entities.InsuranceAgency> InsuranceAgencies { get; set; }
 
         public System.Data.Entity.DbSet<DariTn.Models.Entities.Pack> Packs { get; set; }
+
+        public System.Data.Entity.DbSet<DariTn.Models.Entities.Credit> Credits { get; set; }
+
+        public System.Data.Entity.DbSet<DariTn.Models.EmailViewModel> EmailViewModals { get; set; }
     }
 }
