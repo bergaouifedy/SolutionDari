@@ -185,11 +185,13 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RestControllers\AssetAdvsController.cs" />
     <Compile Include="Controllers\RestControllers\BanksController.cs" />
+    <Compile Include="Controllers\RestControllers\BoughtAssetsController.cs" />
     <Compile Include="Controllers\RestControllers\ComplaintsController.cs" />
     <Compile Include="Controllers\RestControllers\CreditFormulasController.cs" />
     <Compile Include="Controllers\RestControllers\CreditsController.cs" />
     <Compile Include="Controllers\RestControllers\FurnitureAdvsController.cs" />
     <Compile Include="Controllers\RestControllers\InsuranceAgenciesController.cs" />
+    <Compile Include="Controllers\RestControllers\InsurancesController.cs" />
     <Compile Include="Controllers\RestControllers\OrdersController.cs" />
     <Compile Include="Controllers\RestControllers\LocalisationsController.cs" />
     <Compile Include="Controllers\RestControllers\PacksController.cs" />
@@ -203,6 +205,7 @@
     <Compile Include="Models\EmailViewModel.cs" />
     <Compile Include="Models\Entities\AssetAdv.cs" />
     <Compile Include="Models\Entities\Bank.cs" />
+    <Compile Include="Models\Entities\BoughtAsset.cs" />
     <Compile Include="Models\Entities\CartSold.cs" />
     <Compile Include="Models\Entities\Client.cs" />
     <Compile Include="Models\Entities\Complaint.cs" />
@@ -210,6 +213,7 @@
     <Compile Include="Models\Entities\CreditFormula.cs" />
     <Compile Include="Models\Entities\Delivery.cs" />
     <Compile Include="Models\Entities\FurnitureAdv.cs" />
+    <Compile Include="Models\Entities\Insurance.cs" />
     <Compile Include="Models\Entities\InsuranceAgency.cs" />
     <Compile Include="Models\Entities\Localisation.cs" />
     <Compile Include="Models\Entities\Media.cs" />
@@ -218,6 +222,8 @@
     <Compile Include="Models\Entities\ShoppingCart.cs" />
     <Compile Include="Models\Entities\User.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\InsuranceEditViewModel.cs" />
+    <Compile Include="Models\InsuranceNewViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -646,6 +652,16 @@
     <Content Include="Views\AssetAdvs\Sale.cshtml" />
     <Content Include="Views\AssetAdvs\Rent.cshtml" />
     <Content Include="Views\AssetAdvs\MyAdvs.cshtml" />
+    <Content Include="Views\Insurances\Create.cshtml" />
+    <Content Include="Views\Insurances\Delete.cshtml" />
+    <Content Include="Views\Insurances\Details.cshtml" />
+    <Content Include="Views\Insurances\Edit.cshtml" />
+    <Content Include="Views\Insurances\Index.cshtml" />
+    <Content Include="Views\BoughtAssets\Create.cshtml" />
+    <Content Include="Views\BoughtAssets\Delete.cshtml" />
+    <Content Include="Views\BoughtAssets\Details.cshtml" />
+    <Content Include="Views\BoughtAssets\Edit.cshtml" />
+    <Content Include="Views\BoughtAssets\Index.cshtml" />
     <Content Include="Views\Orders\OrdersNoAccepted.cshtml" />
     <Content Include="Views\Orders\OrdersInProg.cshtml" />
     <Content Include="Views\Orders\OrdersW.cshtml" />
@@ -653,6 +669,7 @@
     <Content Include="Views\Orders\DetailsAdmin.cshtml" />
     <Content Include="Views\AssetAdvs\Target1.cshtml" />
     <Content Include="Views\AssetAdvs\Target2.cshtml" />
+    <Content Include="Views\Localisations\MyAdvs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

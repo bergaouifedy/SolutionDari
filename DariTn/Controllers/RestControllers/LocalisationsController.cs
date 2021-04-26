@@ -15,7 +15,7 @@ namespace DariTn.Controllers.RestControllers
 {
     public class LocalisationsController : Controller
     {
-
+        private int iduser = 1;
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Localisation
@@ -33,6 +33,24 @@ namespace DariTn.Controllers.RestControllers
             var localisation = response.Content.ReadAsAsync<Localisation>().Result;
             
             return View(localisation);
+        }
+        public ActionResult MyAdvs()
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/getAdvByUser/" + iduser).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var aa = response.Content.ReadAsAsync<IEnumerable<AssetAdv>>().Result;
+                return View(aa);
+            }
+            else
+            {
+                ViewBag.result = "error";
+                return View(new List<AssetAdv>());
+            }
         }
 
         // GET: Localisation
@@ -80,7 +98,7 @@ namespace DariTn.Controllers.RestControllers
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("https://localhost:44315/");
             httpClient.PostAsJsonAsync<Localisation>("http://localhost:8081/Dari/servlet/Asset/addLocalisation", localisation).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
-            return RedirectToAction("Index/"+localisation.asset.id);
+            return RedirectToAction("MyAdvs");
         }
 
         // GET: Localisations/Edit/5
