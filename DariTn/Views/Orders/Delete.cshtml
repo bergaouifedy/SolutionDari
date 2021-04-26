@@ -1,0 +1,45 @@
+﻿@model DariTn.Models.Entities.Orders
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+
+div>
+<br>
+<br>
+<br>
+<h3 class="color0" , style="color:crimson"> Are you sure to delete this Order? </h3>
+<hr />
+<dl class="dl-horizontal">
+
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="sub-box" style="width:1100px">
+                <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px"> Ref: </a> @Html.DisplayFor(model => model.@ref)</h4>
+                <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px"> Name: </a> @Html.DisplayFor(model => model.delivery.firstName)</h4>
+                <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px"> Email: </a> @Html.DisplayFor(model => model.delivery.email)</h4>
+                <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px"> Address: </a>  @Html.DisplayFor(model => model.delivery.address) </h4>
+                <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">  Postal Code: </a> @Html.DisplayFor(model => model.delivery.postalCode)</h4>
+                <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">  Phone Number: </a>  @Html.DisplayFor(model => model.delivery.phoneNumber)</h4>
+                <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">  Price: </a>  @Html.DisplayFor(model => model.totalPrice) DT</h4>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <button class="button button3" value="Delete"> Delete </button>
+                    <button class="button button4"> @Html.ActionLink("  Back  ", "Index")</button>
+            <br><br /><br />
+                }
+        </div>
+
+    </div>
+    <br>
+    <br>
+    <br>
+
+
+</dl>
+</div>
+

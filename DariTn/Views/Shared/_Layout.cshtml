@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello</title>
+    <title>DariTn</title>
     <link href="~/bootstrap/css/bootstrap-theme.css" rel="stylesheet" />
     <link href="~/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="~/bootstrap/css/bootstrap.css" rel="stylesheet" />
@@ -12,6 +12,7 @@
     <link href="~/bootstrap/css/bootstrap-theme.css.map" />
     <link href="~/bootstrap/css/bootstrap-theme.min.css.map" />
     <link href="~/bootstrap/css/bootstrap.css.map" />
+    <link href="~/AdminContent/css/style.css" rel="stylesheet" />
     <link href="~/bootstrap/css/bootstrap.min.css.map" />
     <link href="~/bootstrap/fonts/glyphicons-halflings-regular.woff" />
     <link href="~/bootstrap/fonts/glyphicons-halflings-regular.woff2" />
@@ -66,10 +67,32 @@
             <div class="collapse navbar-collapse" id="toggle">
                 <ul class="nav navbar-nav">
                     <li class="lBorder">@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li class="lBorder"><a class="page-scroll" href="#">Buy</a></li>
-                    <li class="lBorder"><a class="page-scroll" href="#">Rent</a></li>
-                    <li class="lBorder"><a class="page-scroll" href="#">Assets</a></li>
-                    <li class="lBorder"><a class="page-scroll" href="#">Fournitures</a></li>
+                    <li class="nav-item dropdown">
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Properties
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                                <ul> @Html.ActionLink("All Advertisements", "Index", "AssetAdvs")</ul>
+                                <ul> @Html.ActionLink("Rent Advertisements", "Rent", "AssetAdvs")</ul>
+                                <ul> @Html.ActionLink("Sale Advertisements", "Sale", "AssetAdvs")</ul>
+                                <ul> @Html.ActionLink("My Advertisements", "MyAdvs", "AssetAdvs")</ul>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Furniture
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                                <ul> @Html.ActionLink("Buy Furnitures", "Index", "FurnitureAdvs")</ul>
+                                <ul> @Html.ActionLink("Sell ​​Furnitures", "Index2", "FurnitureAdvs")</ul>
+                                <ul> @Html.ActionLink("My Orders", "Index", "Orders")</ul>
+                                <ul> @Html.ActionLink("My ShoppingCart", "Index", "ShoppingCarts")</ul>
+                            </ul>
+                        </div>
+                    </li>
                     <li class="lBorder"><a class="page-scroll" href="#">Credits</a></li>
                     <li class="lBorder"><a class="page-scroll" href="#">Insurance</a></li>
                     <li class="lBorder"><a class="page-scroll" href="#">CONTACT</a></li>

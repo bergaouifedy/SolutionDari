@@ -1,0 +1,72 @@
+﻿@model IEnumerable<DariTn.Models.Entities.AssetAdv>
+
+@{
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Asset Advertisement Requests";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Reference
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Category
+        </th>
+        <th>
+            State
+        </th>
+        <th>
+            City
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            Actions
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.@ref)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.description)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.category)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.state)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.city)
+    </td>
+    <td>
+
+        <p style="color:red;">On Hold</p>
+
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.addedDate)
+    </td>
+    <td>
+        @Html.ActionLink("Delete", "DeleteAdmin", new { id = item.id })
+        @Html.ActionLink("Accept", "Accept", new { id = item.id })
+
+    </td>
+</tr>
+    }
+
+</table>

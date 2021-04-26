@@ -1,0 +1,80 @@
+﻿@model IEnumerable<DariTn.Models.Entities.ShoppingCart>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<table class="table">
+    
+    <br>
+    <br>
+    <br>
+    <h3 class="color0" , style="color:crimson">  My ShoppingCart: </h3>
+    <tr">
+        <th>
+            Furniture Reference
+        </th>
+        <th>
+            Furniture Name
+        </th>
+        <th>
+            Furniture Type
+        </th>
+        <th>
+            Furniture Price
+        </th>
+        <th>
+            Validate
+        </th>
+        <th>
+            Delete
+        </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.furniture.@ref)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.furniture.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.furniture.type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.totalPrice)
+                </td>
+                <td>
+                    <button class="button button2">  @Html.ActionLink("Validate", "Create", new { id = item.id })</button>
+                </td>
+                <td>
+                    <button class="button button3">  @Html.ActionLink("Delete", "Delete", new { id = item.id })</button>
+
+                </td>
+            </tr>
+
+
+        }
+
+        <tr>
+            <td> Total Price: </td>
+            <td>
+               
+                @foreach (var item in Model)
+                {
+                    float p = 0;
+                    p = p + (item.totalPrice);
+                }
+            
+            </td>
+        </tr>
+
+
+
+</table>
+
+<button class="button button4"> @Html.ActionLink("  Back  ", "Index", "FurnitureAdvs")</button>

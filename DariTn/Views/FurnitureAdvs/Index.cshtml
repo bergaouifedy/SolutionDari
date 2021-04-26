@@ -1,0 +1,76 @@
+﻿@model IEnumerable<DariTn.Models.Entities.FurnitureAdv>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+ 
+<table class="table">
+    <br>
+    <br>
+    <br>
+
+    
+        <!-- Search by Name- start -->
+        <div class="search-field">
+            <br><br><br><br>
+            <button class="button button2"> @Html.ActionLink("Sort By Price ASC", "Index3")</button><br><br>
+            <button class="button button2"> @Html.ActionLink("Sort By Price DESC", "Index4")</button><br><br>
+            <form class="search-field-form">
+                <input type="text" placeholder="Search By Name">
+                <button type="submit"><i class="fa fa-search"></i> </button>
+            </form><br><br>
+            <form class="search-field-form">
+                <input type="text" placeholder="Search By Type">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form><br><br>
+            <form class="search-field-form">
+                <input type="text" placeholder="Search By Price">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+
+        </div>
+    
+    <h3 class="color0" , style="color:crimson">Furniture for sale: </h3>
+    <br>
+
+
+
+
+    @foreach (var item in Model)
+    {
+
+
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="sub-box">
+                <img class="img-responsive" src="img/selling-img/sel-img1.jpg" />
+                <div class="sub-box-content">
+                    <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">Ref: </a> @Html.DisplayFor(modelItem => item.@ref)</h4>
+                    <h4 style="color:cornflowerblue"><a style="color:#000000; font-size:22px"> Name: </a> @Html.DisplayFor(modelItem => item.name)</h4>
+                    <h4 style="color:cornflowerblue"><a style="color:#000000; font-size:22px"> Price: </a>  @Html.DisplayFor(modelItem => item.price) DT</h4>
+                    <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">Description: </a> @Html.DisplayFor(modelItem => item.description)</h4>
+
+
+
+                    <button class="button button2"> @Html.ActionLink("Details", "Details", new { id = item.id })</button>
+                    <br><br>
+                    <button class="button button1">@Html.ActionLink("Add To My ShoppingCart", "AddFurnitureToShoppingCart", new { id = item.id })</button>
+
+                    <br><br><br>
+                </div>
+            </div>
+        </div>
+
+
+
+    }
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</table>

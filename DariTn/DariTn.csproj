@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -124,12 +130,6 @@
     <Reference Include="System.Web.Http.WebHost">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -187,9 +187,16 @@
     <Compile Include="Controllers\RestControllers\BanksController.cs" />
     <Compile Include="Controllers\RestControllers\ComplaintsController.cs" />
     <Compile Include="Controllers\RestControllers\CreditFormulasController.cs" />
+
     <Compile Include="Controllers\RestControllers\CreditsController.cs" />
+
+    <Compile Include="Controllers\RestControllers\FurnitureAdvsController.cs" />
+
     <Compile Include="Controllers\RestControllers\InsuranceAgenciesController.cs" />
+    <Compile Include="Controllers\RestControllers\OrdersController.cs" />
+    <Compile Include="Controllers\RestControllers\LocalisationsController.cs" />
     <Compile Include="Controllers\RestControllers\PacksController.cs" />
+    <Compile Include="Controllers\RestControllers\ShoppingCartsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -199,13 +206,19 @@
     <Compile Include="Models\EmailViewModel.cs" />
     <Compile Include="Models\Entities\AssetAdv.cs" />
     <Compile Include="Models\Entities\Bank.cs" />
+    <Compile Include="Models\Entities\CartSold.cs" />
     <Compile Include="Models\Entities\Client.cs" />
     <Compile Include="Models\Entities\Complaint.cs" />
     <Compile Include="Models\Entities\Credit.cs" />
     <Compile Include="Models\Entities\CreditFormula.cs" />
+    <Compile Include="Models\Entities\Delivery.cs" />
+    <Compile Include="Models\Entities\FurnitureAdv.cs" />
     <Compile Include="Models\Entities\InsuranceAgency.cs" />
+    <Compile Include="Models\Entities\Localisation.cs" />
     <Compile Include="Models\Entities\Media.cs" />
+    <Compile Include="Models\Entities\Orders.cs" />
     <Compile Include="Models\Entities\Pack.cs" />
+    <Compile Include="Models\Entities\ShoppingCart.cs" />
     <Compile Include="Models\Entities\User.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -588,12 +601,56 @@
     <Content Include="Views\Packs\Details.cshtml" />
     <Content Include="Views\Packs\Edit.cshtml" />
     <Content Include="Views\Packs\Index.cshtml" />
+
     <Content Include="Views\Credits\Create.cshtml" />
     <Content Include="Views\Credits\Delete.cshtml" />
     <Content Include="Views\Credits\Compare.cshtml" />
     <Content Include="Views\Credits\Edit.cshtml" />
     <Content Include="Views\Credits\Index.cshtml" />
     <Content Include="Views\Credits\Email.cshtml" />
+
+    <Content Include="Views\FurnitureAdvs\Create.cshtml" />
+    <Content Include="Views\FurnitureAdvs\Delete.cshtml" />
+    <Content Include="Views\FurnitureAdvs\Details.cshtml" />
+    <Content Include="Views\FurnitureAdvs\Details2.cshtml" />
+    <Content Include="Views\FurnitureAdvs\Edit.cshtml" />
+    <Content Include="Views\FurnitureAdvs\Index.cshtml" />
+    <Content Include="Views\FurnitureAdvs\Index2.cshtml" />
+    <Content Include="Views\FurnitureAdvs\Index3.cshtml" />
+    <Content Include="Views\FurnitureAdvs\Index4.cshtml" />
+    <Content Include="Views\FurnitureAdvs\Index5.cshtml" />
+    <Content Include="Views\Deliveries\Delete.cshtml" />
+    <Content Include="Views\Deliveries\Details.cshtml" />
+    <Content Include="Views\Deliveries\Edit.cshtml" />
+    <Content Include="Views\Deliveries\Index.cshtml" />
+    <Content Include="Views\Orders\Create.cshtml" />
+    <Content Include="Views\Orders\Delete.cshtml" />
+    <Content Include="Views\Orders\Details.cshtml" />
+    <Content Include="Views\Orders\Edit.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\ShoppingCarts\Create.cshtml" />
+    <Content Include="Views\ShoppingCarts\Delete.cshtml" />
+    <Content Include="Views\ShoppingCarts\Edit.cshtml" />
+    <Content Include="Views\ShoppingCarts\Index.cshtml" />
+    <Content Include="Views\Localisations\Create.cshtml" />
+    <Content Include="Views\Localisations\Delete.cshtml" />
+    <Content Include="Views\Localisations\Details.cshtml" />
+    <Content Include="Views\Localisations\Edit.cshtml" />
+    <Content Include="Views\Localisations\Index.cshtml" />
+    <Content Include="Views\FurnitureAdvs\IndexAdmin.cshtml" />
+    <Content Include="Views\FurnitureAdvs\IndexAdmin2.cshtml" />
+    <Content Include="Views\FurnitureAdvs\Accept.cshtml" />
+    <Content Include="Views\FurnitureAdvs\DetailsAdmin.cshtml" />
+    <Content Include="Views\AssetAdvs\AddComplaint.cshtml" />
+
+    <Content Include="Views\FurnitureAdvs\CreateAdmin.cshtml" />
+
+    <Content Include="Views\AssetAdvs\AARequests.cshtml" />
+    <Content Include="Views\AssetAdvs\Sale.cshtml" />
+    <Content Include="Views\AssetAdvs\Rent.cshtml" />
+    <Content Include="Views\AssetAdvs\MyAdvs.cshtml" />
+
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

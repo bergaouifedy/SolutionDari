@@ -1,0 +1,53 @@
+﻿@model DariTn.Models.Entities.Localisation
+
+@{
+    ViewBag.Title = "Local";
+}
+
+<h2>Localisation</h2>
+<style>
+    #map {
+        height: 600px;
+        width: 600px;
+        border-radius: 2%;
+    }
+
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+<div>
+    <hr />
+    
+      
+
+        <h1>Asset's location:</h1>
+
+        <div id="map"></div>
+        <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3Y-n9oKUBy9he2U9aHF3a5R5MYGDXZJ4&callback=initMap&libraries=&v=weekly"
+                async>
+
+        </script>
+
+        <script>
+            let map;
+
+            var latit = @Html.Raw(Json.Encode(Model.latitude));
+            var longti = @Html.Raw(Json.Encode(Model.longtitude));
+            function initMap() {
+
+                var myCenter = new google.maps.LatLng(latit, longti);
+                var mapProp = { center: myCenter, zoom: 7, scrollwheel: false, draggable: true, mapTypeId: google.maps.MapTypeId.ROADMAP };
+                map = new google.maps.Map(document.getElementById("map"), mapProp);
+                var marker = new google.maps.Marker({ position: myCenter });
+                marker.setMap(map);
+            }
+        </script>
+   
+   
+</div>
+
