@@ -187,7 +187,11 @@
     <Compile Include="Controllers\RestControllers\BanksController.cs" />
     <Compile Include="Controllers\RestControllers\ComplaintsController.cs" />
     <Compile Include="Controllers\RestControllers\CreditFormulasController.cs" />
+
+    <Compile Include="Controllers\RestControllers\CreditsController.cs" />
+
     <Compile Include="Controllers\RestControllers\FurnitureAdvsController.cs" />
+
     <Compile Include="Controllers\RestControllers\InsuranceAgenciesController.cs" />
     <Compile Include="Controllers\RestControllers\OrdersController.cs" />
     <Compile Include="Controllers\RestControllers\LocalisationsController.cs" />
@@ -197,6 +201,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CreditEditViewModel.cs" />
+    <Compile Include="Models\CreditNewViewModel.cs" />
+    <Compile Include="Models\EmailViewModel.cs" />
     <Compile Include="Models\Entities\AssetAdv.cs" />
     <Compile Include="Models\Entities\Bank.cs" />
     <Compile Include="Models\Entities\CartSold.cs" />
@@ -594,6 +601,14 @@
     <Content Include="Views\Packs\Details.cshtml" />
     <Content Include="Views\Packs\Edit.cshtml" />
     <Content Include="Views\Packs\Index.cshtml" />
+
+    <Content Include="Views\Credits\Create.cshtml" />
+    <Content Include="Views\Credits\Delete.cshtml" />
+    <Content Include="Views\Credits\Compare.cshtml" />
+    <Content Include="Views\Credits\Edit.cshtml" />
+    <Content Include="Views\Credits\Index.cshtml" />
+    <Content Include="Views\Credits\Email.cshtml" />
+
     <Content Include="Views\FurnitureAdvs\Create.cshtml" />
     <Content Include="Views\FurnitureAdvs\Delete.cshtml" />
     <Content Include="Views\FurnitureAdvs\Details.cshtml" />
@@ -632,11 +647,13 @@
     <Content Include="Views\AssetAdvs\Sale.cshtml" />
     <Content Include="Views\AssetAdvs\Rent.cshtml" />
     <Content Include="Views\AssetAdvs\MyAdvs.cshtml" />
+
     <Content Include="Views\Orders\OrdersNoAccepted.cshtml" />
     <Content Include="Views\Orders\OrdersInProg.cshtml" />
     <Content Include="Views\Orders\OrdersW.cshtml" />
     <Content Include="Views\Orders\OrdersF.cshtml" />
     <Content Include="Views\Orders\DetailsAdmin.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

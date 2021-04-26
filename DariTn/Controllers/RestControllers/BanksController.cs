@@ -115,6 +115,54 @@ namespace DariTn.Controllers.RestControllers
             return RedirectToAction("Delete", "CreditFormulas", new { id = id });
         }
 
+        [HttpGet]
+        public ActionResult ListCreditFormulas()
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/banks/get").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var Banks = response.Content.ReadAsAsync<List<Bank>>().Result;
+                List<SelectListItem> formulas = new List<SelectListItem>();
+
+                for (int i = 0; i < Banks.Count; i++)
+                {
+                    for (int j = 0; j < Banks.ElementAt(i).CreditFormulas.Count; j++)
+                    {
+                        formulas.Add(new SelectListItem
+                        {
+                            Value = Banks.ElementAt(i).CreditFormulas.ElementAt(j).id.ToString(),
+                            Text = Banks.ElementAt(i).CreditFormulas.ElementAt(j).ToString()
+                        });
+                    }
+                }
+
+                var countrytip = new SelectListItem()
+                {
+                    Value = null,
+                    Text = "--- select formula ---"
+                };
+
+                formulas.Insert(0, countrytip);
+                SelectList liste = new SelectList(formulas, "Value", "Text");
+
+                var credit = new CreditNewViewModel()
+                {
+                    Formulas = liste
+                };
+
+                return View(credit);
+            }
+            else
+            {
+                ViewBag.result = "error";
+                return View(new List<Bank>());
+            }
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
