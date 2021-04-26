@@ -226,11 +226,21 @@ namespace DariTn.Controllers.RestControllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Email(int? id, [Bind(Include = "Sender, Subject, Body")] EmailViewModel email)
         {
             HttpClient httpClient = new HttpClient();
-            httpClient.PostAsJsonAsync<EmailViewModel>("http://localhost:8081/Dari/servlet/clients/1/credits/"+id+"/email", email).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+            EmailViewModel test = new EmailViewModel();
+            test.Body = "test";
+            test.Sender="daritn4@gmail.com";
+            test.Subject = "test";
+            httpClient.PostAsJsonAsync<EmailViewModel>("http://localhost:8081/Dari/servlet/clients/1/credits/"+id+"/email", test).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult SMS(int ?id)
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.PostAsync("http://localhost:8081/Dari/servlet/clients/1/credits/"+id+"/sms", null).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
             return RedirectToAction("Index");
         }
 
