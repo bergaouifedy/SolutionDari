@@ -442,6 +442,9 @@
     <Content Include="img\sel3.jpg" />
     <Content Include="img\sel4.jpg" />
     <Content Include="img\sel5.jpg" />
+    <Content Include="img\selling-img\apartment.jpg" />
+    <Content Include="img\selling-img\immeuble.jpg" />
+    <Content Include="img\selling-img\office.jpg" />
     <Content Include="img\selling-img\sel-img1.jpg" />
     <Content Include="img\selling-img\sel-img2.jpg" />
     <Content Include="img\selling-img\sel-img3.jpg" />
@@ -452,6 +455,7 @@
     <Content Include="img\selling-img\sel-img8.jpg" />
     <Content Include="img\selling-img\sel-img9.jpg" />
     <Content Include="img\twitter.svg" />
+    <Content Include="js\checkedSelim.js" />
     <Content Include="js\jquery.easing.js" />
     <Content Include="js\jquery.easing.min.js" />
     <Content Include="js\jquery.js" />
@@ -663,6 +667,8 @@
     <Content Include="Views\Orders\OrdersW.cshtml" />
     <Content Include="Views\Orders\OrdersF.cshtml" />
     <Content Include="Views\Orders\DetailsAdmin.cshtml" />
+    <Content Include="Views\AssetAdvs\Target1.cshtml" />
+    <Content Include="Views\AssetAdvs\Target2.cshtml" />
     <Content Include="Views\Localisations\MyAdvs.cshtml" />
   </ItemGroup>
   <ItemGroup>
