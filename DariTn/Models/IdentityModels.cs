@@ -45,5 +45,9 @@ namespace DariTn.Models
         public System.Data.Entity.DbSet<DariTn.Models.Entities.Credit> Credits { get; set; }
 
         public System.Data.Entity.DbSet<DariTn.Models.EmailViewModel> EmailViewModals { get; set; }
+
+        public System.Data.Entity.DbSet<DariTn.Models.Entities.Insurance> Insurances { get; set; }
+
+        public System.Data.Entity.DbSet<DariTn.Models.Entities.BoughtAsset> BoughtAssets { get; set; }
     }
 }

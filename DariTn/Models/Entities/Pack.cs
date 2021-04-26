@@ -71,6 +71,11 @@ namespace DariTn.Models.Entities
 
 		public string description { get; set; }
 
+        public string afficher()
+        {
+            return "GarageP: " + garagePrice + "\n PoolP: " + poolPrice + "\n PoolP: " + poolPrice + "\n AppartementP: " + appartementPrice + "\n type:" + type;
+        }
+
 		InsuranceAgency insuranceAgency { get; set; }
 	}
 }
