@@ -166,20 +166,13 @@ namespace DariTn.Controllers.RestControllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult AddComplaint()
-        {
-            Complaint comp = new Complaint();
-            if (ModelState.IsValid)
-            {
-                HttpClient client = new HttpClient();
-            String baseAddress = "http://localhost:44362/";
-            client.PostAsJsonAsync<Complaint>("http://localhost:8081/Dari/servlet/addComplaint/" + iduser, comp).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
-            return RedirectToAction("AddComplaint");
-            }
 
-            return View("AddComplaint");
+        public ActionResult AddComplaint(int? id)
+        {
+
+            return RedirectToAction("Create", "Complaints",new { id=id});
+            
+
         }
 
         // POST: AssetAdvs/Create
@@ -347,13 +340,13 @@ namespace DariTn.Controllers.RestControllers
             httpClient.BaseAddress = new Uri("https://localhost:44362");
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             string path = "http://localhost:8081/Dari/servlet/CategoryAvail/Apartment";
-         /*   if (!minprice1.Equals(""))
+            if (!minprice1.Equals(""))
             {
                  path = "http://localhost:8081/Dari/servlet/Price/" + minprice1 + "/" + maxprice1;
             } else if ((minprice1=="")&&(maxprice1==""))
             {
                  path = "http://localhost:8081/Dari/servlet/AvailableTrue";
-            }*/
+            }
              
 
             

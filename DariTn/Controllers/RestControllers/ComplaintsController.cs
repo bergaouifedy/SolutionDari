@@ -10,13 +10,14 @@ using DariTN.Models.Entities;
 using DariTn.Models;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using DariTn.Models.Entities;
 
 namespace DariTn.Controllers.RestControllers
 {
     public class ComplaintsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        private int iduser = 1;
         // GET: Complaints
         public ActionResult Index()
         {
@@ -58,13 +59,6 @@ namespace DariTn.Controllers.RestControllers
             }
         }
 
-     /*   public ActionResult AddComplaint(int iduser, Complaint comp)
-        {
-            HttpClient client = new HttpClient();
-            String baseAddress = "http://localhost:44362/";
-            client.PostAsJsonAsync<Complaint>("http://localhost:8081/Dari/servlet/addComplaint/" + iduser, comp).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
-            return RedirectToAction("Create");
-        }*/
 
         // GET: Complaints/Details/5
         public ActionResult Details(int? id)
@@ -82,7 +76,7 @@ namespace DariTn.Controllers.RestControllers
         }
 
         // GET: Complaints/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
             return View();
         }
@@ -90,16 +84,16 @@ namespace DariTn.Controllers.RestControllers
         // POST: Complaints/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,ref,description,status,creationDate")] Complaint complaint)
+        public ActionResult Create(int id,[Bind(Include = "description")] Complaint complaint)
         {
-            if (ModelState.IsValid)
-            {
-                db.Complaints.Add(complaint);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
 
-            return View(complaint);
+            AssetAdv aa = new AssetAdv();
+            aa.id = id;
+            complaint.asset = aa;
+            HttpClient client = new HttpClient();
+            String baseAddress = "http://localhost:44362/";
+            client.PostAsJsonAsync<Complaint>("http://localhost:8081/Dari/servlet/addComplaint/" + iduser, complaint).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+            return RedirectToAction("Index", "AssetAdvs");
         }
 
         // GET: Complaints/Edit/5
@@ -144,7 +138,7 @@ namespace DariTn.Controllers.RestControllers
             httpClient.BaseAddress = new Uri("https://localhost:44362/");
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             httpClient.DeleteAsync("http://localhost:8081/Dari/servlet/Complaint/delete/" + id).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
-            return RedirectToAction("Index");
+            return RedirectToAction("ComplaintRequests");
         }
 
         public ActionResult DeleteAdmin(int? id)
