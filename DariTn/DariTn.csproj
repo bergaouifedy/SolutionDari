@@ -670,6 +670,8 @@
     <Content Include="Views\AssetAdvs\Target1.cshtml" />
     <Content Include="Views\AssetAdvs\Target2.cshtml" />
     <Content Include="Views\Localisations\MyAdvs.cshtml" />
+    <Content Include="Views\AssetAdvs\Search.cshtml" />
+    <Content Include="Views\AssetAdvs\Search1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

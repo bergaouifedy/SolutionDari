@@ -98,6 +98,8 @@ namespace DariTn.Controllers.RestControllers
         }
 
 
+
+
         public ActionResult Target1()
         {
             HttpClient httpClient = new HttpClient();
@@ -299,5 +301,75 @@ namespace DariTn.Controllers.RestControllers
             }
             base.Dispose(disposing);
         }
+
+
+        // LES FONCTIONS GET MTE3 L FILTRE
+
+        [HttpPost]
+        public ActionResult Search(FormCollection collection)
+        {
+
+
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            string path = "";
+            if (!string.IsNullOrEmpty(collection["checkBox1"])) {
+                string checkBox1 = collection["checkBox1"];
+                bool checkBox1B = Convert.ToBoolean(checkBox1);
+                string pricemax = collection["maxprice"];
+                string pricemin = collection["minprice"];
+                
+                path = "http://localhost:8081/Dari/servlet/Price/" + pricemin + "/" + pricemax;
+                
+            }
+            Console.Write(path);
+
+            HttpResponseMessage response = httpClient.GetAsync(path).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var aa = response.Content.ReadAsAsync<IEnumerable<AssetAdv>>().Result;
+                return View(aa);
+            }
+            else
+            {
+                ViewBag.result = "error";
+                return View(new List<AssetAdv>());
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Search1(string maxprice1,string minprice1)
+        {
+
+
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            string path = "http://localhost:8081/Dari/servlet/CategoryAvail/Apartment";
+         /*   if (!minprice1.Equals(""))
+            {
+                 path = "http://localhost:8081/Dari/servlet/Price/" + minprice1 + "/" + maxprice1;
+            } else if ((minprice1=="")&&(maxprice1==""))
+            {
+                 path = "http://localhost:8081/Dari/servlet/AvailableTrue";
+            }*/
+             
+
+            
+
+            HttpResponseMessage response = httpClient.GetAsync(path).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var aa = response.Content.ReadAsAsync<IEnumerable<AssetAdv>>().Result;
+                return View(aa);
+            }
+            else
+            {
+                ViewBag.result = "error";
+                return View(new List<AssetAdv>());
+            }
+        }
+
     }
 }

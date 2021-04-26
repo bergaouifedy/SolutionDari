@@ -4,123 +4,128 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-@{ int idlogged = 1;} 
+@{ int idlogged = 1;}
 <div id="selling" class="second-theme-selling">
     <div class="tab-content container-fluid">
+        <p>
+            @Html.ActionLink("Post Your Advertisement", "Create", null, new { @class = "btn btn-primary btn-lg" })
+        </p>
         <div id="tab-villa" class="tab-pane active container">
 
-            <div style="background-color:antiquewhite; width:25%;float:left;">
-                <div>
+            <form action="/AssetAdvs/Search1" method="POST">
+                <div style="background-color:antiquewhite; width:25%;float:left;">
                     <div>
-                        <h2>Search Option</h2>
-                        <div class="row">
+                        <div>
+                            <h2>Search Option</h2>
+                            <div class="row">
 
-                            <div class="col-xxs-12 col-xs-12">
-                                <section>
-                                    <label for="class">Sort by:</label>
-                                    <select class="cs-select cs-skin-border input-half">
-                                        <option value="" disabled selected>Any</option>
-                                        <option value="1">Highest Price</option>
-                                        <option value="2">Lowest Price</option>
-                                        <option value="3">Highest Surface</option>
-                                        <option value="4">Lowest Surface</option>
-                                    </select>
-                                </section>
-                            </div>
-
-                            <div class="col-xxs-12 col-xs-12">
-                                <div style="width:49%; ">
-                                    <input type="checkbox" id="box1" value="1" onclick="terms_changed1(this)" />
-                                    <label for="minmax">Min/Max Price</label>
+                                <div class="col-xxs-12 col-xs-12">
+                                    <section>
+                                        <label for="class">Sort by:</label>
+                                        <select class="cs-select cs-skin-border input-half">
+                                            <option value="" disabled selected>Any</option>
+                                            <option value="1">Highest Price</option>
+                                            <option value="2">Lowest Price</option>
+                                            <option value="3">Highest Surface</option>
+                                            <option value="4">Lowest Surface</option>
+                                        </select>
+                                    </section>
                                 </div>
 
-                                <div style="width:49%; float:left;">
-                                    <label for="maxprice">Max Price:</label>
-                                    <input type="text" class="form-control" name="maxprice" id="maxprice" placeholder="Maximum price" disabled />
+                                <div class="col-xxs-12 col-xs-12">
+                                    <div style="width:49%; ">
+                                        <input type="checkbox" name="checkBox1" id="box1" value="true" onclick="terms_changed1(this)" />
+                                        <label for="minmax">Min/Max Price</label>
+                                    </div>
 
-                                </div>
-                                <div style="width:49%; float:left; margin-left:2%;">
-                                    <label for="minprice">Min Price:</label>
-                                    <input type="text" class="form-control" name="minprice" id="minprice" placeholder="Minimum price" disabled />
-                                </div>
-                                <br />
-                            </div>
-                            <div class="col-xxs-12 col-xs-12">
-                                <section>
+                                    <div style="width:49%; float:left;">
+                                        <label for="maxprice">Max Price:</label>
+                                        <input type="text" class="form-control" name="maxprice" id="maxprice" placeholder="Maximum price" disabled />
+                                        <input type="text" class="form-control" name="maxprice1" id="maxprice1" placeholder="Max price" />
+                                        <input type="text" class="form-control" name="minprice1" id="minprice1" placeholder="Min price" />
+                                    </div>
+                                    <div style="width:49%; float:left; margin-left:2%;">
+                                        <label for="minprice">Min Price:</label>
+                                        <input type="text" class="form-control" name="minprice" id="minprice" placeholder="Minimum price" disabled />
+                                    </div>
                                     <br />
-                                    <input type="checkbox" id="box2" value="2" onclick="terms_changed2(this)" />
-                                    <label for="class">Category:</label>
-                                    <select class="cs-select cs-skin-border" disabled id="categ">
-                                        <option value="" disabled selected>Any</option>
-                                        <option value="1">Apartment</option>
-                                        <option value="2">Office</option>
-                                        <option value="3">House</option>
-                                        <option value="4">Land</option>
-                                    </select>
-                                </section>
-                                <br />
-                            </div>
-                            <div class="col-xxs-12 col-xs-12">
-                                <div style="width:49%; ">
-                                    <input type="checkbox" id="box3" value="3" onclick="terms_changed3(this)" />
-                                    <label for="state">State</label>
-                                    <input type="text" class="form-control" name="state" id="state" placeholder="State Name" disabled />
                                 </div>
-                            </div>
-                            <div class="col-xxs-12 col-xs-12">
-                                <div style="width:49%; ">
-                                    <input type="checkbox" id="box4"  value="4" onclick="terms_changed4(this)" />
-                                    <label for="city">City</label>
-                                    <input type="text" class="form-control" name="city" id="city" placeholder="City Name" disabled />
-                                </div>
-                            </div>
-
-                            <div class="col-xxs-12 col-xs-12">
-                                <div style="width:49%; ">
-                                    <input type="checkbox" id="box5" value="5" onclick="terms_changed5(this)" />
-                                    <label for="postal">Postal Code</label>
-                                    <input type="text" class="form-control" name="postal" id="postal" placeholder="Postal Code Number" disabled />
-                                </div>
-                            </div>
-
-                            <div class="col-xxs-12 col-xs-12">
-                                <div style="width:49%; ">
-                                    <input type="checkbox" id="box6" value="6" onclick="terms_changed6(this)" />
-                                    <label for="nbrRooms">Number of Rooms</label>
-                                    <input type="text" class="form-control" name="nbrRooms" id="nbrRooms" placeholder="Number of Rooms" disabled />
-                                </div>
-                            </div>
-
-                            <div class="col-xxs-12 col-xs-12">
-                                <section>
+                                <div class="col-xxs-12 col-xs-12">
+                                    <section>
+                                        <br />
+                                        <input type="checkbox" name="checkBox2" id="box2" value="true" onclick="terms_changed2(this)" />
+                                        <label for="class">Category:</label>
+                                        <select class="cs-select cs-skin-border" disabled id="categ">
+                                            <option value="" disabled selected>Any</option>
+                                            <option value="1">Apartment</option>
+                                            <option value="2">Office</option>
+                                            <option value="3">House</option>
+                                            <option value="4">Land</option>
+                                        </select>
+                                    </section>
                                     <br />
-                                    <input type="checkbox" id="box7" value="7" onclick="terms_changed7(this)" />
-                                    <label for="class">Options:</label>
-                                    <select class="cs-select cs-skin-border" disabled id="bools">
-                                        <option value="" disabled selected>Any</option>
-                                        <option value="1">Is Furnished</option>
-                                        <option value="2">Has a Garage</option>
-                                        <option value="3">Has a Parking Spot</option>
-                                    </select>
-                                </section>
-                            </div>
+                                </div>
+                                <div class="col-xxs-12 col-xs-12">
+                                    <div style="width:49%; ">
+                                        <input type="checkbox" id="box3" name="checkBox3" value="true" onclick="terms_changed3(this)" />
+                                        <label for="state">State</label>
+                                        <input type="text" class="form-control" name="state" id="state" placeholder="State Name" disabled />
+                                    </div>
+                                </div>
+                                <div class="col-xxs-12 col-xs-12">
+                                    <div style="width:49%; ">
+                                        <input type="checkbox" id="box4" name="checkBox4" value="true" onclick="terms_changed4(this)" />
+                                        <label for="city">City</label>
+                                        <input type="text" class="form-control" name="city" id="city" placeholder="City Name" disabled />
+                                    </div>
+                                </div>
 
-                            
-                            <div class="col-xxs-12 col-xs-12 text-center">
-                                <br />
-                                <p><a class="btn btn-primary btn-lg" href="#">Search</a></p>
+                                <div class="col-xxs-12 col-xs-12">
+                                    <div style="width:49%; ">
+                                        <input type="checkbox" id="box5" name="checkBox5" value="true" onclick="terms_changed5(this)" />
+                                        <label for="postal">Postal Code</label>
+                                        <input type="text" class="form-control" name="postal" id="postal" placeholder="Postal Code Number" disabled />
+                                    </div>
+                                </div>
+
+                                <div class="col-xxs-12 col-xs-12">
+                                    <div style="width:49%; ">
+                                        <input type="checkbox" id="box6" name="checkBox6" value="true" onclick="terms_changed6(this)" />
+                                        <label for="nbrRooms">Number of Rooms</label>
+                                        <input type="text" class="form-control" name="nbrRooms" id="nbrRooms" placeholder="Number of Rooms" disabled />
+                                    </div>
+                                </div>
+
+                                <div class="col-xxs-12 col-xs-12">
+                                    <section>
+                                        <br />
+                                        <input type="checkbox" id="box7" name="checkBox7" value="true" onclick="terms_changed7(this)" />
+
+
+                                        <label for="class">Options:</label>
+                                        <select class="cs-select cs-skin-border" disabled id="bools">
+                                            <option value="" disabled selected>Any</option>
+                                            <option value="1">Is Furnished</option>
+                                            <option value="2">Has a Garage</option>
+                                            <option value="3">Has a Parking Spot</option>
+                                        </select>
+                                    </section>
+                                </div>
+
+
+                                <div class="col-xxs-12 col-xs-12 text-center">
+                                    <br />
+                                    <input type="submit" value="Search" id="ButtonSubmit" class="btn btn-primary btn-lg" />
+                                </div>
                             </div>
                         </div>
-                        </div>
+                    </div>
+                    <div class="map" style="background-image: url(~/img/home.jpg);">
+                    </div>
                 </div>
-                <div class="map" style="background-image: url(~/img/home.jpg);">
-                </div>
-            </div>
+
+            </form>
 
             <div class="row">
                 @foreach (var item in Model)
@@ -151,17 +156,17 @@
                                     @Html.DisplayFor(modelItem => item.User.firstName)
                                     @Html.DisplayFor(modelItem => item.category)
                                 </p>
-                                @Html.ActionLink("More Information", "Details", new { id = item.id }, new { @class = "infos"})
+                                @Html.ActionLink("More Information", "Details", new { id = item.id }, new { @class = "infos" })
 
                                 <!-- @Html.ActionLink("Complain", "AddComplaint")-->
                                 @{
-                                //Html.ActionLink(linkText: "Complainn", actionName: "AddComplaint", controllerName: "Complaints", routeValues: new { id = idlogged }, htmlAttributes: null)
+                                    //Html.ActionLink(linkText: "Complainn", actionName: "AddComplaint", controllerName: "Complaints", routeValues: new { id = idlogged }, htmlAttributes: null)
                                 }
                                 @if (item.localisation != null)
                                 {
-                                @Html.ActionLink(linkText: "Location", actionName: "Index", controllerName: "Localisations", routeValues: new { id = item.id }, htmlAttributes: null)
+                                    @Html.ActionLink(linkText: "Location", actionName: "Index", controllerName: "Localisations", routeValues: new { id = item.id }, htmlAttributes: null)
                                 }
-                             
+
                             </div>
                         </div>
                     </div>
