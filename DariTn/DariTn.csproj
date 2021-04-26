@@ -187,11 +187,8 @@
     <Compile Include="Controllers\RestControllers\BanksController.cs" />
     <Compile Include="Controllers\RestControllers\ComplaintsController.cs" />
     <Compile Include="Controllers\RestControllers\CreditFormulasController.cs" />
-
     <Compile Include="Controllers\RestControllers\CreditsController.cs" />
-
     <Compile Include="Controllers\RestControllers\FurnitureAdvsController.cs" />
-
     <Compile Include="Controllers\RestControllers\InsuranceAgenciesController.cs" />
     <Compile Include="Controllers\RestControllers\OrdersController.cs" />
     <Compile Include="Controllers\RestControllers\LocalisationsController.cs" />
@@ -439,6 +436,9 @@
     <Content Include="img\sel3.jpg" />
     <Content Include="img\sel4.jpg" />
     <Content Include="img\sel5.jpg" />
+    <Content Include="img\selling-img\apartment.jpg" />
+    <Content Include="img\selling-img\immeuble.jpg" />
+    <Content Include="img\selling-img\office.jpg" />
     <Content Include="img\selling-img\sel-img1.jpg" />
     <Content Include="img\selling-img\sel-img2.jpg" />
     <Content Include="img\selling-img\sel-img3.jpg" />
@@ -449,6 +449,7 @@
     <Content Include="img\selling-img\sel-img8.jpg" />
     <Content Include="img\selling-img\sel-img9.jpg" />
     <Content Include="img\twitter.svg" />
+    <Content Include="js\checkedSelim.js" />
     <Content Include="js\jquery.easing.js" />
     <Content Include="js\jquery.easing.min.js" />
     <Content Include="js\jquery.js" />
@@ -601,14 +602,12 @@
     <Content Include="Views\Packs\Details.cshtml" />
     <Content Include="Views\Packs\Edit.cshtml" />
     <Content Include="Views\Packs\Index.cshtml" />
-
     <Content Include="Views\Credits\Create.cshtml" />
     <Content Include="Views\Credits\Delete.cshtml" />
     <Content Include="Views\Credits\Compare.cshtml" />
     <Content Include="Views\Credits\Edit.cshtml" />
     <Content Include="Views\Credits\Index.cshtml" />
     <Content Include="Views\Credits\Email.cshtml" />
-
     <Content Include="Views\FurnitureAdvs\Create.cshtml" />
     <Content Include="Views\FurnitureAdvs\Delete.cshtml" />
     <Content Include="Views\FurnitureAdvs\Details.cshtml" />
@@ -647,13 +646,13 @@
     <Content Include="Views\AssetAdvs\Sale.cshtml" />
     <Content Include="Views\AssetAdvs\Rent.cshtml" />
     <Content Include="Views\AssetAdvs\MyAdvs.cshtml" />
-
     <Content Include="Views\Orders\OrdersNoAccepted.cshtml" />
     <Content Include="Views\Orders\OrdersInProg.cshtml" />
     <Content Include="Views\Orders\OrdersW.cshtml" />
     <Content Include="Views\Orders\OrdersF.cshtml" />
     <Content Include="Views\Orders\DetailsAdmin.cshtml" />
-
+    <Content Include="Views\AssetAdvs\Target1.cshtml" />
+    <Content Include="Views\AssetAdvs\Target2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

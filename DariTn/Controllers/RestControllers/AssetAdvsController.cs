@@ -98,13 +98,34 @@ namespace DariTn.Controllers.RestControllers
         }
 
 
-        public ActionResult TargetedAdv()
+        public ActionResult Target1()
         {
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("https://localhost:44362");
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/getTargetAsset/"+iduser).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var aa = response.Content.ReadAsAsync<IEnumerable<AssetAdv>>().Result;
+                return View(aa);
+            }
+            else
+            {
+                ViewBag.result = "error";
+                return View(new List<AssetAdv>());
+            }
+
+
+        }
+
+        public ActionResult Target2()
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/getTargetAsset2/" + iduser).Result;
             if (response.IsSuccessStatusCode)
             {
                 var aa = response.Content.ReadAsAsync<IEnumerable<AssetAdv>>().Result;
@@ -206,7 +227,7 @@ namespace DariTn.Controllers.RestControllers
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("https://localhost:44362/");
             HttpResponseMessage tokenResponse = httpClient.PutAsJsonAsync<AssetAdv>("http://localhost:8081/Dari/servlet/updateAssetAdv/" + id, assetAdv).Result;
-            return RedirectToAction("Index");
+            return RedirectToAction("MyAdvs");
         }
 
         // GET: AssetAdvs/Delete/5
@@ -222,7 +243,7 @@ namespace DariTn.Controllers.RestControllers
             httpClient.BaseAddress = new Uri("https://localhost:44362/");
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             httpClient.DeleteAsync("http://localhost:8081/Dari/servlet/AssetAdv/delete/" + id).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
-            return RedirectToAction("Index");
+            return RedirectToAction("MyAdvs");
 
         }
 

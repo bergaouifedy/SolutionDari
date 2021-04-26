@@ -1,18 +1,15 @@
 ﻿@model IEnumerable<DariTn.Models.Entities.AssetAdv>
-
 @{
-    ViewBag.Title = "Rent";
+    ViewBag.Title = "Advertisements based on your search history";
 }
-
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Rent</title>
+    <title>Advertisements based on your location</title>
 </head>
 <body>
-
     @{ int idlogged = 1;}
     <div id="selling" class="second-theme-selling">
         <div class="tab-content container-fluid">
@@ -22,29 +19,34 @@
                     {
                         <div class="col-xs-12 col-sm-6 col-md-3">
                             <div class="sub-box">
-                                @if (item.category.Equals("Apartment")) {
-                                <img class="img-responsive" src="~/img/selling-img/apartment.jpg">
-                                } else if (item.category.Equals("House")) { 
-                                <img class="img-responsive" src="~/img/selling-img/sel-img6.jpg">
-                                } else if (item.category.Equals("Office")) { 
-                                <img class="img-responsive" src="~/img/selling-img/office.jpg">
+                                @if (item.category.Equals("Apartment"))
+                                {
+                                    <img class="img-responsive" src="~/img/selling-img/apartment.jpg">
+                                }
+                                else if (item.category.Equals("House"))
+                                {
+                                    <img class="img-responsive" src="~/img/selling-img/sel-img2.jpg">
+                                }
+                                else if (item.category.Equals("Office"))
+                                {
+                                    <img class="img-responsive" src="~/img/selling-img/office.jpg">
                                 }
                                 <div class="sub-box-content">
                                     <h5>@Html.DisplayFor(modelItem => item.category)</h5>
                                     <p class="description text-muted">
 
                                         @Html.DisplayFor(modelItem => item.description)
+                                        <br />Address: @Html.DisplayFor(modelItem => item.street)
+                                        <br />City: @Html.DisplayFor(modelItem => item.city)
+                                        <br />State: @Html.DisplayFor(modelItem => item.state)
+
                                     </p>
 
                                     @Html.ActionLink("More Information", "Details", null, new { @class = "infos", data_toggle = "modal", data_target = "#description" })
-
-
-                                    <!-- @Html.ActionLink("Complain", "AddComplaint")-->
-                                    @{
-                                        //Html.ActionLink(linkText: "Complainn", actionName: "AddComplaint", controllerName: "Complaints", routeValues: new { id = idlogged }, htmlAttributes: null)
+                                    @if (item.localisation != null)
+                                    {
+                                        @Html.ActionLink(linkText: "Localisation", actionName: "Index", controllerName: "Localisations", routeValues: new { id = item.id }, htmlAttributes: null)
                                     }
-                                    @Html.ActionLink(linkText: "Localisation", actionName: "Index", controllerName: "Localisations", routeValues: new { id = item.id }, htmlAttributes: null)
-
                                 </div>
                             </div>
                         </div>
