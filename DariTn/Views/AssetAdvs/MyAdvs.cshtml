@@ -35,15 +35,11 @@
                                     }
                                         </p>
 
-                                        @Html.ActionLink("More Information", "Details", null, new { @class = "infos", data_toggle = "modal", data_target = "#description" })
+                                        @Html.ActionLink("More Information", "Details", new { id = item.id }, new { @class = "infos" })
                                         @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "infos" })
                                         @if (item.localisation == null)
                                         {
                                             @Html.ActionLink(linkText: "Create Localisation", actionName: "Create", controllerName: "Localisations", routeValues: new { id = item.id }, htmlAttributes: null)
-                                        }
-                                        else
-                                        {
-                                            @Html.ActionLink(linkText: "Localisation", actionName: "Index", controllerName: "Localisations", routeValues: new { id = item.id }, htmlAttributes: null)
                                         }
                                     </div>
                             </div>
