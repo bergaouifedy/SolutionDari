@@ -142,6 +142,18 @@ namespace DariTn.Controllers.RestControllers
 
         }
 
+
+        public ActionResult AddGuarantee(int? id)
+        {
+            return RedirectToAction("Create", "Guarantees", new { id = id });
+        }
+
+        public ActionResult GetGuarantees(int? id)
+        {
+            return RedirectToAction("Index", "Guarantees", new { id = id });
+        }
+
+
         // GET: AssetAdvs/Details/5
         public ActionResult Details(int? id)
         {
