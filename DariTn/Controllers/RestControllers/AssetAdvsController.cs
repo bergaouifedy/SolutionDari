@@ -10,7 +10,6 @@ using System.Web;
 using System.Web.Mvc;
 using DariTn.Models;
 using DariTn.Models.Entities;
-using DariTN.Models.Entities;
 
 namespace DariTn.Controllers.RestControllers
 {
