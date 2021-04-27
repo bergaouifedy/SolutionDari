@@ -48,12 +48,14 @@
 
                                     @if (item.localisation == null)
                                     {
-                                        @Html.ActionLink(linkText: "Create Localisation", actionName: "Create", controllerName: "Localisations", routeValues: new { id = item.id }, htmlAttributes: new { @class = "infos" })
+
+                                        @Html.ActionLink(linkText: "Add Location", actionName: "Create", controllerName: "Localisations", routeValues: new { id = item.id }, htmlAttributes: new { @class = "infos" })
                                     }
                                     @if (item.virtualTour == null)
                                     {
                                         @Html.ActionLink(linkText: "Create Virtual Tour", actionName: "Create", controllerName: "VirtualTours", routeValues: new { id = item.id }, htmlAttributes: new { @class = "infos" })
                                     }
+
                                 </div>
                                         
                             </div>

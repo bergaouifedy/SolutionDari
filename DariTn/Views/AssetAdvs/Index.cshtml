@@ -23,8 +23,8 @@
                                 <div class="col-xxs-12 col-xs-12">
                                     <section>
                                         <label for="class">Sort by:</label>
-                                        <select class="cs-select cs-skin-border input-half">
-                                            <option value="" disabled selected>Any</option>
+                                        <select class="cs-select cs-skin-border input-half" name="sort">
+                                            <option value="0">Any</option>
                                             <option value="1">Highest Price</option>
                                             <option value="2">Lowest Price</option>
                                             <option value="3">Highest Surface</option>
@@ -35,28 +35,18 @@
 
                                 <div class="col-xxs-12 col-xs-12">
                                     <div style="width:49%; ">
-                                        <input type="checkbox" name="checkBox1" id="box1" value="true" onclick="terms_changed1(this)" />
-                                        <label for="minmax">Min/Max Price</label>
+                                        <input type="checkbox" id="box1" name="checkBox1" value="true" onclick="terms_changed1(this)" />
+                                        <label for="state">Price</label>
+                                        <input type="text" class="form-control" name="price" id="price"  placeholder="Price" disabled />
                                     </div>
-
-                                    <div style="width:49%; float:left;">
-                                        <label for="maxprice">Max Price:</label>
-                                        <input type="text" class="form-control" name="maxprice" id="maxprice" placeholder="Maximum price" disabled />
-                                        <input type="text" class="form-control" name="maxprice1" id="maxprice1" placeholder="Max price" />
-                                        <input type="text" class="form-control" name="minprice1" id="minprice1" placeholder="Min price" />
-                                    </div>
-                                    <div style="width:49%; float:left; margin-left:2%;">
-                                        <label for="minprice">Min Price:</label>
-                                        <input type="text" class="form-control" name="minprice" id="minprice" placeholder="Minimum price" disabled />
-                                    </div>
-                                    <br />
                                 </div>
+
                                 <div class="col-xxs-12 col-xs-12">
                                     <section>
                                         <br />
                                         <input type="checkbox" name="checkBox2" id="box2" value="true" onclick="terms_changed2(this)" />
                                         <label for="class">Category:</label>
-                                        <select class="cs-select cs-skin-border" disabled id="categ">
+                                        <select class="cs-select cs-skin-border" name="category" disabled id="categ">
                                             <option value="" disabled selected>Any</option>
                                             <option value="1">Apartment</option>
                                             <option value="2">Office</option>
@@ -104,7 +94,7 @@
 
 
                                         <label for="class">Options:</label>
-                                        <select class="cs-select cs-skin-border" disabled id="bools">
+                                        <select class="cs-select cs-skin-border" name="option" disabled id="bools">
                                             <option value="" disabled selected>Any</option>
                                             <option value="1">Is Furnished</option>
                                             <option value="2">Has a Garage</option>
@@ -145,29 +135,21 @@
                             {
                                 <img class="img-responsive" src="~/img/selling-img/office.jpg">
                             }
-                            <div class="sub-box-content">
-                                <h5>@Html.DisplayFor(modelItem => item.category)</h5>
-                                <p class="description text-muted">
+                        <div class="sub-box-content">
+                            <h5>@Html.DisplayFor(modelItem => item.category)</h5>
+                            <p class="description text-muted">
 
-                                    @Html.DisplayFor(modelItem => item.description)
-                                    @Html.DisplayFor(Model => item.userid)
-                                    @Html.DisplayFor(modelItem => item.category)
-                                    @Html.DisplayFor(modelItem => item.User.id)
-                                    @Html.DisplayFor(modelItem => item.User.firstName)
-                                    @Html.DisplayFor(modelItem => item.category)
-                                </p>
-                                @Html.ActionLink("More Information", "Details", new { id = item.id }, new { @class = "infos" })
+                                @Html.DisplayFor(modelItem => item.description)
+                            </p>
+                            @Html.ActionLink("More Information", "Details", new { id = item.id }, new { @class = "infos" })
+                            @Html.ActionLink("Complain", "AddComplaint", new { id = item.id }, new { @class = "infos" })
 
-                                <!-- @Html.ActionLink("Complain", "AddComplaint")-->
-                                @{
-                                    //Html.ActionLink(linkText: "Complainn", actionName: "AddComplaint", controllerName: "Complaints", routeValues: new { id = idlogged }, htmlAttributes: null)
-                                }
-                                @if (item.localisation != null)
-                                {
-                                    @Html.ActionLink(linkText: "Location", actionName: "Index", controllerName: "Localisations", routeValues: new { id = item.id }, htmlAttributes: null)
-                                }
+                            @if (item.localisation != null)
+                            {
+                             @Html.ActionLink("Location","Index","Localisations",new { id = item.id }, new { @class = "infos" })
+                            }
 
-                            </div>
+                        </div>
                         </div>
                     </div>
 

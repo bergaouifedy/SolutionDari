@@ -166,20 +166,13 @@ namespace DariTn.Controllers.RestControllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult AddComplaint()
-        {
-            Complaint comp = new Complaint();
-            if (ModelState.IsValid)
-            {
-                HttpClient client = new HttpClient();
-            String baseAddress = "http://localhost:44362/";
-            client.PostAsJsonAsync<Complaint>("http://localhost:8081/Dari/servlet/addComplaint/" + iduser, comp).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
-            return RedirectToAction("AddComplaint");
-            }
 
-            return View("AddComplaint");
+        public ActionResult AddComplaint(int? id)
+        {
+
+            return RedirectToAction("Create", "Complaints",new { id=id});
+            
+
         }
 
         // POST: AssetAdvs/Create
@@ -306,25 +299,29 @@ namespace DariTn.Controllers.RestControllers
         // LES FONCTIONS GET MTE3 L FILTRE
 
         [HttpPost]
-        public ActionResult Search(FormCollection collection)
+        public ActionResult Search(string postal, string nbrRooms, string state, string city)
         {
+            String path = "";
+        //    if (state != "")
+          //  {
+          //      path = "http://localhost:8081/Dari/servlet/State/" + state;
+        //    } else if (postal != "")
+            //{
+           //     path = "http://localhost:8081/Dari/servlet/PostalCode/" + postal;
+         //   }
+          /*  else*/ if (city != "")
+            {
+                path = "http://localhost:8081/Dari/servlet/City/" + city;
+            }
+         /*   else
+            {
+                path = "http://localhost:8081/Dari/servlet/NbrRooms/" + nbrRooms;
+            }*/
 
 
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("https://localhost:44362");
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            string path = "";
-            if (!string.IsNullOrEmpty(collection["checkBox1"])) {
-                string checkBox1 = collection["checkBox1"];
-                bool checkBox1B = Convert.ToBoolean(checkBox1);
-                string pricemax = collection["maxprice"];
-                string pricemin = collection["minprice"];
-                
-                path = "http://localhost:8081/Dari/servlet/Price/" + pricemin + "/" + pricemax;
-                
-            }
-            Console.Write(path);
-
             HttpResponseMessage response = httpClient.GetAsync(path).Result;
             if (response.IsSuccessStatusCode)
             {
@@ -337,27 +334,218 @@ namespace DariTn.Controllers.RestControllers
                 return View(new List<AssetAdv>());
             }
         }
-
         [HttpPost]
-        public ActionResult Search1(string maxprice1,string minprice1)
+        public ActionResult Search1(string postal, string nbrRooms, string state,string city, string price, string category,string option, string sort)
         {
+            String path = "";
+                if (state!=null)
+            {
+                if (sort.Equals("0"))
+                {
+                    path = "http://localhost:8081/Dari/servlet/State/" + state;
+                }
+                else if (sort.Equals("1"))
+                {
+                    path = "http://localhost:8081/Dari/servlet/StatePriceDesc/" + state;
+                } else if (sort.Equals("2"))
+                {
+                    path = "http://localhost:8081/Dari/servlet/StatePriceAsc/" + state;
+                }
+                else if (sort.Equals("3"))
+                {
+                    path = "http://localhost:8081/Dari/servlet/StateSurfDesc/" + state;
+                }
+                else if (sort.Equals("4"))
+                {
+                    path = "http://localhost:8081/Dari/servlet/StateSurfAsc/" + state;
+                }
+            }
+            else if(price  != null)
+            {
+                if (sort.Equals("0"))
+                {
+                    path = "http://localhost:8081/Dari/servlet/Price/" + price;
+                }
+                
+                else if (sort.Equals("3"))
+                {
+                    path = "http://localhost:8081/Dari/servlet/PriceSurfDesc/" + price;
+                }
+                else if (sort.Equals("4"))
+                {
+                    path = "http://localhost:8081/Dari/servlet/PriceSurfAsc/" + price;
+                }
+            } else if (postal != null)
+            {
+                if (sort.Equals("0"))
+                {
+                    path = "http://localhost:8081/Dari/servlet/PostalCode/" + postal;
+                }
+                else if(sort.Equals("1")) 
+                { 
+                    path = "http://localhost:8081/Dari/servlet/PostalCodePriceDesc/" + postal;
+                } else if (sort.Equals("2"))
+                {
+                    path = "http://localhost:8081/Dari/servlet/PostalCodePriceAsc/" + postal;
+                }
+                else if (sort.Equals("3"))
+                {
+                    path = "http://localhost:8081/Dari/servlet/PostalCodeSurfDesc/" + postal;
+                }
+                else if (sort.Equals("4"))
+                {
+                    path = "http://localhost:8081/Dari/servlet/PostalCodeSurfAsc/" + postal;
+                }
+
+            }
+            else if (city != null)
+            {
+                if (sort.Equals("0"))
+                {
+                    path = "http://localhost:8081/Dari/servlet/City/" + city;
+                }
+                else if (sort.Equals("1"))
+                {
+                    path = "http://localhost:8081/Dari/servlet/CityPriceDesc/" + city;
+                }
+                else if (sort.Equals("2"))
+                {
+                    path = "http://localhost:8081/Dari/servlet/CityPriceAsc/" + city;
+                }
+                else if (sort.Equals("3"))
+                {
+                    path = "http://localhost:8081/Dari/servlet/CitySurfDesc/" + city;
+                }
+                else if (sort.Equals("4"))
+                {
+                    path = "http://localhost:8081/Dari/servlet/CitySurfAsc/" + city;
+                }
+                
+            }
+            else if (nbrRooms !=null)
+            {
+                if (sort.Equals("0"))
+                {
+                    path = "http://localhost:8081/Dari/servlet/NbrRooms/" + nbrRooms;
+                }
+                else if (sort.Equals("1"))
+                {
+                    path = "http://localhost:8081/Dari/servlet/NbrRoomsPriceDesc/" + nbrRooms;
+                }
+                else if (sort.Equals("2"))
+                {
+                    path = "http://localhost:8081/Dari/servlet/NbrRoomsPriceAsc/" + nbrRooms;
+                }
+                else if (sort.Equals("3"))
+                {
+                    path = "http://localhost:8081/Dari/servlet/NbrRoomsSurfDesc/" + nbrRooms;
+                }
+                else if (sort.Equals("4"))
+                {
+                    path = "http://localhost:8081/Dari/servlet/NbrRoomsSurfAsc/" + nbrRooms;
+                }
+                
+            }
+            else if (category != null)
+            {
+                if (category.Equals("1"))
+                {
+                    path = "http://localhost:8081/Dari/servlet/CategoryAvail/Apartment";
+                } else if (category.Equals("2"))
+                {
+                    path = "http://localhost:8081/Dari/servlet/CategoryAvail/Office";
+                }
+                else if (category.Equals("3"))
+                {
+                    path = "http://localhost:8081/Dari/servlet/CategoryAvail/House";
+                }
+                else if (category.Equals("4"))
+                {
+                    path = "http://localhost:8081/Dari/servlet/CategoryAvail/Land";
+                }
+            }
+            else if (option != null)
+            {
+                if (option.Equals("1"))
+                {
+                    if (sort.Equals("0"))
+                    {
+                        path = "http://localhost:8081/Dari/servlet/Furnished";
+                    }
+                    else if (sort.Equals("1"))
+                    {
+                        path = "http://localhost:8081/Dari/servlet/FurnishedPriceDesc";
+                    }
+                    else if (sort.Equals("2"))
+                    {
+                        path = "http://localhost:8081/Dari/servlet/FurnishedPriceAsc";
+                    }
+                    else if (sort.Equals("3"))
+                    {
+                        path = "http://localhost:8081/Dari/servlet/FurnishedSurfDesc";
+                    }
+                    else if (sort.Equals("4"))
+                    {
+                        path = "http://localhost:8081/Dari/servlet/FurnishedSurfAsc";
+                    }
+
+                
+                }
+                else if (option.Equals("2"))
+                {
+                    if (sort.Equals("0"))
+                    {
+                        path = "http://localhost:8081/Dari/servlet/Garage";
+                    }
+                    else if (sort.Equals("1"))
+                    {
+                        path = "http://localhost:8081/Dari/servlet/GaragePriceDesc";
+                    }
+                    else if (sort.Equals("2"))
+                    {
+                        path = "http://localhost:8081/Dari/servlet/GaragePriceAsc";
+                    }
+                    else if (sort.Equals("3"))
+                    {
+                        path = "http://localhost:8081/Dari/servlet/GarageSurfDesc";
+                    }
+                    else if (sort.Equals("4"))
+                    {
+                        path = "http://localhost:8081/Dari/servlet/GarageSurfAsc";
+                    }
+                    
+                }
+                else if (option.Equals("3"))
+                {
+                    if (sort.Equals("0"))
+                    {
+                        path = "http://localhost:8081/Dari/servlet/Parking";
+                    }
+                    else if (sort.Equals("1"))
+                    {
+                        path = "http://localhost:8081/Dari/servlet/ParkingPriceDesc";
+                    }
+                    else if (sort.Equals("2"))
+                    {
+                        path = "http://localhost:8081/Dari/servlet/ParkingPriceAsc";
+                    }
+                    else if (sort.Equals("3"))
+                    {
+                        path = "http://localhost:8081/Dari/servlet/ParkingSurfDesc";
+                    }
+                    else if (sort.Equals("4"))
+                    {
+                        path = "http://localhost:8081/Dari/servlet/ParkingSurfAsc";
+                    }
+                    
+                }
+            }
+
 
 
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("https://localhost:44362");
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            string path = "http://localhost:8081/Dari/servlet/CategoryAvail/Apartment";
-         /*   if (!minprice1.Equals(""))
-            {
-                 path = "http://localhost:8081/Dari/servlet/Price/" + minprice1 + "/" + maxprice1;
-            } else if ((minprice1=="")&&(maxprice1==""))
-            {
-                 path = "http://localhost:8081/Dari/servlet/AvailableTrue";
-            }*/
-             
-
-            
-
             HttpResponseMessage response = httpClient.GetAsync(path).Result;
             if (response.IsSuccessStatusCode)
             {

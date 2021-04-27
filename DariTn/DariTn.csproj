@@ -190,6 +190,7 @@
     <Compile Include="Controllers\RestControllers\CreditFormulasController.cs" />
     <Compile Include="Controllers\RestControllers\CreditsController.cs" />
     <Compile Include="Controllers\RestControllers\FurnitureAdvsController.cs" />
+    <Compile Include="Controllers\RestControllers\GuaranteesController.cs" />
     <Compile Include="Controllers\RestControllers\InsuranceAgenciesController.cs" />
     <Compile Include="Controllers\RestControllers\InsurancesController.cs" />
     <Compile Include="Controllers\RestControllers\OrdersController.cs" />
@@ -215,6 +216,8 @@
     <Compile Include="Models\Entities\CreditFormula.cs" />
     <Compile Include="Models\Entities\Delivery.cs" />
     <Compile Include="Models\Entities\FurnitureAdv.cs" />
+    <Compile Include="Models\Entities\Guarantee.cs" />
+    <Compile Include="Models\Entities\GuaranteeDocument.cs" />
     <Compile Include="Models\Entities\Insurance.cs" />
     <Compile Include="Models\Entities\InsuranceAgency.cs" />
     <Compile Include="Models\Entities\Localisation.cs" />
@@ -686,6 +689,11 @@
     <Content Include="Views\VirtualTours\Details.cshtml" />
     <Content Include="Views\VirtualTours\Edit.cshtml" />
     <Content Include="Views\VirtualTours\Index.cshtml" />
+    <Content Include="Views\Guarantees\Create.cshtml" />
+    <Content Include="Views\Guarantees\Delete.cshtml" />
+    <Content Include="Views\Guarantees\Details.cshtml" />
+    <Content Include="Views\Guarantees\Edit.cshtml" />
+    <Content Include="Views\Guarantees\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
