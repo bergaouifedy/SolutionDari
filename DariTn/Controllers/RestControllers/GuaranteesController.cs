@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Mvc;
 using DariTn.Models;
@@ -16,9 +18,43 @@ namespace DariTn.Controllers.RestControllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Guarantees
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            return View(db.Guarantees.ToList());
+            HttpCookie asset = new HttpCookie("asset");
+            asset["id"] = Convert.ToString(id);
+            asset.Expires.Add(new TimeSpan(0, 1, 0));
+            Response.Cookies.Add(asset);
+
+            HttpClient httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            //HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/credits/clients/"+client+"/get").Result;
+            HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/assetadvs/"+id+"/guarantees/get").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var list = response.Content.ReadAsAsync<IEnumerable<Guarantee>>().Result;
+                return View(list);
+            }
+            else
+            {
+                ViewBag.result = "error";
+                return View(new List<Guarantee>());
+            }
+        }
+
+        public ActionResult Download(int? id)
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            //HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/credits/clients/"+client+"/get").Result;
+            HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/guarantees/"+id+"/pdf").Result;
+            return Redirect("http://localhost:8081/Dari/servlet/guarantees/" + id + "/pdf");
+        }
+
+        public ActionResult Validate(int? id)
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.PostAsync("http://localhost:8081/Dari/servlet/guarantees/"+id+"/validate", null).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+            return RedirectToAction("Index", new { id = Int32.Parse(Request.Cookies["id"].Value) });
         }
 
         // GET: Guarantees/Details/5

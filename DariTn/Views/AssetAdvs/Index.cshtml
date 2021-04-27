@@ -158,7 +158,7 @@
                             </p>
                             @Html.ActionLink("More Information", "Details", new { id = item.id }, new { @class = "infos" })
                             @Html.ActionLink("Complain", "AddComplaint", new { id = item.id }, new { @class = "infos" })
-                            
+
                             @if (item.localisation != null)
                             {
                                 @Html.ActionLink(linkText: "Location", actionName: "Index", controllerName: "Localisations", routeValues: new { id = item.id }, htmlAttributes: null)
