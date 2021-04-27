@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Ticks";
+}
+
+<h2>Ticks</h2>
+
+<header class="container-fluid" style="background-image: url(../../img/xx.jpg);background-color:cadetblue;">
+    <div class="intro-box-second-theme container-fluid">
+        <div class="container">
+            <h1>SO YOU WANT TO ADD A VIRTUAL TOUR ?</h1>
+            <p>Just follow those instructions: <br /></p>
+            <ul>
+                <li>
+                    <ol>
+                        <a href="https://www.cloudpano.com" style="color:white;font-size:large;">1) visit this website</a>
+                    </ol>
+                </li>
+                <li>
+                    <ol>
+                        <a style="color:white;font-size:large;">2) Sign In</a>
+                    </ol>
+                </li>
+                <li>
+                    <ol>
+                        <a style="color:white;font-size:large;">3) Upload your 360° images</a>
+                    </ol>
+                </li>
+                <li>
+                    <ol>
+                        <a style="color:white;font-size:large;">4) Wait for your link to be generated.</a>
+                    </ol>
+                </li>
+                <li>
+                    <ol>
+                        <a style="color:white;font-size:large;">5) Click on this button and add the link already generated .</a>
+                    </ol>
+                </li>
+            </ul>
+            <br />
+            <br />
+
+            <div class="intro-btn">
+                @Html.ActionLink(linkText: "Create Virtual Tour", actionName: "Create", controllerName: "VirtualTours", routeValues: null, htmlAttributes: new { @class = "page-scroll btn-custom" })
+            </div>
+        </div>
+    </div>
+</header>

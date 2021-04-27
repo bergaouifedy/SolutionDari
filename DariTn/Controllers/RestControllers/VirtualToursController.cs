@@ -136,5 +136,10 @@ namespace DariTn.Controllers.RestControllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult Ticks (int id)
+        {
+            return View();
+        }
     }
 }

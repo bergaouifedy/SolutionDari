@@ -1,0 +1,54 @@
+﻿@model IEnumerable<DariTn.Models.Entities.TimeSlots>
+
+@{
+    ViewBag.Title = "Index2";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hdebut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hfin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.title)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        int id = item.idasset;
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hdebut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hfin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            <td>
+
+
+                @Html.ActionLink("Edit", "Edit", new { id = item.id })
+                @Html.ActionLink("Details", "Details", new { id = item.id })
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+
+
+            </td>
+        </tr>
+    }
+
+</table>
