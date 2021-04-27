@@ -3,8 +3,8 @@
 @{
     ViewBag.Title = "Index";
 }
- @{float p = 0;}
 
+@{var p1 = 0.0; }
 <table class="table">
 
     <br>
@@ -49,7 +49,7 @@
                     @Html.DisplayFor(modelItem => item.totalPrice)
                 </td>
                 <td>
-                    <button class="button button2">  @Html.ActionLink("Validate", "Create", new { id = item.id })</button>
+                    <button class="button button2">  @Html.ActionLink("Validate", "Create", new { idf = item.furniture.id , idu = item.User.id ,p = item.totalPrice} )</button>
                 </td>
                 <td>
                     <button class="button button3">  @Html.ActionLink("Delete", "Delete", new { id = item.id })</button>
@@ -58,22 +58,14 @@
             </tr>
 
 
+            p1 = p1 + (item.totalPrice);
+
         }
 
-        <tr>
-            <td> Total Price: </td>
-            <td>
-
-                @foreach (var item in Model)
-                {
-                   
-                        p = p + item.totalPrice;
-                        @Html.Display(p.ToString())
-
-                }
-
-            </td>
-        </tr>
+        <td> Total Price: </td>
+        <td>
+            <a style="color:red">  @Html.DisplayFor(modelItem => p1) </a>
+        </td>
 
 
 

@@ -57,7 +57,7 @@
 
                                     <button class="button button2"> @Html.ActionLink("Details", "Details", new { id = item.id })</button>
 
-                                    @if (item.User.id.Equals(idlogged))
+                                    @if (item.User.id == idlogged)
                                     {
                                         <button class="button button1"> @Html.ActionLink("Edit", "Edit", new { id = item.id })</button>
                                         <button class="button button3"> @Html.ActionLink("Delete", "Delete", new { id = item.id })</button>

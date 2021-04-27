@@ -67,9 +67,10 @@
                     <button class="button button2" style="padding: 3px 10px">@Html.ActionLink("Details", "Details", new { id = item.id }) </button>
                     @if (item.adminStatus.Equals(false))
                     {
-                       /*<button class="button button2" style="padding: 3px 10px">@Html.ActionLink("Edit", "Edit", new { id = item.id }) </button>*/
-                       <button class="button button3" style="padding: 3px 10px"> @Html.ActionLink("Delete", "Delete", new { id = item.id }) </button>
+                        <button class="button button2" style="padding: 3px 10px">@Html.ActionLink("Edit", "Edit", new { id = item.delivery.id }) </button>
+                        <button class="button button3" style="padding: 3px 10px"> @Html.ActionLink("Delete", "Delete", new { id = item.id }) </button>
                     }
+                   
 
                 </td>
             </tr>
