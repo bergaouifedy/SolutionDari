@@ -48,7 +48,12 @@
 
                                     @if (item.localisation == null)
                                     {
-                                        @Html.ActionLink(linkText: "Create Localisation", actionName: "Create", controllerName: "Localisations", routeValues: new { id = item.id }, htmlAttributes: null)
+                                        @Html.ActionLink("Add Location", "Create", "Localisations", new { id = item.id }, new { @class = "infos" })
+
+                                    }
+                                    else
+                                    {
+                                        @Html.ActionLink("Location", "Index", "Localisations", new { id = item.id }, new { @class = "infos" })
                                     }
                                 </div>
                                         
