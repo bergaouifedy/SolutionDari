@@ -87,6 +87,23 @@
                                 <i class="fa fa-chevron-right"></i><i>&nbsp; &nbsp; This asset does not have a pool </i>
                             }
                         </li>
+                        <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp; This Asset has @Html.DisplayFor(model => model.media.Count) Media:  </li>
+
+                        @foreach (var med in Model.media)
+                        {
+                             <b><br/> &nbsp; &nbsp;</b>
+                            <i class="fa fa-chevron-right"></i>
+                            @Html.DisplayFor(model => med.type)
+                            <b> &nbsp; with the title &nbsp;</b>
+                            @Html.DisplayFor(model => med.title)
+                            <b>:</b>
+
+                            @Html.ActionLink("Download", "Show", "Medias", new { id = med.id }, null);
+                            <b>OR</b>
+                            @Html.ActionLink("Edit", "Edit", "Medias", new { id = med.id }, null);
+                            <b>OR</b>
+                            @Html.ActionLink("Delete", "Delete", "Medias", new { id = med.id }, null);
+                        }
 
                     </ul>
                     <p class="footer">
