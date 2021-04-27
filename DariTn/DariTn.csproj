@@ -462,6 +462,7 @@
     <Content Include="img\selling-img\sel-img8.jpg" />
     <Content Include="img\selling-img\sel-img9.jpg" />
     <Content Include="img\twitter.svg" />
+    <Content Include="img\xx.jpg" />
     <Content Include="js\checkedSelim.js" />
     <Content Include="js\jquery.easing.js" />
     <Content Include="js\jquery.easing.min.js" />
@@ -694,6 +695,9 @@
     <Content Include="Views\Guarantees\Details.cshtml" />
     <Content Include="Views\Guarantees\Edit.cshtml" />
     <Content Include="Views\Guarantees\Index.cshtml" />
+    <Content Include="Views\VirtualTours\Ticks.cshtml" />
+    <Content Include="Views\TimeSlots\Index2.cshtml" />
+    <Content Include="Views\AssetAdvs\Details2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
