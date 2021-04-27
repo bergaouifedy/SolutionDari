@@ -29,22 +29,21 @@
                                 } else if (item.category.Equals("Office")) { 
                                 <img class="img-responsive" src="~/img/selling-img/office.jpg">
                                 }
-                                <div class="sub-box-content">
-                                    <h5>@Html.DisplayFor(modelItem => item.category)</h5>
-                                    <p class="description text-muted">
+                            <div class="sub-box-content">
+                                <h5>@Html.DisplayFor(modelItem => item.category)</h5>
+                                <p class="description text-muted">
 
-                                        @Html.DisplayFor(modelItem => item.description)
-                                    </p>
+                                    @Html.DisplayFor(modelItem => item.description)
+                                </p>
 
-                                    @Html.ActionLink("More Information", "Details", new { id = item.id }, new { @class = "infos" })
+                                @Html.ActionLink("More Information", "Details", new { id = item.id }, new { @class = "infos" })
+                                @Html.ActionLink("Complain", "AddComplaint", new { id = item.id }, new { @class = "infos" })
+                                @if (item.localisation != null)
+                                {
+                                    @Html.ActionLink("Location", "Index", "Localisations", new { id = item.id }, new { @class = "infos" })
+                                }
 
-
-                                    <!-- @Html.ActionLink("Complain", "AddComplaint")-->
-                                    @{
-                                        //Html.ActionLink(linkText: "Complainn", actionName: "AddComplaint", controllerName: "Complaints", routeValues: new { id = idlogged }, htmlAttributes: null)
-                                    }
-
-                                </div>
+                            </div>
                             </div>
                         </div>
                     }
