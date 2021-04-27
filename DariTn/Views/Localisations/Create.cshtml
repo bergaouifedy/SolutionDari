@@ -25,6 +25,7 @@ var x = document.getElementById("demo");
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
+
     } else { 
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
@@ -35,10 +36,12 @@ function showPosition(position) {
     "<br>Longitude: " + position.coords.longitude;
 }
 </script>
+
+
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
-    <div class="form-group">
+    <div class="form-group" id="lat">
         @Html.LabelFor(model => model.latitude, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.latitude, new { htmlAttributes = new { @class = "form-control" } })
@@ -58,7 +61,7 @@ function showPosition(position) {
         @Html.LabelFor(model => model.asset, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.asset.id, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.assetid, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.asset.id, "", new { @class = "text-danger" })
         </div>
     </div>
 

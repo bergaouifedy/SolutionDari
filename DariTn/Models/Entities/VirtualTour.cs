@@ -7,17 +7,12 @@ using System.Web;
 
 namespace DariTn.Models.Entities
 {
-    public class Localisation
+    public class VirtualTour
     {
         [Key, ForeignKey("asset")]
         public int id { get; set; }
-        [DataType(DataType.Currency)]
-        public double latitude { get; set; }
-        [DataType(DataType.Currency)]
-        public double longtitude { get; set; }
-
-
-        public int? assetid { get; set; }
+        public string link { get; set; }
+        public int assetid { get; set; }
         public virtual AssetAdv asset { get; set; }
     }
 }
