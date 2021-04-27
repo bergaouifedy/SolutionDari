@@ -7,74 +7,84 @@
 <h2>Details</h2>
 <style>
     .boxed {
-        border:groove;
-        border-radius:10px;
+        border: groove;
+        border-radius: 10px;
         border-color: red;
-        margin:50px;
-        
+        margin: 50px;
     }
 </style>
+@Html.ActionLink("Back to browsing", "Index", routeValues: null, htmlAttributes: new { @class = "btn btn-success btn-lg" })
 <div style="height:350px;">
 
     <div style="float:left" class="boxed">
-        <h4 style="color:orangered;">AssetAdv</h4>
+        <h4>AssetAdv</h4>
         <hr />
         <div>
             <div>
                 <div>
                     <ul>
-                        <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp; @Html.DisplayFor(model => model.description)</li>
-                        <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;@Html.DisplayFor(model => model.category)</li>
-                        <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;@Html.DisplayFor(model => model.availability)</li>
-                        <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;@Html.DisplayFor(model => model.capacity)</li>
+                        <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;Reference: @Html.DisplayFor(model => model.@ref)</li>
+                        <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;Description: @Html.DisplayFor(model => model.description)</li>
+                        <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;Category: @Html.DisplayFor(model => model.category)</li>
+                        <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;Availability: @Html.DisplayFor(model => model.availability)</li>
+                        <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;Capacity: @Html.DisplayFor(model => model.capacity)</li>
                         <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;This asset is for @Html.DisplayFor(model => model.type)</li>
-                        <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;@Html.DisplayFor(model => model.surface) m²</li>
+                        <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;Surface: @Html.DisplayFor(model => model.surface) m²</li>
                         <li>
                             <i class="fa fa-chevron-right"></i>&nbsp;&nbsp;Located in @Html.DisplayFor(model => model.street) street ,@Html.DisplayFor(model => model.city) city,
-                            state of @Html.DisplayFor(model => model.state) .
+                            state of @Html.DisplayFor(model => model.state)
                         </li>
                         <li>
-                            <i class="fa fa-chevron-right"></i>&nbsp;&nbsp;It has @Html.DisplayFor(model => model.nbrRooms) rooms , @Html.DisplayFor(model => model.nbrFloor) floors,
-                            @Html.DisplayFor(model => model.nbrBathrooms) bathrooms
+                            @if (Model.category.Equals("Apartment"))
+                            {
+                                <i class="fa fa-chevron-right"></i><i>&nbsp;&nbsp;It has @Html.DisplayFor(model => model.nbrRooms) rooms , @Html.DisplayFor(model => model.nbrBathrooms) bathrooms, and is located in floor number @Html.DisplayFor(model => model.floor) </i>
+
+                            }
+                            else if (Model.category.Equals("House") || (Model.category.Equals("Office")))
+                            {
+                                <i class="fa fa-chevron-right"></i><i>&nbsp;&nbsp;It has @Html.DisplayFor(model => model.nbrRooms) rooms , @Html.DisplayFor(model => model.nbrBathrooms) bathrooms, and @Html.DisplayFor(model => model.nbrFloor) floors</i>
+
+                            }
+
                         </li>
                         <li>
                             @if (Model.furnished == true)
                             {
-                                <i class="fa fa-chevron-right"></i><i>&nbsp; &nbsp; furniched asset</i>
+                                <i class="fa fa-chevron-right"></i><i>&nbsp; &nbsp; This is a furnished asset</i>
                             }
                             else
                             {
-                                <i class="fa fa-chevron-right"></i><i>&nbsp; &nbsp; not furniched asset</i>
+                                <i class="fa fa-chevron-right"></i><i>&nbsp; &nbsp; This is not a furnished asset</i>
                             }
                         </li>
                         <li>
                             @if (Model.garage == true)
                             {
-                                <i class="fa fa-chevron-right"></i><i>&nbsp; &nbsp; with garage </i>
+                                <i class="fa fa-chevron-right"></i><i>&nbsp; &nbsp; This asset has a garage </i>
                             }
                             else
                             {
-                                <i class="fa fa-chevron-right"></i><i>&nbsp; &nbsp; there is no garage </i>
+                                <i class="fa fa-chevron-right"></i><i>&nbsp; &nbsp; This asset has no garage </i>
                             }
                         </li>
                         <li>
                             @if (Model.parking == true)
                             {
-                                <i class="fa fa-chevron-right"></i><i>&nbsp; &nbsp; with parking area </i>
+                                <i class="fa fa-chevron-right"></i><i>&nbsp; &nbsp; This asset comes with a parking spot </i>
                             }
                             else
                             {
-                                <i class="fa fa-chevron-right"></i><i>&nbsp; &nbsp; there is no parking area </i>
+                                <i class="fa fa-chevron-right"></i><i>&nbsp; &nbsp; This asset does not have a parking spot</i>
                             }
                         </li>
                         <li>
                             @if (Model.pool == true)
                             {
-                                <i class="fa fa-chevron-right"></i><i>&nbsp; &nbsp; with pool </i>
+                                <i class="fa fa-chevron-right"></i><i>&nbsp; &nbsp; This asset is equipped with a pool </i>
                             }
                             else
                             {
-                                <i class="fa fa-chevron-right"></i><i>&nbsp; &nbsp; there is no pool </i>
+                                <i class="fa fa-chevron-right"></i><i>&nbsp; &nbsp; This asset does not have a pool </i>
                             }
                         </li>
 
@@ -84,7 +94,6 @@
                     </p>
                 </div>
             </div>
-            @Html.ActionLink("Back to List", "Index", routeValues: null, htmlAttributes: new { @class = "btn btn-success btn-lg" }) |
 
 
             @if (Model.virtualTour == null)
@@ -100,9 +109,9 @@
             @Html.ActionLink(linkText: "TimeSlots", actionName: "Index", controllerName: "TimeSlots", routeValues: new { id = Model.id }, htmlAttributes: new { @class = "btn btn-primary btn-lg" })
 
         </div>
-      
+
     </div>
-    <div style="float:left;" class="boxed";>
+    <div style="float:left;" class="boxed" ;>
 
         @if (Model.localisation != null)
         {
@@ -160,4 +169,4 @@
 
 
 </div>
-       
+
