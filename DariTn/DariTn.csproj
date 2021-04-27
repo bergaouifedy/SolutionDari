@@ -198,6 +198,7 @@
     <Compile Include="Controllers\RestControllers\PacksController.cs" />
     <Compile Include="Controllers\RestControllers\ShoppingCartsController.cs" />
     <Compile Include="Controllers\RestControllers\TimeSlotsController.cs" />
+    <Compile Include="Controllers\RestControllers\VirtualToursController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -226,6 +227,7 @@
     <Compile Include="Models\Entities\ShoppingCart.cs" />
     <Compile Include="Models\Entities\TimeSlots.cs" />
     <Compile Include="Models\Entities\User.cs" />
+    <Compile Include="Models\Entities\VirtualTour.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\InsuranceEditViewModel.cs" />
     <Compile Include="Models\InsuranceNewViewModel.cs" />
@@ -682,6 +684,11 @@
     <Content Include="Views\TimeSlots\Details.cshtml" />
     <Content Include="Views\TimeSlots\Edit.cshtml" />
     <Content Include="Views\TimeSlots\Index.cshtml" />
+    <Content Include="Views\VirtualTours\Create.cshtml" />
+    <Content Include="Views\VirtualTours\Delete.cshtml" />
+    <Content Include="Views\VirtualTours\Details.cshtml" />
+    <Content Include="Views\VirtualTours\Edit.cshtml" />
+    <Content Include="Views\VirtualTours\Index.cshtml" />
     <Content Include="Views\Guarantees\Create.cshtml" />
     <Content Include="Views\Guarantees\Delete.cshtml" />
     <Content Include="Views\Guarantees\Details.cshtml" />

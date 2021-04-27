@@ -1,4 +1,4 @@
-﻿@model DariTn.Models.Entities.AssetAdv
+﻿@model  DariTn.Models.Entities.AssetAdv
 
 @{
     ViewBag.Title = "Details";
@@ -194,10 +194,23 @@
             <dd>
                 @Html.DisplayFor(model => model.capacity)
             </dd>
+
         </dl>
         <p>
             @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Back to List", "Index") |
+
+            @if (Model.virtualTour == null)
+            {
+                <a style="color:red;border-radius:10px;border-color:blue;">There's no Virtual Tours</a>
+            }
+            else
+            {
+                @Html.ActionLink(linkText: "Virtual Tour", actionName: "Index", controllerName: "VirtualTours", routeValues: new { id = Model.id }, htmlAttributes: new { @class = "infos" })
+
+            }
+
+
         </p>
     </div>
     <div style="float:right;">
@@ -248,7 +261,9 @@
 
             </div>
         }
-        </div>
+
+
+    </div>
 
 
 </div>

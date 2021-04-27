@@ -37,6 +37,7 @@ namespace DariTn.Models.Entities
         public int capacity { get; set; }
         //  public List<object> rv { get; set; }
         public virtual Localisation localisation { get; set; }
+        public virtual VirtualTour virtualTour { get; set; }
         [ForeignKey("User")]
         public int userid { get; set; }
         public virtual User User { get; set; }

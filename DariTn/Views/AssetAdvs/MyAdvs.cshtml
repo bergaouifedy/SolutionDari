@@ -26,7 +26,7 @@
                                 } else if (item.category.Equals("Office")) { 
                                 <img class="img-responsive" src="~/img/selling-img/office.jpg">
                                 }
-                            <div class="sub-box-content">
+                            <div class="sub-box-content" style="height:100px">
                                 <h5>@Html.DisplayFor(modelItem => item.category)</h5>
                                 <p class="description text-muted">
 
@@ -44,12 +44,18 @@
                                     @Html.ActionLink("More Information", "Details", new { id = item.id }, new { @class = "infos" })
                                     @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "infos" })
                                     @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "infos" })
-
+                                    @Html.ActionLink("Check Guarantees", "GetGuarantees", new { id = item.id }, new { @class = "infos" })
 
                                     @if (item.localisation == null)
                                     {
-                                        @Html.ActionLink(linkText: "Create Localisation", actionName: "Create", controllerName: "Localisations", routeValues: new { id = item.id }, htmlAttributes: null)
+
+                                        @Html.ActionLink(linkText: "Add Location", actionName: "Create", controllerName: "Localisations", routeValues: new { id = item.id }, htmlAttributes: new { @class = "infos" })
                                     }
+                                    @if (item.virtualTour == null)
+                                    {
+                                        @Html.ActionLink(linkText: "Create Virtual Tour", actionName: "Create", controllerName: "VirtualTours", routeValues: new { id = item.id }, htmlAttributes: new { @class = "infos" })
+                                    }
+
                                 </div>
                                         
                             </div>

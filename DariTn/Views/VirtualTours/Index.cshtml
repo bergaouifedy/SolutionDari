@@ -1,0 +1,20 @@
+﻿@model DariTn.Models.Entities.VirtualTour
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+
+<figure>
+    <iframe id="/tours/F_bT4A587K?mls=1" allow="camera;microphone;vr;accelerometer;gyroscope;fullscreen" allowfullscreen frameborder="0" width="100%" height="500" src="@Html.Raw(Model.link)"></iframe>
+</figure>
+
+
+

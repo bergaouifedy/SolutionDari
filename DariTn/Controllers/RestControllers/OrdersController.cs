@@ -171,20 +171,15 @@ namespace DariTn.Controllers.RestControllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HttpClient httpClient;
-            httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
-            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage tokenResponse = httpClient.GetAsync("http://localhost:8081/Dari/servlet/getOrdersById/" + id).Result;
-            var ord = tokenResponse.Content.ReadAsAsync<Orders>().Result;
+           
 
             HttpClient httpClient11;
             httpClient11 = new HttpClient();
             httpClient11.BaseAddress = new Uri("https://localhost:44363/api/");
             httpClient11.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage tokenResponse11 = httpClient11.GetAsync("http://localhost:8081/Dari/servlet/getdbyId/" + ord.delivery.id).Result;
+            HttpResponseMessage tokenResponse11 = httpClient11.GetAsync("http://localhost:8081/Dari/servlet/getdbyId/" + id).Result;
             var d = tokenResponse11.Content.ReadAsAsync<Delivery>().Result;
-            return View(ord);
+            return View(d);
         }
 
         // POST: Orders/Edit/5

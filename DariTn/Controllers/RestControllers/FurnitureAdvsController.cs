@@ -188,6 +188,7 @@ namespace DariTn.Controllers.RestControllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,userid,ref,name,description,type,addedDate,price,availability,status,image")] FurnitureAdv furnitureAdv)
         {
+
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
             var APIResponse = httpClient.PostAsJsonAsync<FurnitureAdv>("http://localhost:8081/Dari/servlet/addFurnitureAdv", furnitureAdv).Result;
@@ -207,6 +208,7 @@ namespace DariTn.Controllers.RestControllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateAdmin([Bind(Include = "id,userid,ref,name,description,type,addedDate,price,availability,status,image")] FurnitureAdv furnitureAdv)
         {
+
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
             var APIResponse = httpClient.PostAsJsonAsync<FurnitureAdv>("http://localhost:8081/Dari/servlet/addFurnitureAdv", furnitureAdv).Result;

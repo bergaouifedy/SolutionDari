@@ -2,8 +2,9 @@
     //If the checkbox has been checked
     if (termsCheckBox.checked) {
         //Set the disabled property to FALSE and enable the text inputs.
-        document.getElementById("minprice").disabled = false;
-        document.getElementById("maxprice").disabled = false;
+        //   document.getElementById("minprice").disabled = true;
+        //   document.getElementById("maxprice").disabled = true;
+        document.getElementById("price").disabled = false;
         document.getElementById("categ").disabled = true;
         document.getElementById("state").disabled = true;
         document.getElementById("city").disabled = true;
@@ -18,8 +19,9 @@
         document.getElementById("box7").checked = false;
     } else {
         //Otherwise, disable the text inputs.
-        document.getElementById("minprice").disabled = true;
-        document.getElementById("maxprice").disabled = true;
+        //   document.getElementById("minprice").disabled = true;
+        //   document.getElementById("maxprice").disabled = true;
+        document.getElementById("price").disabled = true;
         document.getElementById("categ").disabled = true;
         document.getElementById("state").disabled = true;
         document.getElementById("city").disabled = true;
@@ -40,8 +42,9 @@ function terms_changed2(termsCheckBox) {
     //If the checkbox has been checked
     if (termsCheckBox.checked) {
         //Set the disabled property to FALSE and enable the text inputs.
-        document.getElementById("minprice").disabled = true;
-        document.getElementById("maxprice").disabled = true;
+        //   document.getElementById("minprice").disabled = true;
+        //   document.getElementById("maxprice").disabled = true;
+        document.getElementById("price").disabled = true;
         document.getElementById("categ").disabled = false;
         document.getElementById("state").disabled = true;
         document.getElementById("city").disabled = true;
@@ -57,8 +60,9 @@ function terms_changed2(termsCheckBox) {
 
     } else {
         //Otherwise, disable the text inputs.
-        document.getElementById("minprice").disabled = true;
-        document.getElementById("maxprice").disabled = true;
+        //   document.getElementById("minprice").disabled = true;
+        //   document.getElementById("maxprice").disabled = true;
+        document.getElementById("price").disabled = true;
         document.getElementById("categ").disabled = true;
         document.getElementById("state").disabled = true;
         document.getElementById("city").disabled = true;
@@ -80,8 +84,9 @@ function terms_changed3(termsCheckBox) {
     //If the checkbox has been checked
     if (termsCheckBox.checked) {
         //Set the disabled property to FALSE and enable the text inputs.
-        document.getElementById("minprice").disabled = true;
-        document.getElementById("maxprice").disabled = true;
+        //   document.getElementById("minprice").disabled = true;
+        //   document.getElementById("maxprice").disabled = true;
+        document.getElementById("price").disabled = true;
         document.getElementById("categ").disabled = true;
         document.getElementById("state").disabled = false;
         document.getElementById("city").disabled = true;
@@ -96,8 +101,9 @@ function terms_changed3(termsCheckBox) {
         document.getElementById("box7").checked = false;
     } else {
         //Otherwise, disable the text inputs.
-        document.getElementById("minprice").disabled = true;
-        document.getElementById("maxprice").disabled = true;
+        //   document.getElementById("minprice").disabled = true;
+        //   document.getElementById("maxprice").disabled = true;
+        document.getElementById("price").disabled = true;
         document.getElementById("categ").disabled = true;
         document.getElementById("state").disabled = true;
         document.getElementById("city").disabled = true;
@@ -118,8 +124,9 @@ function terms_changed4(termsCheckBox) {
     //If the checkbox has been checked
     if (termsCheckBox.checked) {
         //Set the disabled property to FALSE and enable the text inputs.
-        document.getElementById("minprice").disabled = true;
-        document.getElementById("maxprice").disabled = true;
+        //   document.getElementById("minprice").disabled = true;
+        //   document.getElementById("maxprice").disabled = true;
+        document.getElementById("price").disabled = true;
         document.getElementById("categ").disabled = true;
         document.getElementById("state").disabled = true;
         document.getElementById("city").disabled = false;
@@ -134,8 +141,9 @@ function terms_changed4(termsCheckBox) {
         document.getElementById("box7").checked = false;
     } else {
         //Otherwise, disable the text inputs.
-        document.getElementById("minprice").disabled = true;
-        document.getElementById("maxprice").disabled = true;
+        //   document.getElementById("minprice").disabled = true;
+        //   document.getElementById("maxprice").disabled = true;
+        document.getElementById("price").disabled = true;
         document.getElementById("categ").disabled = true;
         document.getElementById("state").disabled = true;
         document.getElementById("city").disabled = true;
@@ -156,8 +164,9 @@ function terms_changed5(termsCheckBox) {
     //If the checkbox has been checked
     if (termsCheckBox.checked) {
         //Set the disabled property to FALSE and enable the text inputs.
-        document.getElementById("minprice").disabled = true;
-        document.getElementById("maxprice").disabled = true;
+        //   document.getElementById("minprice").disabled = true;
+        //   document.getElementById("maxprice").disabled = true;
+        document.getElementById("price").disabled = true;
         document.getElementById("categ").disabled = true;
         document.getElementById("state").disabled = true;
         document.getElementById("city").disabled = true;
@@ -172,8 +181,9 @@ function terms_changed5(termsCheckBox) {
         document.getElementById("box7").checked = false;
     } else {
         //Otherwise, disable the text inputs.
-        document.getElementById("minprice").disabled = true;
-        document.getElementById("maxprice").disabled = true;
+        //   document.getElementById("minprice").disabled = true;
+        //   document.getElementById("maxprice").disabled = true;
+        document.getElementById("price").disabled = true;
         document.getElementById("categ").disabled = true;
         document.getElementById("state").disabled = true;
         document.getElementById("city").disabled = true;
@@ -194,8 +204,9 @@ function terms_changed6(termsCheckBox) {
     //If the checkbox has been checked
     if (termsCheckBox.checked) {
         //Set the disabled property to FALSE and enable the text inputs.
-        document.getElementById("minprice").disabled = true;
-        document.getElementById("maxprice").disabled = true;
+        //   document.getElementById("minprice").disabled = true;
+        //   document.getElementById("maxprice").disabled = true;
+        document.getElementById("price").disabled = true;
         document.getElementById("categ").disabled = true;
         document.getElementById("state").disabled = true;
         document.getElementById("city").disabled = true;
@@ -210,8 +221,9 @@ function terms_changed6(termsCheckBox) {
         document.getElementById("box7").checked = false;
     } else {
         //Otherwise, disable the text inputs.
-        document.getElementById("minprice").disabled = true;
-        document.getElementById("maxprice").disabled = true;
+        //   document.getElementById("minprice").disabled = true;
+        //   document.getElementById("maxprice").disabled = true;
+        document.getElementById("price").disabled = true;
         document.getElementById("categ").disabled = true;
         document.getElementById("state").disabled = true;
         document.getElementById("city").disabled = true;
@@ -232,8 +244,9 @@ function terms_changed7(termsCheckBox) {
     //If the checkbox has been checked
     if (termsCheckBox.checked) {
         //Set the disabled property to FALSE and enable the text inputs.
-        document.getElementById("minprice").disabled = true;
-        document.getElementById("maxprice").disabled = true;
+        //   document.getElementById("minprice").disabled = true;
+        //   document.getElementById("maxprice").disabled = true;
+        document.getElementById("price").disabled = true;
         document.getElementById("categ").disabled = true;
         document.getElementById("state").disabled = true;
         document.getElementById("city").disabled = true;
@@ -248,8 +261,9 @@ function terms_changed7(termsCheckBox) {
         document.getElementById("box6").checked = false;
     } else {
         //Otherwise, disable the text inputs.
-        document.getElementById("minprice").disabled = true;
-        document.getElementById("maxprice").disabled = true;
+     //   document.getElementById("minprice").disabled = true;
+     //   document.getElementById("maxprice").disabled = true;
+        document.getElementById("price").disabled = true;
         document.getElementById("categ").disabled = true;
         document.getElementById("state").disabled = true;
         document.getElementById("city").disabled = true;
@@ -264,4 +278,8 @@ function terms_changed7(termsCheckBox) {
         document.getElementById("box6").checked = false;
         document.getElementById("box7").checked = false;
     }
+}
+
+function GetState() {
+    var state = document.getElementById("state").value;
 }

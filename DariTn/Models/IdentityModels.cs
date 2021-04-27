@@ -52,8 +52,12 @@ namespace DariTn.Models
 
         public System.Data.Entity.DbSet<DariTn.Models.Entities.TimeSlots> TimeSlots { get; set; }
 
+
+        public System.Data.Entity.DbSet<DariTn.Models.Entities.VirtualTour> VirtualTours { get; set; }
         public System.Data.Entity.DbSet<DariTn.Models.Entities.Guarantee> Guarantees { get; set; }
 
+
         public System.Data.Entity.DbSet<DariTn.Models.Entities.GuaranteeDocument> GuaranteeDocuments { get; set; }
+
     }
 }
