@@ -27,9 +27,6 @@ namespace DariTn.Models.Entities
         public double price { get; set; }
         public bool availability { get; set; }
         public bool status { get; set; }
-        [DataType(DataType.Upload)]
-        [Display(Name = "Upload File")]
-        [Required(ErrorMessage = "Please choose file to upload.")]
         public string image { get; set; }
 
         

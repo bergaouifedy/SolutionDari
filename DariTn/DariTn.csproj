@@ -454,6 +454,7 @@
     <Content Include="img\sel5.jpg" />
     <Content Include="img\selling-img\apartment.jpg" />
     <Content Include="img\selling-img\immeuble.jpg" />
+    <Content Include="img\selling-img\meb.jpg" />
     <Content Include="img\selling-img\office.jpg" />
     <Content Include="img\selling-img\sel-img1.jpg" />
     <Content Include="img\selling-img\sel-img2.jpg" />
@@ -710,13 +711,8 @@
     <Content Include="Views\Appointments\Index.cshtml" />
     <Content Include="Views\AssetAdvs\Near.cshtml" />
     <Content Include="Views\Medias\Edit.cshtml" />
-
-
     <Content Include="Views\VirtualTours\VTRequest.cshtml" />
-
     <Content Include="Views\Home\Admin.cshtml" />
-
-
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
