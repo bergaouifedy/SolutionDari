@@ -141,5 +141,35 @@ namespace DariTn.Controllers.RestControllers
         {
             return View();
         }
+
+
+
+        public ActionResult VTRequest()
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/VirtualTour/StatusFalse").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var aa = response.Content.ReadAsAsync<IEnumerable<VirtualTour>>().Result;
+                return View(aa);
+            }
+            else
+            {
+                ViewBag.result = "error";
+                return View(new VirtualTour());
+            }
+        }
+
+        public ActionResult Accept(int id, VirtualTour aa)
+        {
+
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362/");
+            HttpResponseMessage tokenResponse = httpClient.PutAsJsonAsync<VirtualTour>("http://localhost:8081/Dari/servlet/acceptVT/" + id, aa).Result;
+            return RedirectToAction("VTRequest");
+
+        }
     }
 }
