@@ -331,45 +331,38 @@
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
                     <p class="centered"><a href="profile.html"><img src="~/AdminContent/img/ui-sam.jpg" class="img-circle" width="80"></a></p>
-                    <h5 class="centered">Sam Soffes</h5>
-                    <li class="mt">
-                        <a class="active" href="#">
-                            <i class="fa fa-dashboard"></i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-desktop"></i>
-                            <span>Assets</span>
-                        </a>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-cogs"></i>
-                            <span>Appointments</span>
-                        </a>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Fournitures</span>
+                    <h5 class="centered">Administrator</h5>
 
-                        </a>
                     <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-tasks"></i>
-                            <span>Banks</span>
+                        <span>@Html.ActionLink("Assets", "AARequests", "AssetAdvs")</span>
+                    </li>
+                    <li class="sub-menu">
+                        <span>@Html.ActionLink("Complaints", "ComplaintRequests", "Complaints")</span>
+                    </li>
+                    <li class="sub-menu">
+                        <span>@Html.ActionLink("Virtual Tours", "#", "#")</span>
                         </a>
                     </li>
                     <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-th"></i>
-                            <span>Insurance</span>
-                        </a>
+                        <span>@Html.ActionLink("All Furnitures", "IndexAdmin", "FurnitureAdvs")</span>
 
+                    <li class="sub-menu">
+                        <span>@Html.ActionLink("Furniture Requests", "IndexAdmin2", "FurnitureAdvs")</span>
+                    </li>
+                    <li class="sub-menu">
+                        <span>@Html.ActionLink("Order Requests", "OrdersNoAccepted", "Orders")</span>
                     </li>
 
+                    <li class="sub-menu">
+                        <span>@Html.ActionLink("Order On Hold", "OrdersW", "Orders")</span>
+                    </li>
+
+                    <li class="sub-menu">
+                        <span>@Html.ActionLink("Order In Progress", "OrdersInProg", "Orders")</span>
+                    </li>
+                    <li class="sub-menu">
+                        <span>@Html.ActionLink("Orders Finished", "OrdersF", "Orders")</span>
+                    </li>
                 </ul>
              
                 <!-- sidebar menu end-->

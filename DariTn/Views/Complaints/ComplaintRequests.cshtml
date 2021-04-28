@@ -5,8 +5,12 @@
     ViewBag.Title = "ComplaintRequests";
 }
 
-<h2>Index</h2>
-
+<br>
+<br>
+<br>
+<br>
+<h3 class="color0" , style="color:crimson"> Complaint Requests: </h3>
+<br>
 <table class="table">
     <tr>
         <th>
@@ -28,27 +32,27 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.@ref)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.description)
-    </td>
-    <td>
-        
-            <p style="color:red;">On Hold</p>
-        
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.creationDate)
-    </td>
-    <td>
-        @Html.ActionLink("Delete", "DeleteAdmin", new { id = item.id })
-        @Html.ActionLink("Accept", "Accept", new { id = item.id })
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.@ref)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
 
-    </td>
-</tr>
+                <p style="color:red;">On Hold</p>
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.creationDate)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "DeleteAdmin", new { id = item.id })
+                @Html.ActionLink("Accept", "Accept", new { id = item.id })
+
+            </td>
+        </tr>
     }
 
 </table>

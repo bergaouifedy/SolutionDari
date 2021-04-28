@@ -465,11 +465,8 @@
     <Content Include="img\selling-img\sel-img8.jpg" />
     <Content Include="img\selling-img\sel-img9.jpg" />
     <Content Include="img\twitter.svg" />
-
     <Content Include="js\checkedWissal.js" />
-
     <Content Include="img\xx.jpg" />
-
     <Content Include="js\checkedSelim.js" />
     <Content Include="js\jquery.easing.js" />
     <Content Include="js\jquery.easing.min.js" />
@@ -705,20 +702,15 @@
     <Content Include="Views\VirtualTours\Ticks.cshtml" />
     <Content Include="Views\TimeSlots\Index2.cshtml" />
     <Content Include="Views\AssetAdvs\Details2.cshtml" />
-
     <Content Include="Views\Banks\IndexAgent.cshtml" />
-
-
     <Content Include="Views\Appointments\Create.cshtml" />
     <Content Include="Views\Appointments\Delete.cshtml" />
     <Content Include="Views\Appointments\Details.cshtml" />
     <Content Include="Views\Appointments\Edit.cshtml" />
     <Content Include="Views\Appointments\Index.cshtml" />
     <Content Include="Views\AssetAdvs\Near.cshtml" />
-
     <Content Include="Views\Medias\Edit.cshtml" />
-
-
+    <Content Include="Views\Home\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
