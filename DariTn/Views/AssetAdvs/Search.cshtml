@@ -37,9 +37,11 @@
                                 <div class="sub-box-content">
                                     <h5>@Html.DisplayFor(modelItem => item.category)</h5>
                                     <p class="description text-muted">
-
-                                        @Html.DisplayFor(modelItem => item.description)
-                                        @Html.DisplayFor(modelItem => item.price)
+                                        Description:  @Html.DisplayFor(modelItem => item.description)
+                                        <br /> State:   @Html.DisplayFor(modelItem => item.state)
+                                        <br /> City:   @Html.DisplayFor(modelItem => item.city)
+                                        <br /> City:   @Html.DisplayFor(modelItem => item.postalCode)
+                                        <br />Price   @Html.DisplayFor(modelItem => item.price)
                                     </p>
 
                                     @Html.ActionLink("More Information", "Details", new { id = item.id }, new { @class = "infos" })

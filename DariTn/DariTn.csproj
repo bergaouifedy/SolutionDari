@@ -194,6 +194,7 @@
     <Compile Include="Controllers\RestControllers\GuaranteesController.cs" />
     <Compile Include="Controllers\RestControllers\InsuranceAgenciesController.cs" />
     <Compile Include="Controllers\RestControllers\InsurancesController.cs" />
+    <Compile Include="Controllers\RestControllers\MediasController.cs" />
     <Compile Include="Controllers\RestControllers\OrdersController.cs" />
     <Compile Include="Controllers\RestControllers\LocalisationsController.cs" />
     <Compile Include="Controllers\RestControllers\PacksController.cs" />
@@ -700,12 +701,16 @@
     <Content Include="Views\VirtualTours\Ticks.cshtml" />
     <Content Include="Views\TimeSlots\Index2.cshtml" />
     <Content Include="Views\AssetAdvs\Details2.cshtml" />
+
     <Content Include="Views\Appointments\Create.cshtml" />
     <Content Include="Views\Appointments\Delete.cshtml" />
     <Content Include="Views\Appointments\Details.cshtml" />
     <Content Include="Views\Appointments\Edit.cshtml" />
     <Content Include="Views\Appointments\Index.cshtml" />
     <Content Include="Views\AssetAdvs\Near.cshtml" />
+
+    <Content Include="Views\Medias\Edit.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

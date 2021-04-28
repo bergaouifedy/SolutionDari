@@ -44,7 +44,7 @@
                                     @Html.ActionLink("More Information", "Details2", new { id = item.id }, new { @class = "infos" })
                                     @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "infos" })
                                     @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "infos" })
-
+                                    @Html.ActionLink("Check Guarantees", "GetGuarantees", new { id = item.id }, new { @class = "infos" })
 
                                     @if (item.localisation == null)
                                     {

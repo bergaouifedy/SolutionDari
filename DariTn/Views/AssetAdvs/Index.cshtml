@@ -13,7 +13,7 @@
         </p>
         <div id="tab-villa" class="tab-pane active container">
 
-            <form action="/AssetAdvs/Search1" method="POST">
+            <form action="/AssetAdvs/Search" method="POST">
                 <div style="background-color:antiquewhite; width:25%;float:left;">
                     <div>
                         <div>
@@ -144,9 +144,13 @@
                             @Html.ActionLink("More Information", "Details", new { id = item.id }, new { @class = "infos" })
                             @Html.ActionLink("Complain", "AddComplaint", new { id = item.id }, new { @class = "infos" })
 
+
+
+                            @Html.ActionLink("Add Guarantee", "AddGuarantee", new { id = item.id }, new { @class = "infos" })
+
                             @if (item.localisation != null)
                             {
-                             @Html.ActionLink("Location","Index","Localisations",new { id = item.id }, new { @class = "infos" })
+                                @Html.ActionLink("Location", "Index", "Localisations", new { id = item.id }, new { @class = "infos" })
                             }
 
                         </div>
