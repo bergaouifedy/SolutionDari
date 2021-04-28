@@ -5,8 +5,12 @@
     ViewBag.Title = "Asset Advertisement Requests";
 }
 
-<h2>Index</h2>
-
+<br>
+<br>
+<br>
+<br>
+<h3 class="color0" , style="color:crimson"> Advertisements Requests: </h3>
+<br>
 <table class="table">
     <tr>
         <th>
@@ -37,36 +41,36 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.@ref)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.description)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.category)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.state)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.city)
-    </td>
-    <td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.@ref)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.state)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.city)
+            </td>
+            <td>
 
-        <p style="color:red;">On Hold</p>
+                <p style="color:red;">On Hold</p>
 
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.addedDate)
-    </td>
-    <td>
-        @Html.ActionLink("Delete", "DeleteAdmin", new { id = item.id })
-        @Html.ActionLink("Accept", "Accept", new { id = item.id })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.addedDate)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "DeleteAdmin", new { id = item.id })
+                @Html.ActionLink("Accept", "Accept", new { id = item.id })
 
-    </td>
-</tr>
+            </td>
+        </tr>
     }
 
 </table>
