@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -433,6 +434,19 @@ namespace DariTn.Controllers.RestControllers
                 ViewBag.result = "error";
                 return View(new List<FurnitureAdv>());
             }
+        }
+
+
+      
+
+        public ActionResult Show(int id)
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/FurnitureAdv/" + id + "/image").Result;
+            return Redirect("http://localhost:8081/Dari/servlet/FurnitureAdv/" + id + "/image");
+
+
         }
         protected override void Dispose(bool disposing)
         {

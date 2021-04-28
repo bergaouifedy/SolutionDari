@@ -255,7 +255,7 @@ namespace DariTn.Controllers.RestControllers
         {
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
-            var APIResponse = httpClient.PutAsJsonAsync("http://localhost:8081/Dari/servlet/LivrerOrders/" + id, f).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+            var APIResponse = httpClient.PutAsJsonAsync("http://localhost:8081/Dari/servlet/finishOrders/" + id, f).Result;
             return RedirectToAction("OrdersInProg");
         }
         protected override void Dispose(bool disposing)
