@@ -399,6 +399,41 @@ namespace DariTn.Controllers.RestControllers
             HttpResponseMessage tokenResponse = httpClient.DeleteAsync("http://localhost:8081/Dari/servlet/deleteFurnitureAdv/" + id).Result;
             return RedirectToAction("IndexAdmin2");
         }
+
+
+        [HttpPost]
+        public ActionResult Search(string name, string type, string price)
+        {
+            string path = "";
+            if (price != null)
+            {
+
+                path = "http://localhost:8081/Dari/servlet/FindByPrice/" + price;
+            }
+            else if (name != null)
+            {
+                path = "http://localhost:8081/Dari/servlet/FindByName/" + name;
+            }
+            else if (type != null)
+            {
+                path = "http://localhost:8081/Dari/servlet/FindByType/" + type;
+            }
+
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = httpClient.GetAsync(path).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var aa = response.Content.ReadAsAsync<IEnumerable<FurnitureAdv>>().Result;
+                return View(aa);
+            }
+            else
+            {
+                ViewBag.result = "error";
+                return View(new List<FurnitureAdv>());
+            }
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

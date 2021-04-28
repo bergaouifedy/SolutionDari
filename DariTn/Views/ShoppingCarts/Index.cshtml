@@ -49,7 +49,7 @@
                     @Html.DisplayFor(modelItem => item.totalPrice)
                 </td>
                 <td>
-                    <button class="button button2">  @Html.ActionLink("Validate", "Create", new { idf = item.furniture.id , idu = item.User.id ,p = item.totalPrice} )</button>
+                    <button class="button button2">  @Html.ActionLink("Validate", "Create", new { id = item.id} )</button>
                 </td>
                 <td>
                     <button class="button button3">  @Html.ActionLink("Delete", "Delete", new { id = item.id })</button>

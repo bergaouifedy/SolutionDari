@@ -125,12 +125,12 @@ namespace DariTn.Controllers.RestControllers
         // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, DateTime date, TimeSpan hdebut, string title, TimeSpan hfin, TimeSlots timeSlots)
+        public ActionResult Edit(int id,TimeSlots timeSlots)
         {
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("https://localhost:44362/");
-            HttpResponseMessage tokenResponse = httpClient.PutAsJsonAsync<TimeSlots>("http://localhost:8081/Dari/servlet/Asset/RDVTS/"+id+"/Modify/"+date+"/"+title+"/"+hdebut+"/"+hfin , timeSlots).Result;
-            return RedirectToAction("Index2/"+timeSlots.idasset);
+            HttpResponseMessage tokenResponse = httpClient.PutAsJsonAsync<TimeSlots>("http://localhost:8081/Dari/servlet/Asset/RDVTS/"+id+"/Modify", timeSlots).Result;
+            return RedirectToAction("Index2/"+id);
         }
 
         public ActionResult Delete(int? id)
