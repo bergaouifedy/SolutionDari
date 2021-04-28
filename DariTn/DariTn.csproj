@@ -465,7 +465,11 @@
     <Content Include="img\selling-img\sel-img8.jpg" />
     <Content Include="img\selling-img\sel-img9.jpg" />
     <Content Include="img\twitter.svg" />
+
+    <Content Include="js\checkedWissal.js" />
+
     <Content Include="img\xx.jpg" />
+
     <Content Include="js\checkedSelim.js" />
     <Content Include="js\jquery.easing.js" />
     <Content Include="js\jquery.easing.min.js" />
@@ -634,7 +638,7 @@
     <Content Include="Views\FurnitureAdvs\Index2.cshtml" />
     <Content Include="Views\FurnitureAdvs\Index3.cshtml" />
     <Content Include="Views\FurnitureAdvs\Index4.cshtml" />
-    <Content Include="Views\FurnitureAdvs\Index5.cshtml" />
+    <Content Include="Views\FurnitureAdvs\Search.cshtml" />
     <Content Include="Views\Deliveries\Delete.cshtml" />
     <Content Include="Views\Deliveries\Details.cshtml" />
     <Content Include="Views\Deliveries\Edit.cshtml" />

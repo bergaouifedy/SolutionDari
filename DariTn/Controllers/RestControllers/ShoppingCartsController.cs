@@ -44,53 +44,17 @@ namespace DariTn.Controllers.RestControllers
             return View();
         }
 
-        
-
-        public int Created( Delivery delivery)
-        {
-          
-            HttpClient httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
-            var APIResponse = httpClient.PostAsJsonAsync<Delivery>("http://localhost:8081/Dari/servlet/addDelivery", delivery).Result;
-            return delivery.id;
-        }
-
-        public Orders AddOrder(String @ref , int idd ,int iduser , float Tprix)
-        {
-            Orders ord = new Orders();
-            HttpClient httpClient2 = new HttpClient();
-            httpClient2.BaseAddress = new Uri("https://localhost:44363/api/");
-            var APIResponse2 = httpClient2.PostAsJsonAsync<Orders>("http://localhost:8081/Dari/servlet/addOrders/" + @ref + "/" + idd + "/" + iduser + "/" + Tprix, ord).Result;
-            return ord;
-        }
-
-        public ShoppingCart GetPanier(int id)
-        {
-
-
-            HttpClient httpClient0;
-            httpClient0 = new HttpClient();
-            httpClient0.BaseAddress = new Uri("https://localhost:44363/api/");
-            httpClient0.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage tokenResponse = httpClient0.GetAsync("http://localhost:8081/Dari/servlet/getpanierById/" + id).Result;
-            var s = tokenResponse.Content.ReadAsAsync<ShoppingCart>().Result;
-            return s;
-        }
+      
         // Ajouter Delivery + order+ cartsold
         // POST: ShoppingCarts/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,firstName,lastName,phoneNumber,email,address,postalCode")] Delivery delivery, int idf,int idu,float p)
+        public ActionResult Create([Bind(Include = "id,firstName,lastName,phoneNumber,email,address,postalCode")] Delivery delivery, int id)
             {
 
-            int idd = Created(delivery);
-            Orders ord = AddOrder("ref"+idf, idd , idu, p);
-
-            CartSold c = new CartSold();
-            HttpClient httpClient3 = new HttpClient();
-            httpClient3.BaseAddress = new Uri("https://localhost:44363/api/");
-            var APIResponse3 = httpClient3.PostAsJsonAsync<CartSold>("http://localhost:8081/Dari/servlet/addCartSold/" + idf + "/" + ord.id, c).Result;
-
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
+            var APIResponse = httpClient.PostAsJsonAsync<Delivery>("http://localhost:8081/Dari/servlet/addDelivery/"+id, delivery).Result;
             return RedirectToAction("Index");
 
 

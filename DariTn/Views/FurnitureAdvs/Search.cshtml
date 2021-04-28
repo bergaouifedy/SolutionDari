@@ -1,0 +1,59 @@
+﻿@model IEnumerable<DariTn.Models.Entities.FurnitureAdv>
+
+@{
+    ViewBag.Title = "Search";
+}
+@{ int idlogged = 3;}
+
+<div class="search-field">
+    <br><br><br>
+    <button class="button button2"> @Html.ActionLink(" Back ", "Index")</button>
+</div>
+<table class="table">
+    <br>
+    <br>
+    <br>
+    <h3 class="color0" , style="color:crimson">Search Result: </h3>
+    <br>
+
+    <div id="selling" class="second-theme-selling">
+        <div class="tab-content container-fluid">
+            <div id="tab-villa" class="tab-pane active container">
+                <div class="row">
+
+
+                    @foreach (var item in Model)
+                    {
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-3">
+                            <div class="sub-box">
+                                <img class="img-responsive" src="img/selling-img/sel-img1.jpg" />
+                                <div class="sub-box-content">
+                                    <h5 style="color:#313030"> <a style="color:#000000; font-size:20px">Ref: </a> @Html.DisplayFor(modelItem => item.@ref)</h5>
+                                    <h5 style="color:#313030"><a style="color:#000000; font-size:20px"> @Html.DisplayFor(modelItem => item.name): </a> @Html.DisplayFor(modelItem => item.description) </h5>
+                                    <h5 style="color:crimson"><a style="color:#000000; font-size:20px"> Price: </a>  @Html.DisplayFor(modelItem => item.price) DT</h5>
+
+                                    <button class="button button2"> @Html.ActionLink("Details", "Details", new { id = item.id })</button>
+                                    @if (item.User.id.Equals(idlogged))
+                                    {
+                                        <button class="button button1"> @Html.ActionLink("Edit", "Edit", new { id = item.id })</button>
+                                        <button class="button button3"> @Html.ActionLink("Delete", "Delete", new { id = item.id })</button>
+                                    }
+                                    else
+                                    {
+                                        <button class="button button1">@Html.ActionLink("Add to Basket.", "AddFurnitureToShoppingCart", new { id = item.id })</button>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</table>
