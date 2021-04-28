@@ -183,6 +183,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RestControllers\AppointmentsController.cs" />
     <Compile Include="Controllers\RestControllers\AssetAdvsController.cs" />
     <Compile Include="Controllers\RestControllers\BanksController.cs" />
     <Compile Include="Controllers\RestControllers\BoughtAssetsController.cs" />
@@ -206,6 +207,7 @@
     <Compile Include="Models\CreditEditViewModel.cs" />
     <Compile Include="Models\CreditNewViewModel.cs" />
     <Compile Include="Models\EmailViewModel.cs" />
+    <Compile Include="Models\Entities\Appointment.cs" />
     <Compile Include="Models\Entities\AssetAdv.cs" />
     <Compile Include="Models\Entities\Bank.cs" />
     <Compile Include="Models\Entities\BoughtAsset.cs" />
@@ -698,6 +700,12 @@
     <Content Include="Views\VirtualTours\Ticks.cshtml" />
     <Content Include="Views\TimeSlots\Index2.cshtml" />
     <Content Include="Views\AssetAdvs\Details2.cshtml" />
+    <Content Include="Views\Appointments\Create.cshtml" />
+    <Content Include="Views\Appointments\Delete.cshtml" />
+    <Content Include="Views\Appointments\Details.cshtml" />
+    <Content Include="Views\Appointments\Edit.cshtml" />
+    <Content Include="Views\Appointments\Index.cshtml" />
+    <Content Include="Views\AssetAdvs\Near.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -577,5 +577,11 @@ namespace DariTn.Controllers.RestControllers
             }
         }
 
+        [HttpPost]
+        public ActionResult Near ()
+        {
+            return View();
+        }
+
     }
 }

@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.date)
+            @Html.DisplayNameFor(model => model.title)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.hdebut)
@@ -20,9 +20,7 @@
         <th>
             @Html.DisplayNameFor(model => model.hfin)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.title)
-        </th>
+        
         <th></th>
     </tr>
 
@@ -30,19 +28,19 @@
     {
 <tr>
     <td>
-        @Html.DisplayFor(modelItem => item.date)
+        @Html.DisplayFor(modelItem => item.title)
     </td>
+
     <td>
         @Html.DisplayFor(modelItem => item.hdebut)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.hfin)
     </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.title)
-    </td>
-    <td>
-        @Html.ActionLink("AddRdv", "Edit", new { id = item.id })
+
+=    <td>
+        @Html.ActionLink(linkText: "AddRdv", actionName: "Create", controllerName: "Appointments", routeValues: new { id = item.id }, htmlAttributes: new { @class = "infos" })
+
     </td>
 </tr>
     }
