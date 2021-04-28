@@ -15,16 +15,14 @@ namespace DariTn.Controllers.RestControllers
 {
     public class GuaranteesController : Controller
     {
+        public static int a = 0;
+        
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Guarantees
         public ActionResult Index(int? id)
         {
-            HttpCookie asset = new HttpCookie("asset");
-            asset["id"] = Convert.ToString(id);
-            asset.Expires.Add(new TimeSpan(0, 1, 0));
-            Response.Cookies.Add(asset);
-
+            a = (int)id;
             HttpClient httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             //HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/credits/clients/"+client+"/get").Result;
@@ -45,7 +43,6 @@ namespace DariTn.Controllers.RestControllers
         {
             HttpClient httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            //HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/credits/clients/"+client+"/get").Result;
             HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/guarantees/"+id+"/pdf").Result;
             return Redirect("http://localhost:8081/Dari/servlet/guarantees/" + id + "/pdf");
         }
@@ -54,7 +51,7 @@ namespace DariTn.Controllers.RestControllers
         {
             HttpClient httpClient = new HttpClient();
             httpClient.PostAsync("http://localhost:8081/Dari/servlet/guarantees/"+id+"/validate", null).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
-            return RedirectToAction("Index", new { id = Int32.Parse(Request.Cookies["id"].Value) });
+            return RedirectToAction("Index", new { id = a });
         }
 
         // GET: Guarantees/Details/5

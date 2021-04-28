@@ -15,15 +15,16 @@ namespace DariTn.Controllers.RestControllers
 {
     public class InsurancesController : Controller
     {
+        public static int a = 1;
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Insurances
-        public ActionResult Index()
+        public ActionResult Index(int? client)
         {
+            a = (int)client;
             HttpClient httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            //HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/clients/"+client+"/insurances").Result;
-            HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/clients/1/insurances").Result;
+            HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/clients/"+a+"/insurances").Result;
             if (response.IsSuccessStatusCode)
             {
                 var list = response.Content.ReadAsAsync<IEnumerable<Insurance>>().Result;
@@ -88,7 +89,7 @@ namespace DariTn.Controllers.RestControllers
         // Afin de déjouer les attaques par survalidation, activez les propriétés spécifiques auxquelles vous voulez établir une liaison. Pour 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(int? client, int? asset, [Bind(Include = "SelectedPackId")] InsuranceNewViewModel ins)
+        public ActionResult Create(int? asset, [Bind(Include = "SelectedPackId")] InsuranceNewViewModel ins)
         {
             if (ModelState.IsValid)
             {
@@ -97,8 +98,8 @@ namespace DariTn.Controllers.RestControllers
                 CF.id = Int32.Parse(ins.SelectedPackId);
                 insurance.Pack = CF;
                 HttpClient httpClient = new HttpClient();
-                httpClient.PostAsJsonAsync<Pack>("http://localhost:8081/Dari/servlet/client/1/boughtassets/" + asset + "/addinsurance", CF).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
-                return RedirectToAction("Index", new { client = client });
+                httpClient.PostAsJsonAsync<Pack>("http://localhost:8081/Dari/servlet/client/"+a+"/boughtassets/" + asset + "/addinsurance", CF).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+                return RedirectToAction("Index", new { client = a });
             }
 
             return View(ins);
@@ -155,7 +156,7 @@ namespace DariTn.Controllers.RestControllers
         // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int? client, [Bind(Include = "Id, SelectedPackId")] InsuranceEditViewModel ins)
+        public ActionResult Edit([Bind(Include = "Id, SelectedPackId")] InsuranceEditViewModel ins)
         {
             if (ModelState.IsValid)
             {
@@ -166,7 +167,7 @@ namespace DariTn.Controllers.RestControllers
                 insurance.Pack = CF;
                 HttpClient httpClient = new HttpClient();
                 httpClient.PostAsJsonAsync<Pack>("http://localhost:8081/Dari/servlet/insurances/" + insurance.Id + "/modify", CF).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
-                return RedirectToAction("Index", new { client = client });
+                return RedirectToAction("Index", new { client = a });
             }
             return View(ins);
         }
@@ -182,7 +183,7 @@ namespace DariTn.Controllers.RestControllers
             HttpClient httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             httpClient.DeleteAsync("http://localhost:8081/Dari/servlet/insurances/" + id + "/delete").ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { client = a });
         }
 
         protected override void Dispose(bool disposing)
