@@ -26,14 +26,12 @@
                                 <h2>Search Option</h2>
                                 <div class="row">
 
-                                    <div class="col-xxs-12 col-xs-12">
-                                        <section>
+                                   
                                             <label for="class">Sort by:</label>
                                             <br />
-                                            <button class="button button2"> @Html.ActionLink("Highest Price", "Index3")</button><br>
-                                            <button class="button button2"> @Html.ActionLink("Lowest Price", "Index4")</button><br><br />
-                                        </section>
-                                    </div>
+                                            <button class="button button2"> @Html.ActionLink("Lowest Price", "Index3")</button><br>
+                                            <button class="button button2"> @Html.ActionLink("Highest Price", "Index4")</button><br><br />
+                                        
 
                                     <div class="col-xxs-12 col-xs-12">
                                         <div style="width:49%; ">
@@ -79,7 +77,7 @@
 
                         <div class="col-xs-12 col-sm-6 col-md-3">
                             <div class="sub-box">
-                                <img class="img-responsive" src="img/selling-img/sel-img1.jpg" />
+                                <img class="img-responsive" src="~/img/selling-img/meb.jpg" />
                                 <div class="sub-box-content">
                                     <h5 style="color:#313030"> <a style="color:#000000; font-size:20px">Ref: </a> @Html.DisplayFor(modelItem => item.@ref)</h5>
                                     <h5 style="color:#313030"><a style="color:#000000; font-size:20px"> @Html.DisplayFor(modelItem => item.name): </a> @Html.DisplayFor(modelItem => item.description) </h5>
