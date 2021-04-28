@@ -10,7 +10,6 @@ using System.Web;
 using System.Web.Mvc;
 using DariTn.Models;
 using DariTn.Models.Entities;
-using DariTN.Models.Entities;
 
 namespace DariTn.Controllers.RestControllers
 {
@@ -48,6 +47,7 @@ namespace DariTn.Controllers.RestControllers
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/getAdvByUser/"+iduser).Result;
+            
             if (response.IsSuccessStatusCode)
             {
                 var aa = response.Content.ReadAsAsync<IEnumerable<AssetAdv>>().Result;
@@ -142,8 +142,38 @@ namespace DariTn.Controllers.RestControllers
 
         }
 
+
+        public ActionResult AddGuarantee(int? id)
+        {
+            return RedirectToAction("Create", "Guarantees", new { id = id });
+        }
+
+        public ActionResult GetGuarantees(int? id)
+        {
+            return RedirectToAction("Index", "Guarantees", new { id = id });
+        }
+
+
         // GET: AssetAdvs/Details/5
         public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+
+            HttpClient httpClient;
+            httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage tokenResponse = httpClient.GetAsync("http://localhost:8081/Dari/servlet/getAssetAdv/" + id).Result;
+            var assetAdv = tokenResponse.Content.ReadAsAsync<AssetAdv>().Result;
+            return View(assetAdv);
+        }
+
+        // GET: AssetAdvs/Details/5
+        public ActionResult Details2(int? id)
         {
             if (id == null)
             {
@@ -299,43 +329,7 @@ namespace DariTn.Controllers.RestControllers
         // LES FONCTIONS GET MTE3 L FILTRE
 
         [HttpPost]
-        public ActionResult Search(string postal, string nbrRooms, string state, string city)
-        {
-            String path = "";
-        //    if (state != "")
-          //  {
-          //      path = "http://localhost:8081/Dari/servlet/State/" + state;
-        //    } else if (postal != "")
-            //{
-           //     path = "http://localhost:8081/Dari/servlet/PostalCode/" + postal;
-         //   }
-          /*  else*/ if (city != "")
-            {
-                path = "http://localhost:8081/Dari/servlet/City/" + city;
-            }
-         /*   else
-            {
-                path = "http://localhost:8081/Dari/servlet/NbrRooms/" + nbrRooms;
-            }*/
-
-
-            HttpClient httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri("https://localhost:44362");
-            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response = httpClient.GetAsync(path).Result;
-            if (response.IsSuccessStatusCode)
-            {
-                var aa = response.Content.ReadAsAsync<IEnumerable<AssetAdv>>().Result;
-                return View(aa);
-            }
-            else
-            {
-                ViewBag.result = "error";
-                return View(new List<AssetAdv>());
-            }
-        }
-        [HttpPost]
-        public ActionResult Search1(string postal, string nbrRooms, string state,string city, string price, string category,string option, string sort)
+        public ActionResult Search(string postal, string nbrRooms, string state,string city, string price, string category,string option, string sort)
         {
             String path = "";
                 if (state!=null)
@@ -557,6 +551,13 @@ namespace DariTn.Controllers.RestControllers
                 ViewBag.result = "error";
                 return View(new List<AssetAdv>());
             }
+        }
+
+
+        [HttpPost]
+        public ActionResult Near ()
+        {
+            return View();
         }
 
     }

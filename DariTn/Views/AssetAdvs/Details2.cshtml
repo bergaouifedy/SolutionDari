@@ -1,7 +1,7 @@
 ﻿@model  DariTn.Models.Entities.AssetAdv
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Details2";
 }
 
 <h2>Details</h2>
@@ -13,7 +13,7 @@
         margin: 50px;
     }
 </style>
-@Html.ActionLink("Back to browsing", "Index", routeValues: null, htmlAttributes: new { @class = "btn btn-success btn-lg" })
+@Html.ActionLink("Back to browsing", "MyAdvs", routeValues: null, htmlAttributes: new { @class = "btn btn-success btn-lg" })
 <div style="height:350px;">
 
     <div style="float:left" class="boxed">
@@ -91,7 +91,7 @@
 
                         @foreach (var med in Model.media)
                         {
-                            <b><br /> &nbsp; &nbsp;</b>
+                             <b><br/> &nbsp; &nbsp;</b>
                             <i class="fa fa-chevron-right"></i>
                             @Html.DisplayFor(model => med.type)
                             <b> &nbsp; with the title &nbsp;</b>
@@ -99,11 +99,11 @@
                             <b>:</b>
 
                             @Html.ActionLink("Download", "Show", "Medias", new { id = med.id }, null);
-
+                            <b>OR</b>
+                            @Html.ActionLink("Edit", "Edit", "Medias", new { id = med.id }, null);
+                            <b>OR</b>
+                            @Html.ActionLink("Delete", "Delete", "Medias", new { id = med.id }, null);
                         }
-
-
-
 
                     </ul>
                     <p class="footer">
@@ -111,6 +111,7 @@
                     </p>
                 </div>
             </div>
+
 
 
             @if (Model.virtualTour == null)
@@ -123,19 +124,26 @@
 
             }
 
-            @Html.ActionLink(linkText: "TimeSlots", actionName: "Index", controllerName: "TimeSlots", routeValues: new { id = Model.id }, htmlAttributes: new { @class = "btn btn-primary btn-lg" })
+
+            @Html.ActionLink(linkText: "Add TimeSlots", actionName: "Create", controllerName: "TimeSlots", routeValues: new { id = Model.id }, htmlAttributes: new { @class = "btn btn-primary btn-lg" })
+
+
+            <br />
+            @Html.ActionLink(linkText: "TimeSlots", actionName: "Index2", controllerName: "TimeSlots", routeValues: new { id = Model.id }, htmlAttributes: new { @class = "btn btn-primary btn-lg" })
+
+
 
         </div>
 
     </div>
-    <div style="float:left;" class="boxed" ;>
+    <div style="float:left;margin-left:10px;" class="boxed" ;>
 
         @if (Model.localisation != null)
         {
             <style>
                 #map {
-                    height: 370px;
-                    width: 450px;
+                    height: 400px;
+                    width: 600px;
                     border-radius: 2%;
                 }
 

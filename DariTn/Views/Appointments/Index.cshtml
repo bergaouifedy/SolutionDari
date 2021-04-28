@@ -1,0 +1,40 @@
+﻿@model List<DariTn.Models.Entities.Appointment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Client 
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            Place
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.client.firstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.place)
+        </td>
+    
+    </tr>
+}
+
+</table>

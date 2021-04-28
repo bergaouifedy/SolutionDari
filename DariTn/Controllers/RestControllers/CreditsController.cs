@@ -36,7 +36,7 @@ namespace DariTn.Controllers.RestControllers
             else
             {
                 ViewBag.result = "error";
-                return View(new List<Bank>());
+                return View(new List<Credit>());
             }
         }
 
@@ -84,7 +84,7 @@ namespace DariTn.Controllers.RestControllers
             else
             {
                 ViewBag.result = "error";
-                return View(new List<Bank>());
+                return View(new List<Credit>());
             }
         }
 

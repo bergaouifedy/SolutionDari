@@ -11,13 +11,15 @@ namespace DariTn.Models.Entities
     {
         [Key]
         public int id { get; set; }
-        [DataType(DataType.Date)]
-        public DateTime date { get; set; }
+        [Range(typeof(TimeSpan), "00:00", "23:59")]
         public TimeSpan hdebut { get; set; }
+        [Range(typeof(TimeSpan), "00:00", "23:59")]
         public TimeSpan hfin { get; set; }
         public string title { get; set; }
         [ForeignKey("asset")]
         public int idasset { get; set; }
         public AssetAdv asset { get; set; }
+
+        public virtual IEnumerable<Appointment> Appointments { get; set; }
     }
 }

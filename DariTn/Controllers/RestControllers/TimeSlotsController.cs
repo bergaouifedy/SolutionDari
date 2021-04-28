@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Mvc;
 using DariTn.Models;
@@ -16,10 +18,43 @@ namespace DariTn.Controllers.RestControllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: TimeSlots
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            var timeSlots = db.TimeSlots.Include(t => t.asset);
-            return View(timeSlots.ToList());
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/Asset/RDVTS/FinByAsset/" + id).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var aa = response.Content.ReadAsAsync<IEnumerable<TimeSlots>>().Result;
+                return View(aa);
+            }
+            else
+            {
+                ViewBag.result = "error";
+                return View(new List<TimeSlots>());
+            }
+        }
+
+        // GET: TimeSlots
+        public ActionResult Index2(int? id)
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/Asset/RDVTS/FinByAsset/" + id).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var aa = response.Content.ReadAsAsync<IEnumerable<TimeSlots>>().Result;
+                return View(aa);
+            }
+            else
+            {
+                ViewBag.result = "error";
+                return View(new List<TimeSlots>());
+            }
         }
 
         // GET: TimeSlots/Details/5
@@ -29,12 +64,15 @@ namespace DariTn.Controllers.RestControllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TimeSlots timeSlots = db.TimeSlots.Find(id);
-            if (timeSlots == null)
-            {
-                return HttpNotFound();
-            }
-            return View(timeSlots);
+
+
+            HttpClient httpClient;
+            httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44363/api/");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage tokenResponse = httpClient.GetAsync("http://localhost:8081/Dari/servlet/Asset/RDVTS/" + id).Result;
+            var ts = tokenResponse.Content.ReadAsAsync<TimeSlots>().Result;
+            return View(ts);
         }
 
         // GET: TimeSlots/Create
@@ -49,16 +87,16 @@ namespace DariTn.Controllers.RestControllers
         // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,date,hdebut,hfin,title,idasset")] TimeSlots timeSlots)
+        public ActionResult Create(int idasset,TimeSlots timeSlots)
         {
             if (ModelState.IsValid)
             {
-                db.TimeSlots.Add(timeSlots);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                HttpClient client = new HttpClient();
+                String baseAddress = "http://localhost:44362/";
+                client.PostAsJsonAsync<TimeSlots>("http://localhost:8081/Dari/servlet/Asset/addRdvts/" +idasset, timeSlots).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+                return RedirectToAction("Index2/"+idasset);
             }
 
-            ViewBag.idasset = new SelectList(db.AssetAdvs, "id", "ref", timeSlots.idasset);
             return View(timeSlots);
         }
 
@@ -69,12 +107,16 @@ namespace DariTn.Controllers.RestControllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TimeSlots timeSlots = db.TimeSlots.Find(id);
+            HttpClient httpClient;
+            httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362/");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage tokenResponse = httpClient.GetAsync("http://localhost:8081/Dari/servlet/Asset/RDVTS/" + id).Result;
+            var timeSlots = tokenResponse.Content.ReadAsAsync<TimeSlots>().Result;
             if (timeSlots == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.idasset = new SelectList(db.AssetAdvs, "id", "ref", timeSlots.idasset);
             return View(timeSlots);
         }
 
@@ -83,43 +125,28 @@ namespace DariTn.Controllers.RestControllers
         // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,date,hdebut,hfin,title,idasset")] TimeSlots timeSlots)
+        public ActionResult Edit(int id,TimeSlots timeSlots)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(timeSlots).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.idasset = new SelectList(db.AssetAdvs, "id", "ref", timeSlots.idasset);
-            return View(timeSlots);
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362/");
+            HttpResponseMessage tokenResponse = httpClient.PutAsJsonAsync<TimeSlots>("http://localhost:8081/Dari/servlet/Asset/RDVTS/"+id+"/Modify", timeSlots).Result;
+            return RedirectToAction("Index2/"+id);
         }
 
-        // GET: TimeSlots/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TimeSlots timeSlots = db.TimeSlots.Find(id);
-            if (timeSlots == null)
-            {
-                return HttpNotFound();
-            }
-            return View(timeSlots);
+
+            HttpClient httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            httpClient.DeleteAsync("http://localhost:8081/Dari/servlet/Asset/RDVTS/delete/" + id ).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+            return RedirectToAction("MyAdvs","AssetAdvs");
         }
 
-        // POST: TimeSlots/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            TimeSlots timeSlots = db.TimeSlots.Find(id);
-            db.TimeSlots.Remove(timeSlots);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+       
 
         protected override void Dispose(bool disposing)
         {
