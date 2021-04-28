@@ -12,9 +12,9 @@ namespace DariTn.Models.Entities
         [Key, ForeignKey("asset")]
         public int id { get; set; }
         [DataType(DataType.Currency)]
-        public double latitude { get; set; }
+        public decimal latitude { get; set; }
         [DataType(DataType.Currency)]
-        public double longtitude { get; set; }
+        public decimal longtitude { get; set; }
 
 
         public int? assetid { get; set; }

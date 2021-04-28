@@ -552,5 +552,13 @@ namespace DariTn.Controllers.RestControllers
                 return View(new List<AssetAdv>());
             }
         }
+
+
+        [HttpPost]
+        public ActionResult Near ()
+        {
+            return View();
+        }
+
     }
 }

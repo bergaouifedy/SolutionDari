@@ -9,7 +9,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.date)
+            @Html.DisplayNameFor(model => model.title)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.hdebut)
@@ -17,9 +17,7 @@
         <th>
             @Html.DisplayNameFor(model => model.hfin)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.title)
-        </th>
+        
         <th></th>
     </tr>
 
@@ -28,23 +26,23 @@
         int id = item.idasset;
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.date)
+                @Html.DisplayFor(modelItem => item.title)
             </td>
+        
             <td>
                 @Html.DisplayFor(modelItem => item.hdebut)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.hfin)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.title)
-            </td>
+          
             <td>
 
 
-                @Html.ActionLink("Edit", "Edit", new { id = item.id })
-                @Html.ActionLink("Details", "Details", new { id = item.id })
-                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })|
+                @Html.ActionLink(linkText: "Show Appointments", actionName: "Index", controllerName: "Appointments", routeValues: new { id = item.id }, htmlAttributes: new { @class = "infos" })
+
 
 
             </td>
