@@ -31,23 +31,23 @@
                                 {
                                     <img class="img-responsive" src="~/img/selling-img/office.jpg">
                                 }
-                                <div class="sub-box-content">
-                                    <h5>@Html.DisplayFor(modelItem => item.category)</h5>
-                                    <p class="description text-muted">
+                            <div class="sub-box-content">
+                                <h5>@Html.DisplayFor(modelItem => item.category)</h5>
+                                <p class="description text-muted">
 
-                                        @Html.DisplayFor(modelItem => item.description)
-                                        <br />Address: @Html.DisplayFor(modelItem => item.street)
-                                        <br />City: @Html.DisplayFor(modelItem => item.city)
-                                        <br />State: @Html.DisplayFor(modelItem => item.state)
+                                    @Html.DisplayFor(modelItem => item.description)
+                                    <br />Address: @Html.DisplayFor(modelItem => item.street)
+                                    <br />City: @Html.DisplayFor(modelItem => item.city)
+                                    <br />State: @Html.DisplayFor(modelItem => item.state)
 
-                                    </p>
+                                </p>
 
-                                    @Html.ActionLink("More Information", "Details", null, new { @class = "infos", data_toggle = "modal", data_target = "#description" })
-                                    @if (item.localisation != null)
-                                    {
-                                        @Html.ActionLink(linkText: "Localisation", actionName: "Index", controllerName: "Localisations", routeValues: new { id = item.id }, htmlAttributes: null)
-                                    }
-                                </div>
+                                @Html.ActionLink("More Information", "Details", new { id = item.id }, new { @class = "infos" })
+                                @if (item.localisation != null)
+                                {
+                                    @Html.ActionLink("Location", "Index", "Localisations", new { id = item.id }, new { @class = "infos" })
+                                }
+                            </div>
                             </div>
                         </div>
                     }

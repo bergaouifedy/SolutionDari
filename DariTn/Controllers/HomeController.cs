@@ -13,6 +13,12 @@ namespace DariTn.Controllers
             return View();
         }
 
+
+        public ActionResult Admin()
+        {
+            return View("Admin");
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
