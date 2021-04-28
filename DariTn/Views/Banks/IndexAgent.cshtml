@@ -1,21 +1,19 @@
 ﻿@model IEnumerable<DariTn.Models.Entities.Bank>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "IndexAgent";
     Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
 }
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.name)
         </th>
         <th>Formulas</th>
+        <th>Actions</th>
     </tr>
 
     @foreach (var item in Model)
@@ -36,6 +34,10 @@
                         <tr>
                             <td>@Html.DisplayFor(modelItem => item.CreditFormulas.ElementAt(i).duration)</td>
                             <td>@Html.DisplayFor(modelItem => item.CreditFormulas.ElementAt(i).interestRate)</td>
+                            <td>
+                                @Html.ActionLink("Edit", "EditFormula", new { id = item.CreditFormulas.ElementAt(i).id }) |
+                                @Html.ActionLink("Delete", "DeleteFormula", new { id = item.CreditFormulas.ElementAt(i).id })
+                            </td>
                         </tr>
                     }
                 </table>
@@ -43,6 +45,7 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.id }) |
+                @Html.ActionLink("New Formula", "AddFormula", new { id = item.id })
             </td>
         </tr>
     }

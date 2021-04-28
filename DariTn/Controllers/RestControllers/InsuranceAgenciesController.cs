@@ -15,6 +15,8 @@ namespace DariTn.Controllers.RestControllers
 {
     public class InsuranceAgenciesController : Controller
     {
+        public static int a = 0;
+
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: InsuranceAgencies

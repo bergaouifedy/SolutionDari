@@ -698,6 +698,7 @@
     <Content Include="Views\VirtualTours\Ticks.cshtml" />
     <Content Include="Views\TimeSlots\Index2.cshtml" />
     <Content Include="Views\AssetAdvs\Details2.cshtml" />
+    <Content Include="Views\Banks\IndexAgent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -15,6 +15,10 @@ namespace DariTn.Controllers.RestControllers
 {
     public class BanksController : Controller
     {
+        public static int a = 0;
+
+        public static int banker = 0;
+
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Banks
@@ -25,6 +29,26 @@ namespace DariTn.Controllers.RestControllers
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/banks/get").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var list = response.Content.ReadAsAsync<IEnumerable<Bank>>().Result;
+                return View(list);
+            }
+            else
+            {
+                ViewBag.result = "error";
+                return View(new List<Bank>());
+            }
+        }
+
+        public ActionResult IndexAgent(int? agent)
+        {
+            banker = (int)agent;
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44362");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/banks/get/"+agent ).Result;
             if (response.IsSuccessStatusCode)
             {
                 var list = response.Content.ReadAsAsync<IEnumerable<Bank>>().Result;

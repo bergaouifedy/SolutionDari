@@ -19,15 +19,18 @@ namespace DariTn.Controllers.RestControllers
 {
     public class CreditsController : Controller
     {
+        public static int a = 1;
+
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Credits
-        public ActionResult Index(/*int? client*/)
+        public ActionResult Index(int? client)
         {
+            a = (int)client;
             HttpClient httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            //HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/credits/clients/"+client+"/get").Result;
-            HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/credits/clients/1/get").Result;
+            HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/credits/clients/"+a+"/get").Result;
+
             if (response.IsSuccessStatusCode)
             {
                 var list = response.Content.ReadAsAsync<IEnumerable<Credit>>().Result;
@@ -93,20 +96,18 @@ namespace DariTn.Controllers.RestControllers
         // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(int? client, [Bind(Include = "initialamount, SelectedFormulaId")] CreditNewViewModel c)
+        public ActionResult Create([Bind(Include = "initialamount, SelectedFormulaId")] CreditNewViewModel c)
         {
             if (ModelState.IsValid)
             {
-                //httpClient.PostAsJsonAsync<Credit>("http://localhost:8081/Dari/servlet/clients/"+client+"/credits/addcredit", credit).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
-
                 Credit credit = new Credit();
                 credit.initialamount = c.InitialAmount;
                 CreditFormula CF = new CreditFormula();
                 CF.id = Int32.Parse(c.SelectedFormulaId);
                 credit.creditformula = CF;
                 HttpClient httpClient = new HttpClient();
-                httpClient.PostAsJsonAsync<Credit>("http://localhost:8081/Dari/servlet/clients/1/credits/addcredit", credit).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
-                return RedirectToAction("Index", new { client = client });
+                httpClient.PostAsJsonAsync<Credit>("http://localhost:8081/Dari/servlet/clients/"+a+"/credits/addcredit", credit).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+                return RedirectToAction("Index", new { client = a });
             }
 
             return View(c);
@@ -169,7 +170,7 @@ namespace DariTn.Controllers.RestControllers
         // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int? client, [Bind(Include = "Id, SelectedFormulaId")] CreditEditViewModel c)
+        public ActionResult Edit([Bind(Include = "Id, SelectedFormulaId")] CreditEditViewModel c)
         {
             if (ModelState.IsValid)
             {
@@ -179,8 +180,8 @@ namespace DariTn.Controllers.RestControllers
                 CF.id = Int32.Parse(c.SelectedFormulaId);
                 credit.creditformula = CF;
                 HttpClient httpClient = new HttpClient();
-                httpClient.PostAsJsonAsync<CreditFormula>("http://localhost:8081/Dari/servlet/clients/1/credits/"+credit.id+"/modify", CF).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
-                return RedirectToAction("Index", new { client = client });
+                httpClient.PostAsJsonAsync<CreditFormula>("http://localhost:8081/Dari/servlet/clients/"+a+"/credits/"+credit.id+"/modify", CF).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+                return RedirectToAction("Index", new { client = a });
             }
             return View(c);
         }
@@ -195,8 +196,8 @@ namespace DariTn.Controllers.RestControllers
 
             HttpClient httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            httpClient.DeleteAsync("http://localhost:8081/Dari/servlet/clients/1/credits/"+id+"/delete").ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
-            return RedirectToAction("Index");
+            httpClient.DeleteAsync("http://localhost:8081/Dari/servlet/clients/"+a+"/credits/"+id+"/delete").ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+            return RedirectToAction("Index", new { client = a });
         }
 
         public ActionResult Compare(int? id)
@@ -208,17 +209,17 @@ namespace DariTn.Controllers.RestControllers
 
             HttpClient httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/credits/clients/1/compare/"+id).Result;
+            HttpResponseMessage response = httpClient.GetAsync("http://localhost:8081/Dari/servlet/credits/clients/"+a+"/compare/"+id).Result;
             if (response.IsSuccessStatusCode)
             {
                 Credit C = response.Content.ReadAsAsync<Credit>().Result;
                 return View(C);
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { client = a });
         }
 
-        // GET
+        /*
         public ActionResult Email(int? id)
         {
             EmailViewModel email = new EmailViewModel();
@@ -233,15 +234,23 @@ namespace DariTn.Controllers.RestControllers
             test.Body = "test";
             test.Sender="daritn4@gmail.com";
             test.Subject = "test";
-            httpClient.PostAsJsonAsync<EmailViewModel>("http://localhost:8081/Dari/servlet/clients/1/credits/"+id+"/email", test).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
-            return RedirectToAction("Index");
+            httpClient.PostAsJsonAsync<EmailViewModel>("http://localhost:8081/Dari/servlet/clients/"+a+"/credits/"+id+"/email", test).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+            return RedirectToAction("Index", new { client = a });
+        }
+        */
+
+        public ActionResult Email(int ?id)
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.PostAsync("http://localhost:8081/Dari/servlet/clients/" + a + "/credits/" + id + "/email2", null).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+            return RedirectToAction("Index", new { client = a });
         }
 
         public ActionResult SMS(int ?id)
         {
             HttpClient httpClient = new HttpClient();
             httpClient.PostAsync("http://localhost:8081/Dari/servlet/clients/1/credits/"+id+"/sms", null).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { client = a });
         }
 
 
