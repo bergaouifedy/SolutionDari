@@ -87,19 +87,32 @@ namespace DariTn.Controllers.RestControllers
         // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(int idasset,TimeSlots timeSlots)
+        public ActionResult Create([Bind(Include = "id,hdebut,hfin,title,idasset")] int id,TimeSlots timeSlots)
         {
             if (ModelState.IsValid)
             {
                 HttpClient client = new HttpClient();
                 String baseAddress = "http://localhost:44362/";
-                client.PostAsJsonAsync<TimeSlots>("http://localhost:8081/Dari/servlet/Asset/addRdvts/" +idasset, timeSlots).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
-                return RedirectToAction("Index2/"+idasset);
+                client.PostAsJsonAsync<TimeSlots>("http://localhost:8081/Dari/servlet/Asset/addRdvts/" +id, timeSlots).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+                return RedirectToAction("Index2/"+id);
             }
 
             return View(timeSlots);
         }
 
+
+        public AssetAdv findByAsset(int id)
+        {
+
+
+            HttpClient httpClient0;
+            httpClient0 = new HttpClient();
+            httpClient0.BaseAddress = new Uri("https://localhost:44363/api/");
+            httpClient0.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage tokenResponse = httpClient0.GetAsync(" http://localhost:8081/Dari/servlet/getAssetAdv/" + id).Result;
+            var s = tokenResponse.Content.ReadAsAsync<AssetAdv>().Result;
+            return s;
+        }
         // GET: TimeSlots/Edit/5
         public ActionResult Edit(int? id)
         {

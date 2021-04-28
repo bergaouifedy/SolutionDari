@@ -93,11 +93,11 @@ namespace DariTn.Controllers.RestControllers
         // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Localisation localisation)
+        public ActionResult Create(int id, Localisation localisation)
         {
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("https://localhost:44315/");
-            httpClient.PostAsJsonAsync<Localisation>("http://localhost:8081/Dari/servlet/Asset/addLocalisation", localisation).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+            httpClient.PostAsJsonAsync<Localisation>("http://localhost:8081/Dari/servlet/Asset/addLocalisation/"+id, localisation).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
             return RedirectToAction("MyAdvs");
         }
 
