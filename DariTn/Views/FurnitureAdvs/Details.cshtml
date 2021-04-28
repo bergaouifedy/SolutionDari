@@ -26,8 +26,10 @@
                                     <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px"> Price: </a>  @Html.DisplayFor(model => model.price) DT</h4>
                                     <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">  Description: </a> @Html.DisplayFor(model => model.description)</h4>
                                     <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">  Added Date: </a>  @Html.DisplayFor(model => model.addedDate)</h4>
-
+                                    <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">  Image: </a>  @Html.ActionLink("Download Image", "Show", new { id = Model.id }, null);</h4>
+                                   
                                     <button class="button button4"> @Html.ActionLink("  Back  ", "Index")</button>
+                                   
                                 </div>
                             </div>
 

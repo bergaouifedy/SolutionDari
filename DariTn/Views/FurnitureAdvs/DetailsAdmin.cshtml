@@ -25,6 +25,7 @@
                     <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">  Added Date: </a>  @Html.DisplayFor(model => model.addedDate)</h4>
                     <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">  Accepted By Admin: </a>  @Html.DisplayFor(model => model.status)</h4>
                     <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">  Available: </a>  @Html.DisplayFor(model => model.availability)</h4>
+                    <h4 style="color:cornflowerblue"> <a style="color:#000000; font-size:22px">  Image: </a>  @Html.ActionLink("Download Image", "Show", new { id = Model.id }, null);</h4>
 
                     <button class="button button4"> @Html.ActionLink("  Back  ", "IndexAdmin")</button>
                     <button class="button button3"> @Html.ActionLink("Delete", "DeleteAdmin2", new { id = Model.id })</button>
