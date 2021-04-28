@@ -12,27 +12,6 @@
     <br>
     <br>
 
-
-    <!-- Search by Name- start -->
-    <div class="search-field">
-        <br><br><br><br>
-        <button class="button button2"> @Html.ActionLink("Sort By Price ASC", "Index3")</button><br><br>
-        <button class="button button2"> @Html.ActionLink("Sort By Price DESC", "Index4")</button><br><br>
-        <form class="search-field-form">
-            <input type="text" placeholder="Search By Name">
-            <button type="submit"><i class="fa fa-search"></i> </button>
-        </form><br><br>
-        <form class="search-field-form">
-            <input type="text" placeholder="Search By Type">
-            <button type="submit"><i class="fa fa-search"></i></button>
-        </form><br><br>
-        <form class="search-field-form">
-            <input type="text" placeholder="Search By Price">
-            <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
-
-    </div>
-
     <h3 class="color0" , style="color:crimson">Furniture for sale: </h3>
     <br>
 
@@ -40,6 +19,58 @@
     <div id="selling" class="second-theme-selling">
         <div class="tab-content container-fluid">
             <div id="tab-villa" class="tab-pane active container">
+                <form action="/FurnitureAdvs/Search" method="POST">
+                    <div style="background-color:antiquewhite; width:25%;float:left;">
+                        <div>
+                            <div>
+                                <h2>Search Option</h2>
+                                <div class="row">
+
+                                    <div class="col-xxs-12 col-xs-12">
+                                        <section>
+                                            <label for="class">Sort by:</label>
+                                            <br />
+                                            <button class="button button2"> @Html.ActionLink("Highest Price", "Index3")</button><br>
+                                            <button class="button button2"> @Html.ActionLink("Lowest Price", "Index4")</button><br><br />
+                                        </section>
+                                    </div>
+
+                                    <div class="col-xxs-12 col-xs-12">
+                                        <div style="width:49%; ">
+                                            <input type="checkbox" id="box1" name="checkBox1" value="true" onclick="terms_changed1(this)" />
+                                            <label for="price">Price</label>
+                                            <input type="text" class="form-control" name="price" id="price" placeholder="Price" disabled />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xxs-12 col-xs-12">
+                                        <div style="width:49%; ">
+                                            <input type="checkbox" id="box2" name="checkBox2" value="true" onclick="terms_changed2(this)" />
+                                            <label for="name">Name</label>
+                                            <input type="text" class="form-control" name="name" id="name" placeholder="Name" disabled />
+                                        </div>
+                                    </div>
+                                    <div class="col-xxs-12 col-xs-12">
+                                        <div style="width:49%; ">
+                                            <input type="checkbox" id="box3" name="checkBox3" value="true" onclick="terms_changed3(this)" />
+                                            <label for="type">Type</label>
+                                            <input type="text" class="form-control" name="type" id="type" placeholder="Type" disabled />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xxs-12 col-xs-12 text-center">
+                                        <br />
+                                        <input type="submit" value="Search" id="ButtonSubmit" class="btn btn-primary btn-lg" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="map" style="background-image: url(~/img/home.jpg);">
+                        </div>
+                    </div>
+
+                </form>
+
                 <div class="row">
 
                     @foreach (var item in Model)
@@ -52,6 +83,7 @@
                                 <div class="sub-box-content">
                                     <h5 style="color:#313030"> <a style="color:#000000; font-size:20px">Ref: </a> @Html.DisplayFor(modelItem => item.@ref)</h5>
                                     <h5 style="color:#313030"><a style="color:#000000; font-size:20px"> @Html.DisplayFor(modelItem => item.name): </a> @Html.DisplayFor(modelItem => item.description) </h5>
+                                    <h5 style="color:#313030"> <a style="color:#000000; font-size:20px">Type: </a> @Html.DisplayFor(modelItem => item.type)</h5>
                                     <h5 style="color:crimson"><a style="color:#000000; font-size:20px"> Price: </a>  @Html.DisplayFor(modelItem => item.price) DT</h5>
 
 
@@ -74,9 +106,21 @@
 
 
                     }
-      </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-                 
+
 </table>
+<script src="~/js/checkedWissal.js"></script>
+<!-- jQuery-->
+<script src="~/js/jquery.min.js"></script>
+<!-- Bootstrap Core Javascript-->
+<script src="~/bootstrap/js/bootstrap.min.js"></script>
+<!-- Plugins -->
+<script src="~/js/jquery.easing.min.js"></script>
+<script src="~/js/fancybox.js"></script>
+<script src="~/js/jquery.waypoints.min.js"></script>
+<script src="~/js/progressbar.min.js"></script>
+<script src="~/js/plugins.js"></script>
+<script src="~/js/script.js"></script>
