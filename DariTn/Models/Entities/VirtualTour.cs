@@ -12,6 +12,7 @@ namespace DariTn.Models.Entities
         [Key, ForeignKey("asset")]
         public int id { get; set; }
         public string link { get; set; }
+        public bool status { get; set; }
         public int assetid { get; set; }
         public virtual AssetAdv asset { get; set; }
     }

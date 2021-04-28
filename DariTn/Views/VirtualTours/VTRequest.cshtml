@@ -1,0 +1,49 @@
+﻿@model IEnumerable<DariTn.Models.Entities.VirtualTour>
+
+@{
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+    ViewBag.Title = "VTRequest";
+
+}
+
+<h2>VTRequest</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Link
+        </th>
+
+        <th>
+            Status
+        </th>
+        <th></th>
+        <th>
+            Actions
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+         
+            <td>
+                @Html.DisplayFor(modelItem => item.link)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+
+                <p style="color:red;">On Hold</p>
+
+            </td>
+      
+            <td>
+                @Html.ActionLink("Accept", "Accept", new { id = item.id })
+
+            </td>
+        </tr>
+    }
+
+</table>
