@@ -15,7 +15,7 @@ namespace DariTn.Controllers.RestControllers
 {
     public class AssetAdvsController : Controller
     {
-        private int iduser = 1; // a remplacer avec id user connecté
+        private int iduser = 4; // a remplacer avec id user connecté
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: AssetAdvs

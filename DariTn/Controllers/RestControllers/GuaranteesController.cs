@@ -130,12 +130,9 @@ namespace DariTn.Controllers.RestControllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guarantee guarantee = db.Guarantees.Find(id);
-            if (guarantee == null)
-            {
-                return HttpNotFound();
-            }
-            return View(guarantee);
+            HttpClient httpClient = new HttpClient();
+            httpClient.DeleteAsync("http://localhost:8081/Dari/servlet/guarantees/"+id+"/delete").ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+            return RedirectToAction("Index", new { id = a });
         }
 
         // POST: Guarantees/Delete/5
