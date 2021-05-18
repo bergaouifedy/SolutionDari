@@ -186,6 +186,13 @@ namespace DariTn.Controllers.RestControllers
             return RedirectToAction("Index", new { client = a });
         }
 
+        public ActionResult Email(int ?id)
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.PostAsync("http://localhost:8081/Dari/servlet/clients/" + a + "/insurances/" + id + "/email2", null).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+            return RedirectToAction("Index", new { client = a });
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
