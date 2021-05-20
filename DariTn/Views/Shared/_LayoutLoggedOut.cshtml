@@ -85,18 +85,6 @@
                     <li class="nav-item dropdown">
                         <div class="dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                My Space
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                                <li> @Html.ActionLink("Ads based on your search history", "Target1", "AssetAdvs")</li>
-                                <li> @Html.ActionLink("Ads based on your location", "Target2", "AssetAdvs")</li>
-                                <li> @Html.ActionLink("Assets near you", "Near", "AssetAdvs")</li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <div class="dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Furniture
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
@@ -108,9 +96,9 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="lBorder">@Html.ActionLink("Credits", "Index", "Credits", new { client = 1 }, null)</li>
+                    <li class="lBorder">@Html.ActionLink("Credits", "Index", "Credits", new { client= 1 }, null)</li>
                     <li class="lBorder">@Html.ActionLink("Insurances", "Index", "Insurances", new { client = 1 }, null)</li>
-                    <li class="lBorder">@Html.ActionLink("Logout", "Index", "Home")</li>
+                    <li class="lBorder">@Html.ActionLink("Login", "Create", "Connections")</li>
 
 
 

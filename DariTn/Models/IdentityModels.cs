@@ -64,5 +64,6 @@ namespace DariTn.Models
 
         public System.Data.Entity.DbSet<DariTN.Models.Entities.Media> Media { get; set; }
 
+        public System.Data.Entity.DbSet<DariTn.Models.Connection> Connections { get; set; }
     }
 }

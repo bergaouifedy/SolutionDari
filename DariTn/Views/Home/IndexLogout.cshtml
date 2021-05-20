@@ -1,0 +1,676 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_LayoutLoggedOut.cshtml";
+}
+
+<!-- Intro Section -->
+<header id="intro" class="intro row container-fluid">
+    <div class="intro-box-second-theme container-fluid">
+        <div class="container">
+            <h1>FIND YOUR PROPERTY</h1>
+            <p>You will not have any accommodation problems anymore <br/>once you start using Dari TN</p>
+            <div class="intro-btn">
+                <a class="page-scroll btn-custom" href="#about">ABOUT US</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<!-- Selling Section -->
+<div id="selling" class="second-theme-selling">
+    <div class="selling-title container-fluid ">
+        <div class=" container second-theme-title">
+            <h2>MAKE YOUR CHOICE</h2>
+            <p>Search for properties with the characteristics of your desire !</p>
+        </div>
+    </div>
+    <div class="tab-content container-fluid">
+        <!-- Appartment Tab -->
+        <div id="tab-villa" class="tab-pane active container">
+            <div style="background-color:antiquewhite; width:25%;float:left;">
+                <div>
+                    <div>
+                        <h2>Search Properties</h2>
+                        <div class="row">
+                            <div class="col-xxs-12 col-xs-12">
+                                <div style="width:56%;">
+                                    <label for="from">Keyword:</label>
+                                    <input type="text" class="form-control" id="from-place" placeholder="Any" />
+                                </div>
+                            </div>
+                            <div class="col-xxs-12 col-xs-12">
+                                <section>
+                                    <label for="class">Property Status:</label>
+                                    <select class="cs-select cs-skin-border">
+                                        <option value="" disabled selected>Any</option>
+                                        <option value="1">Rent</option>
+                                        <option value="2">Sale</option>
+                                    </select>
+                                </section>
+                            </div>
+                            <div class="col-xxs-12 col-xs-12">
+                                <section>
+                                    <label for="class">Property Type:</label>
+                                    <select class="cs-select cs-skin-border input-half">
+                                        <option value="" disabled selected>Any</option>
+                                        <option value="1">Building</option>
+                                        <option value="2">Office</option>
+                                    </select>
+                                </section>
+                            </div>
+                            <div class="col-xxs-12 col-xs-12">
+                                <div style="width:56%;">
+                                    <label for="from">Location:</label>
+                                    <input type="text" class="form-control" id="from-place" placeholder="Any" />
+                                </div>
+                            </div>
+                            <div class="col-xxs-12 col-xs-12">
+                                <section>
+                                    <label for="class">Price:</label>
+                                    <div class="wide">
+                                        <select class="cs-select cs-select-half cs-skin-border input-half">
+                                            <option value="" disabled selected>Any</option>
+                                            <option value="1">Building</option>
+                                            <option value="2">Office</option>
+                                        </select>
+                                        <select class="cs-select cs-select-half cs-skin-border input-half">
+                                            <option value="" disabled selected>Any</option>
+                                            <option value="1">Building</option>
+                                            <option value="2">Office</option>
+                                        </select>
+                                    </div>
+                                </section>
+                            </div>
+                            <div class="col-xxs-12 col-xs-12">
+                                <section>
+                                    <label for="class">Bedrooms:</label>
+                                    <div class="wide">
+                                        <select class="cs-select cs-select-half cs-skin-border input-half">
+                                            <option value="" disabled selected>Any</option>
+                                            <option value="1">Building</option>
+                                            <option value="2">Office</option>
+                                        </select>
+                                        <select class="cs-select cs-select-half cs-skin-border input-half">
+                                            <option value="" disabled selected>Any</option>
+                                            <option value="1">Building</option>
+                                            <option value="2">Office</option>
+                                        </select>
+                                    </div>
+                                </section>
+                            </div>
+                            <div class="col-xxs-12 col-xs-12">
+                                <section>
+                                    <label for="class">Bathrooms:</label>
+                                    <div class="wide">
+                                        <select class="cs-select cs-select-half cs-skin-border input-half">
+                                            <option value="" disabled selected>Any</option>
+                                            <option value="1">Building</option>
+                                            <option value="2">Office</option>
+                                        </select>
+                                        <select class="cs-select cs-select-half cs-skin-border input-half">
+                                            <option value="" disabled selected>Any</option>
+                                            <option value="1">Building</option>
+                                            <option value="2">Office</option>
+                                        </select>
+                                    </div>
+                                </section>
+                            </div>
+                            <div class="col-xxs-12 col-xs-12">
+                                <section>
+                                    <label for="class">Area:</label>
+                                    <div class="wide">
+                                        <select class="cs-select cs-select-half cs-skin-border input-half">
+                                            <option value="" disabled selected>Any</option>
+                                            <option value="1">Building</option>
+                                            <option value="2">Office</option>
+                                        </select>
+                                        <select class="cs-select cs-select-half cs-skin-border input-half">
+                                            <option value="" disabled selected>Any</option>
+                                            <option value="1">Building</option>
+                                            <option value="2">Office</option>
+                                        </select>
+                                    </div>
+                                </section>
+                            </div>
+                            <div class="col-xxs-12 col-xs-12">
+                                <section>
+                                    <label for="class">Parking spots:</label>
+                                    <div class="wide">
+                                        <select class="cs-select cs-select-half cs-skin-border input-half">
+                                            <option value="" disabled selected>Any</option>
+                                            <option value="1">Building</option>
+                                            <option value="2">Office</option>
+                                        </select>
+                                        <select class="cs-select cs-select-half cs-skin-border input-half">
+                                            <option value="" disabled selected>Any</option>
+                                            <option value="1">Building</option>
+                                            <option value="2">Office</option>
+                                        </select>
+                                    </div>
+                                </section>
+                            </div>
+                            <div class="col-xxs-12 col-xs-12 text-center">
+                                <br />
+                                <p><a class="btn btn-primary btn-lg" href="#">Learn More</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="map" style="background-image: url(~/img/home.jpg);">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="sub-box">
+                        <img class="img-responsive" src="img/selling-img/sel-img1.jpg">
+                        <div class="sub-box-content">
+                            <h5>House</h5>
+                            <p class="description text-muted">
+                                This house is located in Hammamet
+                            </p>
+                            <p class="infos" data-toggle="modal" data-target="#description">News</p>
+                            <p class="link text-right" data-toggle="modal" data-target="#pictures">Pictures</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="sub-box">
+                        <img class="img-responsive" src="img/selling-img/sel-img2.jpg">
+                        <div class="sub-box-content">
+                            <h5>House</h5>
+                            <p class="description text-muted">
+                                Visits allowed
+                            </p>
+                            <p class="infos" data-toggle="modal" data-target="#description">News</p>
+                            <p class="link text-right" data-toggle="modal" data-target="#pictures">Pictures</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="sub-box">
+                        <img class="img-responsive" src="img/selling-img/sel-img3.jpg">
+                        <div class="sub-box-content">
+                            <h5>House</h5>
+                            <p class="description text-muted">
+                                House situated in a very luxury neighborhood
+                            </p>
+                            <p class="infos" data-toggle="modal" data-target="#description">News</p>
+                            <p class="link text-right" data-toggle="modal" data-target="#pictures">Pictures</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="sub-box">
+                        <img class="img-responsive" src="img/selling-img/sel-img4.jpg">
+                        <div class="sub-box-content">
+                            <h5>House</h5>
+                            <p class="description text-muted">
+                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.
+                            </p>
+                            <p class="infos" data-toggle="modal" data-target="#description">News</p>
+                            <p class="link text-right" data-toggle="modal" data-target="#pictures">Pictures</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="sub-box">
+                        <img class="img-responsive" src="img/selling-img/sel-img5.jpg">
+                        <div class="sub-box-content">
+                            <h5>House</h5>
+                            <p class="description text-muted">
+                                vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan.
+                            </p>
+                            <p class="infos" data-toggle="modal" data-target="#description">News</p>
+                            <p class="link text-right" data-toggle="modal" data-target="#pictures">Pictures</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="sub-box">
+                        <img class="img-responsive" src="img/selling-img/sel-img6.jpg">
+                        <div class="sub-box-content">
+                            <h5>SED DIAM</h5>
+                            <p class="description text-muted">
+                                sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.
+                            </p>
+                            <p class="infos" data-toggle="modal" data-target="#description">News</p>
+                            <p class="link text-right" data-toggle="modal" data-target="#pictures">Pictures</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="sub-box">
+                        <img class="img-responsive" src="img/selling-img/sel-img7.jpg">
+                        <div class="sub-box-content">
+                            <h5>UT WISI</h5>
+                            <p class="description text-muted">
+                                Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper.
+                            </p>
+                            <p class="infos" data-toggle="modal" data-target="#description">News</p>
+                            <p class="link text-right" data-toggle="modal" data-target="#pictures">Pictures</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="sub-box">
+                        <img class="img-responsive" src="img/selling-img/sel-img8.jpg">
+                        <div class="sub-box-content">
+                            <h5>DUIS AUTEM</h5>
+                            <p class="description text-muted">
+                                Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse.
+                            </p>
+                            <p class="infos" data-toggle="modal" data-target="#description">News</p>
+                            <p class="link text-right" data-toggle="modal" data-target="#pictures">Pictures</p>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-custom">WANT MORE</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Selling Section -->
+<!-- Intro Section -->
+<!-- Renting Section -->
+<div id="renting" class="second-theme-renting container-fluid">
+    <div class="container">
+        <div class="second-theme-title">
+            <h2>WHAT WILL WE RENT TO YOU?</h2>
+            <p>Maecenas tristique orci ac sem</p>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-4">
+                <div class="block">
+                    <h4>Renting Guide</h4>
+                    <p>
+                        Aenean nonummy hendrerit maurihasellus portsce suscipit varium sociis natoque penatibus et magnis dis parturienetontes nascetur ridiculus musulla dutusce.
+                    </p>
+                    <button type="submit" class="btn btn-custom">READ MORE...</button>
+                </div>
+                <div class="block">
+                    <h4>Main Informations</h4>
+                    <p>
+                        Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus musulla duis. Fuscecer feugiat malesuada odio.
+                    </p>
+                    <ul class="list">
+                        <li>
+                            <ul>
+                                <li><i class="fa fa-caret-right"></i> Cum sociis</li>
+                                <li><i class="fa fa-caret-right"></i> Natoque</li>
+                                <li><i class="fa fa-caret-right"></i> Penatibus</li>
+                                <li><i class="fa fa-caret-right"></i> Et magnis</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><i class="fa fa-caret-right"></i> Parturient</li>
+                                <li><i class="fa fa-caret-right"></i> Montes</li>
+                                <li><i class="fa fa-caret-right"></i> Nascetur</li>
+                                <li><i class="fa fa-caret-right"></i> Ridiculus</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><i class="fa fa-caret-right"></i> Musulla</li>
+                                <li><i class="fa fa-caret-right"></i> Fuscecer</li>
+                                <li><i class="fa fa-caret-right"></i> Feugiat</li>
+                                <li><i class="fa fa-caret-right"></i> Malesuada</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+                <div class="block">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="img-box">
+                                <img class="img-responsive" src="img/selling-img/sel-img1.jpg">
+                                <div class="img-box-caption">
+                                    <a class="img-icon icon-left animation" data-toggle="modal" href="#description">
+                                        <i class="fa fa-info"></i>
+                                    </a>
+                                    <a class="img-icon icon-right animation" data-toggle="modal" href="#pictures">
+                                        <i class="fa fa-photo"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="img-box">
+                                <img class="img-responsive" src="img/selling-img/sel-img2.jpg">
+                                <div class="img-box-caption">
+                                    <a class="img-icon icon-left animation" data-toggle="modal" href="#description">
+                                        <i class="fa fa-info"></i>
+                                    </a>
+                                    <a class="img-icon icon-right animation" data-toggle="modal" href="#pictures">
+                                        <i class="fa fa-photo"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="img-box">
+                                <img class="img-responsive" src="img/selling-img/sel-img3.jpg">
+                                <div class="img-box-caption">
+                                    <a class="img-icon icon-left animation" data-toggle="modal" href="#description">
+                                        <i class="fa fa-info"></i>
+                                    </a>
+                                    <a class="img-icon icon-right animation" data-toggle="modal" href="#pictures">
+                                        <i class="fa fa-photo"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="img-box">
+                                <img class="img-responsive" src="img/selling-img/sel-img4.jpg">
+                                <div class="img-box-caption">
+                                    <a class="img-icon icon-left animation" data-toggle="modal" href="#description">
+                                        <i class="fa fa-info"></i>
+                                    </a>
+                                    <a class="img-icon icon-right animation" data-toggle="modal" href="#pictures">
+                                        <i class="fa fa-photo"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="img-box">
+                                <img class="img-responsive" src="img/selling-img/sel-img8.jpg">
+                                <div class="img-box-caption">
+                                    <a class="img-icon icon-left animation" data-toggle="modal" href="#description">
+                                        <i class="fa fa-info"></i>
+                                    </a>
+                                    <a class="img-icon icon-right animation" data-toggle="modal" href="#pictures">
+                                        <i class="fa fa-photo"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="img-box">
+                                <img class="img-responsive" src="img/selling-img/sel-img6.jpg">
+                                <div class="img-box-caption">
+                                    <a class="img-icon icon-left animation" data-toggle="modal" href="#description">
+                                        <i class="fa fa-info"></i>
+                                    </a>
+                                    <a class="img-icon icon-right animation" data-toggle="modal" href="#pictures">
+                                        <i class="fa fa-photo"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="img-box">
+                                <img class="img-responsive" src="img/selling-img/sel-img7.jpg">
+                                <div class="img-box-caption">
+                                    <a class="img-icon icon-left animation" data-toggle="modal" href="#description">
+                                        <i class="fa fa-info"></i>
+                                    </a>
+                                    <a class="img-icon icon-right animation" data-toggle="modal" href="#pictures">
+                                        <i class="fa fa-photo"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="img-box">
+                                <img class="img-responsive" src="img/selling-img/sel-img5.jpg">
+                                <div class="img-box-caption">
+                                    <a class="img-icon icon-left animation" data-toggle="modal" href="#description">
+                                        <i class="fa fa-info"></i>
+                                    </a>
+                                    <a class="img-icon icon-right animation" data-toggle="modal" href="#pictures">
+                                        <i class="fa fa-photo"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="img-box">
+                                <img class="img-responsive" src="img/selling-img/sel-img9.jpg">
+                                <div class="img-box-caption">
+                                    <a class="img-icon icon-left animation" data-toggle="modal" href="#description">
+                                        <i class="fa fa-info"></i>
+                                    </a>
+                                    <a class="img-icon icon-right animation" data-toggle="modal" href="#pictures">
+                                        <i class="fa fa-photo"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="block block-footer">
+                    <p>
+                        If you want to see all rental properties, appartments or villas click this link
+                        &nbsp;&nbsp;&nbsp;&nbsp; <a href="" class="text-right">Go To Catalog</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Renting Section -->
+<!-- About Section -->
+<div id="about" class="second-theme-about container-fluid">
+    <div class="container">
+        <div class="second-theme-title">
+            <h2>ALL ABOUT US</h2>
+            <p>Incidunt et ea quo dolore laudantium</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="timeline">
+                    <li>
+                        <div class="timeline-image animation">
+                            <i class="fa fa-cogs"></i>
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="subheading">Our Outset</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium maiores odit qui est tempora eos, nostrum provident explicabo dignissimos debitis vel! Adipisci eius voluptates, ad aut recusandae minus eaque facere.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image animation">
+                            <i class="fa fa-sitemap"></i>
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="subheading">Our Expansion</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium maiores odit qui est tempora eos, nostrum provident explicabo dignissimos debitis vel! Adipisci eius voluptates, ad aut recusandae minus eaque facere</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-image animation">
+                            <i class="fa fa-tasks"></i>
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="subheading">Our Services</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium maiores odit qui est tempora eos, nostrum provident explicabo dignissimos debitis vel! Adipisci eius voluptates, ad aut recusandae minus eaque facere</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image animation">
+                            <i class="fa fa-group"></i>
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="subheading">The Partnership</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium maiores odit qui est tempora eos, nostrum provident explicabo dignissimos debitis vel! Adipisci eius voluptates, ad aut recusandae minus eaque facere</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image last animation">
+                            <h4>DariTN</h4>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row facts-list">
+            <h4>Statistics</h4>
+            <div class="col-xs-12 col-sm-6 col-lg-3 facts-i">
+                <p data-num="528500" class="facts-i-num">528500</p>
+                <h3 class="facts-i-ttl">Happy Clients</h3>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-3 facts-i">
+                <p data-num="825000" class="facts-i-num">825000</p>
+                <h3 class="facts-i-ttl">Selling Properties</h3>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-3 facts-i">
+                <p data-num="53400" class="facts-i-num">53400</p>
+                <h3 class="facts-i-ttl">Rental Properties</h3>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-3 facts-i">
+                <p data-num="11000" class="facts-i-num">11000</p>
+                <h3 class="facts-i-ttl">Leasing Properties</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About Renting Section -->
+
+<!-- Modal Boxes -->
+<!-- house description-->
+<div id="description" class="modal fade main-modal" tabindex="-1" aria-hidden="true">
+    <div class="container-fluid row">
+        <div class="modal-content col-xs-12 col-sm-6 col-sm-push-3">
+            <div class="modal-content-header">
+                <i class="fa fa-times animation" data-dismiss="modal"></i>
+            </div>
+            <div class="modal-content-body">
+                <div class="description">
+                    <h4>Main News</h4>
+                    <div class="box">
+                        <p>
+                            Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus musulla duis. Fuscecer feugiat malesuada odio.
+                        </p>
+                        <ul>
+                            <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;1 Swimming Pool</li>
+                            <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;1 Private Office</li>
+                            <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;1 Waiting Room</li>
+                            <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;5 Bed Room</li>
+                            <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;1 Garden</li>
+                        </ul>
+                        <p class="footer">
+                            <span class="title">Price</span><span class="label label-danger text-left">$ 15000</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="map">
+                    <h4>House Address</h4>
+                    <p>Segbe, rue akato, Maison Don Peno</p>
+                    <div class="box">
+                        <div class="google-map"><i class="fa fa-map-marker"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of house description-->
+<!-- House Pictures-->
+<div id="pictures" class="modal fade main-modal" tabindex="-1" aria-hidden="true">
+    <div class="container-fluid row">
+        <div class="modal-content col-xs-12 col-sm-8 col-sm-push-2">
+            <div class="modal-content-header">
+                <i class="fa fa-times animation" data-dismiss="modal"></i>
+            </div>
+            <div class="modal-content-body">
+                <div id="houses-pictures" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img class="img-responsive img-thumbnail" src="~/img/selling-img/sel-img1.jpg">
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive img-thumbnail" src="~/img/selling-img/sel-img2.jpg">
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive img-thumbnail" src="~/img/selling-img/sel-img3.jpg">
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive img-thumbnail" src="~/img/selling-img/sel-img4.jpg">
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive img-thumbnail" src="~/img/selling-img/sel-img5.jpg">
+                        </div>
+                        <div class="item">
+                            <img class="img-responsive img-thumbnail" src="~/img/selling-img/sel-img6.jpg">
+                        </div>
+                    </div>
+                    <a class="direction direction-left animation" href="#houses-pictures" data-slide="prev">
+                        <i class="fa fa-chevron-left"></i>
+                    </a>
+                    <a class="direction direction-right animation" href="#houses-pictures" data-slide="next">
+                        <i class="fa fa-chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of House Pictures-->
+<!-- End of Modal Boxes -->
+<!-- Social Icons -->
+<div class="social-icon-menu">
+    <i class="fa fa-ellipsis-v animation"></i>
+    <ul class="socials-icon">
+        <div class="socials-icon-border">
+            <li>
+                <a href="">
+                    <i class="fa fa-facebook"></i>&nbsp; Facebook
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <i class="fa fa-twitter"></i>&nbsp; Twitter
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <i class="fa fa-google-plus"></i>&nbsp; Google Plus
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <i class="fa fa-linkedin"></i>&nbsp; Linkedin
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <i class="fa fa-instagram"></i>&nbsp; Instagram
+                </a>
+            </li>
+        </div>
+    </ul>
+</div>
+</div>
+<!-- End of Social Icons -->
+<!-- jQuery-->
+<script src="~/js/jquery.min.js"></script>
+<!-- Bootstrap Core Javascript-->
+<script src="~/bootstrap/js/bootstrap.min.js"></script>
+<!-- Plugins -->
+<script src="~/js/jquery.easing.min.js"></script>
+<script src="~/js/fancybox.js"></script>
+<script src="~/js/jquery.waypoints.min.js"></script>
+<script src="~/js/progressbar.min.js"></script>
+<script src="~/js/plugins.js"></script>
+<script src="~/js/script.js"></script>

@@ -181,6 +181,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ConnectionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RestControllers\AppointmentsController.cs" />
@@ -205,6 +206,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Connection.cs" />
     <Compile Include="Models\CreditEditViewModel.cs" />
     <Compile Include="Models\CreditNewViewModel.cs" />
     <Compile Include="Models\EmailViewModel.cs" />
@@ -713,6 +715,9 @@
     <Content Include="Views\Medias\Edit.cshtml" />
     <Content Include="Views\VirtualTours\VTRequest.cshtml" />
     <Content Include="Views\Home\Admin.cshtml" />
+    <Content Include="Views\Shared\_LayoutLoggedOut.cshtml" />
+    <Content Include="Views\Connections\Create.cshtml" />
+    <Content Include="Views\Home\IndexLogout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
