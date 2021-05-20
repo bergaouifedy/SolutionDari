@@ -13,6 +13,11 @@ namespace DariTn.Controllers
             return View();
         }
 
+        public ActionResult IndexLogout()
+        {
+            return View();
+        }
+
 
         public ActionResult Admin()
         {

@@ -9,6 +9,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using DariTn.Models;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using DariTn.Models.Entities;
 
 namespace DariTn.Controllers
 {
@@ -61,33 +64,30 @@ namespace DariTn.Controllers
             return View();
         }
 
-        //
-        // POST: /Account/Login
-        [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult> Login2(User user, string email, string password)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
+            HttpClient httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://localhost:44315/");
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            // Ceci ne comptabilise pas les échecs de connexion pour le verrouillage du compte
-            // Pour que les échecs de mot de passe déclenchent le verrouillage du compte, utilisez shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
+            var postTask = httpClient.PostAsJsonAsync<User>("http://localhost:8081/Dari/servlet/login/" + email + "/" + password, user);
+            postTask.Wait();
+
+            var result = postTask.Result;
+            if ((user.login.Equals("admin")) && (user.password.Equals("admin")))
             {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Tentative de connexion non valide.");
-                    return View(model);
+                return RedirectToAction("../Home/Admin");
+            }
+            else if ((user.login.Contains("user")) && (user.password.Contains("user")))
+            {
+
+                return RedirectToAction("../");
+            }
+            else
+            {
+                return View();
             }
         }
 
