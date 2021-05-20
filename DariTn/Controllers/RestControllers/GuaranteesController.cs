@@ -19,6 +19,13 @@ namespace DariTn.Controllers.RestControllers
         
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        public ActionResult Sell(int? asset, int? client)
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.PostAsync("http://localhost:8081/Dari/servlet/clients/"+client+"/buy/"+asset, null).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+            return RedirectToAction("Index", new { id = a });
+        }
+
         // GET: Guarantees
         public ActionResult Index(int? id)
         {
@@ -47,11 +54,11 @@ namespace DariTn.Controllers.RestControllers
             return Redirect("http://localhost:8081/Dari/servlet/guarantees/" + id + "/pdf");
         }
 
-        public ActionResult Validate(int? id)
+        public ActionResult Validate(int? id, int? asset)
         {
             HttpClient httpClient = new HttpClient();
             httpClient.PostAsync("http://localhost:8081/Dari/servlet/guarantees/"+id+"/validate", null).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
-            return RedirectToAction("Index", new { id = a });
+            return RedirectToAction("Index", new { id = asset });
         }
 
         // GET: Guarantees/Details/5
@@ -124,7 +131,7 @@ namespace DariTn.Controllers.RestControllers
         }
 
         // GET: Guarantees/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id, int? asset)
         {
             if (id == null)
             {
@@ -132,18 +139,7 @@ namespace DariTn.Controllers.RestControllers
             }
             HttpClient httpClient = new HttpClient();
             httpClient.DeleteAsync("http://localhost:8081/Dari/servlet/guarantees/"+id+"/delete").ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
-            return RedirectToAction("Index", new { id = a });
-        }
-
-        // POST: Guarantees/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Guarantee guarantee = db.Guarantees.Find(id);
-            db.Guarantees.Remove(guarantee);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { id = asset });
         }
 
         protected override void Dispose(bool disposing)
