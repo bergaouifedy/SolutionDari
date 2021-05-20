@@ -145,9 +145,6 @@
                             @Html.ActionLink("Complain", "AddComplaint", new { id = item.id }, new { @class = "infos" })
 
 
-
-                            @Html.ActionLink("Add Guarantee", "AddGuarantee", new { id = item.id }, new { @class = "infos" })
-
                             @if (item.localisation != null)
                             {
                                 @Html.ActionLink("Location", "Index", "Localisations", new { id = item.id }, new { @class = "infos" })

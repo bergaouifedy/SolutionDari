@@ -14,5 +14,7 @@ namespace DariTn.Models.Entities
         public AssetAdv asset { get; set; }
         public bool status { get; set; }
         public GuaranteeDocument guaranteeDocument { get; set; }
+        public int C { get; set; }
+        public int A { get; set; }
     }
 }

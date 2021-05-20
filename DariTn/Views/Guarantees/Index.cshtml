@@ -32,9 +32,10 @@
             @Html.DisplayFor(modelItem => item.status)
         </td>
         <td>
-            @Html.ActionLink("Validate", "Validate", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
-            @Html.ActionLink("Download", "Download", new { id = item.Id })
+            @Html.ActionLink("Validate", "Validate", new { id = item.Id, asset = item.A }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id, asset = item.A }) |
+            @Html.ActionLink("Download", "Download", new { id = item.Id }) |
+            @Html.ActionLink("Sell", "Sell", new { asset = item.A, client = item.C })
         </td>
     </tr>
 }
